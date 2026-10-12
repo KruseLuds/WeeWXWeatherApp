@@ -2,6 +2,9 @@ name: Android 17 Debug APK
 
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - fix/android17-local-network-permission
 
 permissions:
   contents: read
