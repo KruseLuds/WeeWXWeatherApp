@@ -3020,7 +3020,7 @@ public class MainActivity extends FragmentActivity
 					b1.performClick();
 				}
 				else
-					UpdateCheck.setNextAlarm();
+					processSettings();
 			}
 			else
 			{

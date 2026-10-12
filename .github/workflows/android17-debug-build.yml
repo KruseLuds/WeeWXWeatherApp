@@ -5,6 +5,7 @@ on:
   push:
     branches:
       - fix/android17-local-network-permission
+      - test/android17-final-validation
 
 permissions:
   contents: read
