@@ -5,7 +5,7 @@
 	<string name="afternoon_alert">Temperature %1$s has dropped to your limit of %2$s</string>
 	<string name="afternoon_temp_alert">Afternoon Alert?</string>
 	<string name="all_time_stats">All Time Statistics</string>
-	<string name="app_name" translatable="false">weeWX App</string>
+	<string name="app_name" translatable="false">weeWX Kruse Edition</string>
 	<string name="app_theme">App Theme</string>
 	<string name="avg">avg</string>
 	<string name="battery_warning">Warning: Enabling the above option may drain your battery faster than usual</string>

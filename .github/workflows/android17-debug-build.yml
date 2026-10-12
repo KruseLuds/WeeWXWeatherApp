@@ -1,0 +1,72 @@
+name: weeWX Kruse Edition APK
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - custom/kruse-weewx
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v4
+
+      - name: Set up Java 21
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+
+      - name: Set up Gradle
+        uses: gradle/actions/setup-gradle@v4
+
+      - name: Set up Android SDK
+        uses: android-actions/setup-android@v3
+        with:
+          packages: platform-tools
+
+      - name: Inspect Android SDK 37 availability
+        run: |
+          sdkmanager --list --channel=3 | grep -E 'platforms;android-37|build-tools;37|build-tools;36' || true
+
+      - name: Install Android SDK 37
+        run: sdkmanager --channel=3 "platforms;android-37.0" "build-tools;36.0.0"
+
+      - name: Restore private signing key
+        shell: bash
+        env:
+          KEYSTORE_BASE64: ${{ secrets.KRUSE_KEYSTORE_BASE64 }}
+          KEYSTORE_PASSWORD: ${{ secrets.KRUSE_KEYSTORE_PASSWORD }}
+          KEY_ALIAS: ${{ secrets.KRUSE_KEY_ALIAS }}
+        run: |
+          test -n "$KEYSTORE_BASE64"
+          test -n "$KEYSTORE_PASSWORD"
+          test -n "$KEY_ALIAS"
+          echo "$KEYSTORE_BASE64" | base64 --decode > "$RUNNER_TEMP/kruse-release.p12"
+          chmod 600 "$RUNNER_TEMP/kruse-release.p12"
+
+      - name: Build signed Kruse Edition APK
+        env:
+          KRUSE_KEYSTORE_PATH: ${{ runner.temp }}/kruse-release.p12
+          KRUSE_KEYSTORE_PASSWORD: ${{ secrets.KRUSE_KEYSTORE_PASSWORD }}
+          KRUSE_KEY_ALIAS: ${{ secrets.KRUSE_KEY_ALIAS }}
+        run: ./gradlew :app:assembleDebug --no-daemon --stacktrace
+
+      - name: Remove temporary signing key
+        if: always()
+        run: rm -f "$RUNNER_TEMP/kruse-release.p12" 
+
+      - name: Upload debug APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: weewx-kruse-edition-signed
+          path: app/build/outputs/apk/debug/*.apk
+          if-no-files-found: error
+          retention-days: 7

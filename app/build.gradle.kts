@@ -36,6 +36,16 @@ android {
 		generateLocaleConfig = true
 	}
 
+	signingConfigs {
+		create("kruse") {
+			storeFile = file(System.getenv("KRUSE_KEYSTORE_PATH") ?: "kruse-release.p12")
+			storeType = "pkcs12"
+			storePassword = System.getenv("KRUSE_KEYSTORE_PASSWORD")
+			keyAlias = System.getenv("KRUSE_KEY_ALIAS") ?: "kruse"
+			keyPassword = System.getenv("KRUSE_KEYSTORE_PASSWORD")
+		}
+	}
+
 	buildTypes {
 		release {
 			isMinifyEnabled = true
@@ -44,7 +54,9 @@ android {
 		}
 
 		debug {
+			applicationIdSuffix = ".kruse"
 			isMinifyEnabled = false
+			signingConfig = signingConfigs.getByName("kruse")
 		}
 	}
 
