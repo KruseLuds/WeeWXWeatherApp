@@ -59,6 +59,13 @@ jobs:
           KRUSE_KEY_ALIAS: ${{ secrets.KRUSE_KEY_ALIAS }}
         run: ./gradlew :app:assembleDebug --no-daemon --stacktrace
 
+      - name: Verify APK signing certificate
+        shell: bash
+        run: |
+          APK=$(find app/build/outputs/apk/debug -name "*.apk" -print -quit)
+          test -n "$APK"
+          "$ANDROID_HOME/build-tools/36.0.0/apksigner" verify --verbose --print-certs "$APK"
+
       - name: Remove temporary signing key
         if: always()
         run: rm -f "$RUNNER_TEMP/kruse-release.p12" 
