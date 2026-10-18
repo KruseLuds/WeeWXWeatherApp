@@ -922,8 +922,10 @@ class weeWXAppCommon
 		{
 			Day day = days.get(i);
 
-			sb.append(noaa ? "\t<div class='day noaaDay'>\n\t\t<div class='dayTopRow'>\n" : "\t<div class='day'>\n\t\t<div class='dayTopRow'>\n");
+			sb.append(noaa ? "\t<div class='day noaaDay'>\n" : "\t<div class='day'>\n");
 
+			// The icon is floated ahead of the top row so the title, temps and
+			// description sit beside it and longer text wraps underneath it
 			if(!is_blank(day.icon))
 			{
 				sb.append("\t\t<div class='iconSmall'>\n");
@@ -936,9 +938,12 @@ class weeWXAppCommon
 							.append("' />\n");
 
 				sb.append("\t\t</div>\n");
-			} else {
-				sb.append(weeWXApp.currentSpacer);
 			}
+
+			sb.append("\t\t<div class='dayTopRow'>\n");
+
+			if(is_blank(day.icon))
+				sb.append(weeWXApp.currentSpacer);
 
 			sb.append("\t\t\t<div class='dayTitle'>");
 
@@ -1148,6 +1153,59 @@ class weeWXAppCommon
 		return r2;
 	}
 
+	// Appends BoM's forecast rain amount and chance to day.text.
+	// Dry periods come through as min 0 and max null, nothing is added for those.
+	static void addBoMRain(Day day, JSONObject entry, boolean mmRain)
+	{
+		JSONObject rain = entry.optJSONObject("rain");
+		if(rain == null)
+			return;
+
+		JSONObject amount = rain.optJSONObject("amount");
+		if(amount != null && !amount.isNull("min"))
+		{
+			double minRain = amount.optDouble("min", 0);
+			double maxRain = amount.isNull("max") ? minRain : amount.optDouble("max", minRain);
+			if(maxRain <= 0)
+				return;
+
+			day.minRain = formatBoMRain(minRain, mmRain);
+			day.maxRain = formatBoMRain(maxRain, mmRain);
+		}
+
+		String extraText = "";
+		if(!is_blank(day.minRain))
+		{
+			extraText = "Rain: " + day.minRain;
+			if(!day.maxRain.equals(day.minRain))
+				extraText += "-" + day.maxRain;
+		}
+
+		if(!rain.isNull("chance"))
+		{
+			if(!extraText.isEmpty())
+				extraText += ", ";
+
+			extraText += "Chance: " + rain.optInt("chance") + "%";
+		}
+
+		if(extraText.isEmpty())
+			return;
+
+		if(is_blank(day.text))
+			day.text = extraText;
+		else
+			day.text += "<br>\n<br>\n" + extraText;
+	}
+
+	private static String formatBoMRain(double mm, boolean mmRain)
+	{
+		if(mmRain)
+			return (mm == Math.rint(mm) ? String.valueOf((long)mm) : String.format(Locale.ENGLISH, "%.1f", mm)) + "mm";
+
+		return String.format(Locale.ENGLISH, "%.2f", mm2in((float)mm)) + "in";
+	}
+
 	static Result processBoM3Hourly(String data)
 	{
 		String missing = null;
@@ -1223,31 +1281,7 @@ class weeWXAppCommon
 					} catch(Exception ignored) {}
 				}
 
-				if(!myhours.getJSONObject(i).getJSONObject("rain")
-					   .getJSONObject("amount").isNull("max") &&
-				   !myhours.getJSONObject(i).getJSONObject("rain")
-					   .getJSONObject("amount").isNull("min"))
-				{
-					int maxRain = myhours.getJSONObject(i).getJSONObject("rain")
-						.getJSONObject("amount").getInt("max");
-					int minRain = myhours.getJSONObject(i).getJSONObject("rain")
-						.getJSONObject("amount").getInt("min");
-
-					if(metric && !rainInInches)
-					{
-						day.maxRain = maxRain + "mm";
-						day.minRain = minRain + "mm";
-					} else {
-						day.maxRain = mm2in(maxRain) + "in";
-						day.minRain = mm2in(minRain) + "in";
-					}
-
-					String extraText = "Rain: " + day.minRain + "-" + day.maxRain;
-					if(is_blank(day.text))
-						day.text = extraText;
-					else
-						day.text += "<br>\n<br>\n" + extraText;
-				}
+				addBoMRain(day, myhours.getJSONObject(i), metric && !rainInInches);
 
 				String fileName = bomlookup(myhours.getJSONObject(i).getString("icon_descriptor"));
 				if(!is_blank(fileName))
@@ -1371,31 +1405,7 @@ class weeWXAppCommon
 				if(!mydays.getJSONObject(i).isNull("extended_text"))
 					day.text = mydays.getJSONObject(i).getString("extended_text");
 
-				if(!mydays.getJSONObject(i).getJSONObject("rain")
-					   .getJSONObject("amount").isNull("max") &&
-				   !mydays.getJSONObject(i).getJSONObject("rain")
-					   .getJSONObject("amount").isNull("min"))
-				{
-					int maxRain = mydays.getJSONObject(i).getJSONObject("rain")
-						.getJSONObject("amount").getInt("max");
-					int minRain = mydays.getJSONObject(i).getJSONObject("rain")
-						.getJSONObject("amount").getInt("min");
-
-					if(metric && !rainInInches)
-					{
-						day.maxRain = maxRain + "mm";
-						day.minRain = minRain + "mm";
-					} else {
-						day.maxRain = mm2in(maxRain) + "in";
-						day.minRain = mm2in(minRain) + "in";
-					}
-
-					String extraText = "Rain: " + day.minRain + "-" + day.maxRain;
-					if(is_blank(day.text))
-						day.text = extraText;
-					else
-						day.text += "<br>\n<br>\n" + extraText;
-				}
+				addBoMRain(day, mydays.getJSONObject(i), metric && !rainInInches);
 
 				String fileName = bomlookup(mydays.getJSONObject(i).getString("icon_descriptor"));
 				if(!is_blank(fileName))

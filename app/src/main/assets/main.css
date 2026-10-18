@@ -139,18 +139,27 @@ html, body
 }
 .day
 {
-	display: flex;
+	/* flow-root, not flex, so the floated icon contains and the desc text wraps under it */
+	display: flow-root;
 	flex: 1 1 500px;
-	flex-direction: column;
-	justify-content: space-evenly;
 	margin: 5px 0 10px 0;
 	max-width: 500px;
 }
+.day .iconSmall
+{
+	float: left;
+	margin: 0 0 4px 0;
+}
+.day hr
+{
+	clear: both;
+}
 .dayTopRow
 {
+	/* As a flex container it sits beside the floated icon rather than under it */
 	display: flex;
 	flex-direction: row;
-	width: 100%;
+	width: auto;
 	text-align: center;
 	justify-content: space-between;
 	font-size: var(--font-average);
@@ -441,7 +450,7 @@ html, body
 }
 .noaaForecast .noaaDay .iconSmall
 {
-    flex: 0 0 60px;
+    margin-right: 8px;
 }
 .noaaForecast .noaaDay .iconSmall img
 {
@@ -462,7 +471,7 @@ html, body
 .noaaForecast .noaaDay .desc
 {
     text-align: left;
-    margin: 2px 0 0 68px;
+    margin: 2px 0 0 0;
 }
 .noaaForecast .noaaDay hr
 {
