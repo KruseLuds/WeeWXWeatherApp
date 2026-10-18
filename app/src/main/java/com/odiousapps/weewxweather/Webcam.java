@@ -108,7 +108,7 @@ public class Webcam extends Fragment
 		return rootView;
 	}
 
-	@SuppressWarnings("ClickableViewAccessibility")
+	@SuppressWarnings({"ClickableViewAccessibility", "unused"})
 	private void configureZoom()
 	{
 		scaleDetector = new ScaleGestureDetector(requireContext(),
@@ -122,9 +122,12 @@ public class Webcam extends Fragment
 						return true;
 					}
 				});
-		GestureDetector tapDetector = new GestureDetector(requireContext(), new GestureDetector.SimpleOnGestureListener() {
+
+		GestureDetector tapDetector = new GestureDetector(requireContext(), new GestureDetector.SimpleOnGestureListener()
+		{
 			@Override
-			public boolean onDoubleTap(@NonNull MotionEvent event) {
+			public boolean onDoubleTap(@NonNull MotionEvent event)
+			{
 				zoomScale = 1f;
 				iv.setTranslationX(0f);
 				iv.setTranslationY(0f);
@@ -132,6 +135,7 @@ public class Webcam extends Fragment
 				return true;
 			}
 		});
+
 		iv.setOnTouchListener((view, event) ->
 		{
 			// Pinch-to-zoom only works while swiping is locked
@@ -147,6 +151,7 @@ public class Webcam extends Fragment
 				lastTouchY = event.getY();
 				dragging = true;
 			}
+
 			if(action == MotionEvent.ACTION_MOVE && event.getPointerCount() == 1 &&
 					zoomScale > 1f && dragging && !scaleDetector.isInProgress())
 			{
@@ -155,12 +160,16 @@ public class Webcam extends Fragment
 				iv.setTranslationX(Math.clamp(iv.getTranslationX() + event.getX() - lastTouchX, -limitX, limitX));
 				iv.setTranslationY(Math.clamp(iv.getTranslationY() + event.getY() - lastTouchY, -limitY, limitY));
 			}
+
 			if(action == MotionEvent.ACTION_POINTER_UP || action == MotionEvent.ACTION_POINTER_DOWN)
 				 dragging = false;
+
 			if(action == MotionEvent.ACTION_UP || action == MotionEvent.ACTION_CANCEL)
 				dragging = false;
+
 			lastTouchX = event.getX();
 			lastTouchY = event.getY();
+
 			return true;
 		});
 	}

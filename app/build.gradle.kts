@@ -24,8 +24,8 @@ android {
 		applicationId = "com.odiousapps.weewxweather"
 		minSdk = 30
 		targetSdk = 37
-		versionName = "2.1.21"
-		versionCode = 2001021
+		versionName = "2.1.22"
+		versionCode = 2001022
 	}
 
 	// Generates android:localeConfig from the values-*/ folders, so
@@ -173,7 +173,7 @@ dependencies {
 
 	implementation("org.jsoup:jsoup:1.23.2")
 
-	implementation("com.hivemq:hivemq-mqtt-client:1.4.0")
+	implementation("com.hivemq:hivemq-mqtt-client:1.4.1")
 
 	implementation("io.netty:netty-common:4.1.137.Final")
 	implementation("io.netty:netty-handler:4.1.137.Final")

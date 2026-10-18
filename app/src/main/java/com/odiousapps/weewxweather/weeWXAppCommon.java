@@ -1226,19 +1226,21 @@ class weeWXAppCommon
 				if(!is_blank(fileName))
 				{
 					day.icon = "icons/bom/" + fileName + ".svg";
-
-					String content = weeWXApp.loadFileFromAssets(day.icon);
-					if(!is_blank(content))
+					if(!day.icon.equals("icons/bom/null.svg"))
 					{
-						missing = null;
-						day.icon = "file:///android_asset/" + day.icon;
-					} else {
-						missing = day.icon;
-						day.icon = null;
+						String content = weeWXApp.loadFileFromAssets(day.icon);
+						if(!is_blank(content))
+						{
+							missing = null;
+							day.icon = "file:///android_asset/" + day.icon;
+						} else {
+							missing = day.icon;
+							day.icon = null;
+						}
 					}
 				}
 
-				if(missing != null)
+				if(missing != null && !missing.equals("icons/bom/null.svg"))
 				{
 					String forecaseURL = (String)KeyValue.readVar("FORECAST_URL", "");
 
@@ -1523,16 +1525,22 @@ class weeWXAppCommon
 					Bitmap second = loadNoaaAsset(secondFile);
 					if(first != null)
 						day.icon = noaaAssetUrl(firstFile);
+
 					if(first != null && second != null)
 					{
 						Bitmap combined = firstCode.equals(secondCode)
-								? combineImage(first, firstPercent + "%", secondPercent + "%")
-								: combineImages(first, second, firstCode, secondCode, firstPercent + "%", secondPercent + "%");
+							? combineImage(first, firstPercent + "%", secondPercent + "%")
+							: combineImages(first, second, firstCode, secondCode, firstPercent +
+							"%", secondPercent + "%");
 						if(combined != null)
 							day.icon = "data:image/jpeg;base64," + Base64.encodeToString(bitmapToBytes(combined), Base64.NO_WRAP);
 					}
-					if(first != null && !first.isRecycled()) first.recycle();
-					if(second != null && !second.isRecycled()) second.recycle();
+
+					if(first != null && !first.isRecycled())
+						first.recycle();
+
+					if(second != null && !second.isRecycled())
+						second.recycle();
 				} else {
 					// NWS icons may end in a 2- or 3-digit precipitation probability.
 					Matcher chance = Pattern.compile("^(.*?)(\\d{2,3})$").matcher(iconCode);
@@ -1543,22 +1551,26 @@ class weeWXAppCommon
 						baseCode = chance.group(1);
 						percent = chance.group(2);
 					}
+
 					String baseFile = "wgov" + baseCode + ".jpg";
 					if(noaaAssetExists(baseFile))
 					{
 						day.icon = noaaAssetUrl(baseFile);
-						if(!percent.isEmpty())
+						if(percent != null && !percent.isEmpty())
 						{
 							Bitmap base = loadNoaaAsset(baseFile);
 							Bitmap overlayBitmap = loadNoaaAsset("wgovoverlay.jpg");
 							if(base != null && overlayBitmap != null)
 							{
 								Bitmap combined = overlay(base, overlayBitmap, percent + "%");
-								if(combined != null)
-									day.icon = "data:image/jpeg;base64," + Base64.encodeToString(bitmapToBytes(combined), Base64.NO_WRAP);
+								day.icon = "data:image/jpeg;base64," + Base64.encodeToString(bitmapToBytes(combined), Base64.NO_WRAP);
 							}
-							if(base != null && !base.isRecycled()) base.recycle();
-							if(overlayBitmap != null && !overlayBitmap.isRecycled()) overlayBitmap.recycle();
+
+							if(base != null && !base.isRecycled())
+								base.recycle();
+
+							if(overlayBitmap != null && !overlayBitmap.isRecycled())
+								overlayBitmap.recycle();
 						}
 					}
 				}
@@ -3370,7 +3382,7 @@ class weeWXAppCommon
 
 	static boolean is_blank(String str)
 	{
-		return str == null || str.isBlank();
+		return str == null || str.isBlank() || str.equals("null");
 	}
 
 	static void noteError(Exception e)
@@ -4029,7 +4041,7 @@ class weeWXAppCommon
 
 			if(!fnum.equals("%") || !snum.equals("%"))
 			{
-				Bitmap bmp2 = loadImage("wgovoverlay.jpg");
+				Bitmap bmp2 = loadImage();
 				if(bmp2 == null)
 					return null;
 
@@ -4140,7 +4152,7 @@ class weeWXAppCommon
 
 			if(!fnum.equals("%") || !snum.equals("%"))
 			{
-				Bitmap bmp4 = loadImage("wgovoverlay.jpg");
+				Bitmap bmp4 = loadImage();
 				if(bmp4 == null)
 					return null;
 
@@ -4942,9 +4954,9 @@ class weeWXAppCommon
 		return new File(dir, filename);
 	}
 
-	static Bitmap loadImage(String fileName)
+	static Bitmap loadImage()
 	{
-		return getImage(new File(getDir(), fileName));
+		return getImage(new File(getDir(), "wgovoverlay.jpg"));
 	}
 
 	static Bitmap getImage(File file)

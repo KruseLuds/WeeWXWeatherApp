@@ -675,8 +675,7 @@ public class weeWXApp extends Application
 			{
 				path = filename.substring(0, filename.lastIndexOf('/'));
 				nameonly = filename.substring(filename.lastIndexOf('/') + 1);
-			} else
-			{
+			} else {
 				nameonly = filename;
 			}
 
@@ -713,8 +712,7 @@ public class weeWXApp extends Application
 			is.close();
 
 			return baos.toString(charset);
-		} catch(Exception e)
-		{
+		} catch(Exception e) {
 			doStackOutput(e);
 		}
 
