@@ -109,6 +109,7 @@ public class Forecast extends Fragment implements View.OnClickListener
 
 		floatingCheckBox = rootView.findViewById(R.id.floatingCheckBox);
 		floatingCheckBox.setOnClickListener(this);
+		DraggableLock.attach(floatingCheckBox, "radar");
 
 		if(forecastWebView == null)
 		{

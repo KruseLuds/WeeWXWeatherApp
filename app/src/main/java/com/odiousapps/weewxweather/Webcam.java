@@ -86,6 +86,7 @@ public class Webcam extends Fragment
 			KeyValue.putVar(WEBCAM_IMAGE_ZOOM, floatingCheckBox.isChecked());
 			updateSwipe();
 		});
+		DraggableLock.attach(floatingCheckBox, "webcam");
 
 		configureZoom();
 

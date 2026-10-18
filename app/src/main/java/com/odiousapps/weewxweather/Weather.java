@@ -121,6 +121,7 @@ public class Weather extends Fragment implements View.OnClickListener
 
 		floatingCheckBox = rootView.findViewById(R.id.floatingCheckBoxMain);
 		floatingCheckBox.setOnClickListener(this);
+		DraggableLock.attach(floatingCheckBox, "weather");
 
 		boolean disableSwipeOnRadar = (boolean)KeyValue.readVar("disableSwipeOnRadar", disableSwipeOnRadar_default);
 		floatingCheckBox.setChecked(disableSwipeOnRadar);

@@ -1163,6 +1163,7 @@ class weeWXAppCommon
 		//LogMessage("data: " + data);
 
 		boolean metric = (boolean)KeyValue.readVar("metric", weeWXApp.metric_default);
+		boolean rainInInches = (boolean)KeyValue.readVar("rainInInches", weeWXApp.rain_in_inches_default);
 
 		String desc = KeyValue.bomLocation;
 		LogMessage("processBoM3Hourly(): desc: " + desc);
@@ -1220,6 +1221,32 @@ class weeWXAppCommon
 					{
 						day.min = "AT: " + C2Fdeground(myhours.getJSONObject(i).getInt("temp_feels_like"));
 					} catch(Exception ignored) {}
+				}
+
+				if(!myhours.getJSONObject(i).getJSONObject("rain")
+					   .getJSONObject("amount").isNull("max") &&
+				   !myhours.getJSONObject(i).getJSONObject("rain")
+					   .getJSONObject("amount").isNull("min"))
+				{
+					int maxRain = myhours.getJSONObject(i).getJSONObject("rain")
+						.getJSONObject("amount").getInt("max");
+					int minRain = myhours.getJSONObject(i).getJSONObject("rain")
+						.getJSONObject("amount").getInt("min");
+
+					if(metric && !rainInInches)
+					{
+						day.maxRain = maxRain + "mm";
+						day.minRain = minRain + "mm";
+					} else {
+						day.maxRain = mm2in(maxRain) + "in";
+						day.minRain = mm2in(minRain) + "in";
+					}
+
+					String extraText = "Rain: " + day.minRain + "-" + day.maxRain;
+					if(is_blank(day.text))
+						day.text = extraText;
+					else
+						day.text += "<br>\n<br>\n" + extraText;
 				}
 
 				String fileName = bomlookup(myhours.getJSONObject(i).getString("icon_descriptor"));
@@ -1282,6 +1309,8 @@ class weeWXAppCommon
 		//LogMessage("data: " + data);
 
 		boolean metric = (boolean)KeyValue.readVar("metric", weeWXApp.metric_default);
+		boolean rainInInches = (boolean)KeyValue.readVar("rainInInches", weeWXApp.rain_in_inches_default);
+
 		String desc = KeyValue.bomLocation;
 		List<Day> days = new ArrayList<>();
 		long timestamp = 0;
@@ -1339,8 +1368,34 @@ class weeWXAppCommon
 					} catch(Exception ignored) {}
 				}
 
-				if(!mydays.getJSONObject(i).getString("extended_text").equals("null"))
+				if(!mydays.getJSONObject(i).isNull("extended_text"))
 					day.text = mydays.getJSONObject(i).getString("extended_text");
+
+				if(!mydays.getJSONObject(i).getJSONObject("rain")
+					   .getJSONObject("amount").isNull("max") &&
+				   !mydays.getJSONObject(i).getJSONObject("rain")
+					   .getJSONObject("amount").isNull("min"))
+				{
+					int maxRain = mydays.getJSONObject(i).getJSONObject("rain")
+						.getJSONObject("amount").getInt("max");
+					int minRain = mydays.getJSONObject(i).getJSONObject("rain")
+						.getJSONObject("amount").getInt("min");
+
+					if(metric && !rainInInches)
+					{
+						day.maxRain = maxRain + "mm";
+						day.minRain = minRain + "mm";
+					} else {
+						day.maxRain = mm2in(maxRain) + "in";
+						day.minRain = mm2in(minRain) + "in";
+					}
+
+					String extraText = "Rain: " + day.minRain + "-" + day.maxRain;
+					if(is_blank(day.text))
+						day.text = extraText;
+					else
+						day.text += "<br>\n<br>\n" + extraText;
+				}
 
 				String fileName = bomlookup(mydays.getJSONObject(i).getString("icon_descriptor"));
 				if(!is_blank(fileName))
@@ -2567,7 +2622,8 @@ class weeWXAppCommon
 		String json_data_str = (String)KeyValue.readVar(json_keys[0] + "_str", "");
 		if(is_blank(json_data_str))
 		{
-			LogMessage("mergeJsonObjects() json_data_str == null or isBlank()");
+			LogMessage("mergeJsonObjects() json_data_str == null or isBlank(), key: " +
+				json_keys[0] + "_str, value: " + json_data_str);
 			return true;
 		}
 
@@ -2575,7 +2631,8 @@ class weeWXAppCommon
 		{
 			json_data = new JSONObject(json_data_str);
 		} catch(JSONException je) {
-			LogMessage("mergeJsonObjects() Failed turing json_data_str into json_data, je: " + je.getMessage());
+			LogMessage("mergeJsonObjects() Failed turing json_data_str into json_data, je: " +
+				je.getMessage());
 			return true;
 		}
 
@@ -2589,7 +2646,8 @@ class weeWXAppCommon
 		String json_last_str = (String)KeyValue.readVar(json_keys[2] + "_str", "");
 		if(is_blank(json_last_str))
 		{
-			LogMessage("mergeJsonObjects() json_last_str == null or isBlank()");
+			LogMessage("mergeJsonObjects() json_last_str == null or isBlank(), key: " +
+							json_keys[2] + "_str, value: " + json_last_str);
 			return true;
 		}
 
@@ -2597,7 +2655,8 @@ class weeWXAppCommon
 		{
 			json_last = new JSONObject(json_last_str);
 		} catch(JSONException je) {
-			LogMessage("mergeJsonObjects() Failed turing json_last_str into json_last, je: " + je.getMessage());
+			LogMessage("mergeJsonObjects() Failed turing json_last_str into json_last, je: " +
+				je.getMessage());
 			return true;
 		}
 
@@ -2619,7 +2678,8 @@ class weeWXAppCommon
 				json_combined.put(key, value);
 			}
 		} catch(JSONException je) {
-			LogMessage("mergeJsonObjects() Failed to merge json_data with json_last, je: + " + je.getMessage());
+			LogMessage("mergeJsonObjects() Failed to merge json_data with json_last, je: + " +
+				je.getMessage());
 			return true;
 		}
 

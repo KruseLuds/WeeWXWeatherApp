@@ -88,6 +88,7 @@ public class Custom extends Fragment
 
 			updateSwipe();
 		});
+		DraggableLock.attach(floatingCheckBox, "custom");
 
 		wv.getSettings().setDisplayZoomControls(false);
 		updateSwipe();
