@@ -14,12 +14,12 @@ import android.widget.RemoteViews;
 
 import static com.github.evilbunny2008.colourpicker.ColourPickerCommon.to_ARGB_hex;
 
-import static com.odiousapps.weewxweather.weeWXAppCommon.LogMessage;
-import static com.odiousapps.weewxweather.weeWXAppCommon.formatString;
-import static com.odiousapps.weewxweather.weeWXAppCommon.getJson;
-import static com.odiousapps.weewxweather.weeWXAppCommon.hasElement;
-import static com.odiousapps.weewxweather.weeWXAppCommon.is_blank;
-import static com.odiousapps.weewxweather.weeWXAppCommon.widgetTime;
+import static com.odiousapps.weewxweather.WeeWXAppCommon.LogMessage;
+import static com.odiousapps.weewxweather.WeeWXAppCommon.formatString;
+import static com.odiousapps.weewxweather.WeeWXAppCommon.getJson;
+import static com.odiousapps.weewxweather.WeeWXAppCommon.hasElement;
+import static com.odiousapps.weewxweather.WeeWXAppCommon.is_blank;
+import static com.odiousapps.weewxweather.WeeWXAppCommon.widgetTime;
 
 public class WidgetProvider extends AppWidgetProvider
 {
@@ -93,7 +93,7 @@ public class WidgetProvider extends AppWidgetProvider
 
 	static void resetAppWidget()
 	{
-		Context context = weeWXApp.getInstance();
+		Context context = WeeWXApp.getInstance();
 		if(context == null)
 			return;
 
@@ -109,8 +109,8 @@ public class WidgetProvider extends AppWidgetProvider
 
 		RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.widget);
 
-		int widgetBG = weeWXApp.widgetBG_default;
-		int widgetFG = weeWXApp.widgetFG_default;
+		int widgetBG = WeeWXApp.widgetBG_default;
+		int widgetFG = WeeWXApp.widgetFG_default;
 
 		setDefaultColoursAndText(context, views, widgetBG, widgetFG);
 
@@ -122,7 +122,7 @@ public class WidgetProvider extends AppWidgetProvider
 
 	static void updateAppWidget()
 	{
-		Context context = weeWXApp.getInstance();
+		Context context = WeeWXApp.getInstance();
 		AppWidgetManager manager = AppWidgetManager.getInstance(context);
 		ComponentName widgets = new ComponentName(context, WidgetProvider.class);
 		int[] widgetIds = manager.getAppWidgetIds(widgets);
@@ -135,8 +135,8 @@ public class WidgetProvider extends AppWidgetProvider
 			LogMessage("WidgetProvider.updateAppWidget() called..");
 		RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.widget);
 
-		int widgetBG = (int)KeyValue.readVar("widgetBG", weeWXApp.widgetBG_default);
-		int widgetFG = (int)KeyValue.readVar("widgetFG", weeWXApp.widgetFG_default);
+		int widgetBG = (int)KeyValue.readVar("widgetBG", WeeWXApp.widgetBG_default);
+		int widgetFG = (int)KeyValue.readVar("widgetFG", WeeWXApp.widgetFG_default);
 
 		setDefaultColoursAndText(context, views, widgetBG, widgetFG);
 

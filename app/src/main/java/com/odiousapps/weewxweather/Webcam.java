@@ -24,19 +24,19 @@ import androidx.lifecycle.Observer;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import static com.odiousapps.weewxweather.MainActivity.WEBCAM_IMAGE_ZOOM;
-import static com.odiousapps.weewxweather.weeWXApp.getAndroidString;
-import static com.odiousapps.weewxweather.weeWXApp.getColours;
-import static com.odiousapps.weewxweather.weeWXApp.getHeight;
-import static com.odiousapps.weewxweather.weeWXApp.getWidth;
-import static com.odiousapps.weewxweather.weeWXApp.textToBitmap;
-import static com.odiousapps.weewxweather.weeWXApp.webcamFilename;
-import static com.odiousapps.weewxweather.weeWXApp.webcamInterval_default;
-import static com.odiousapps.weewxweather.weeWXApp.webcamRefreshOptions;
-import static com.odiousapps.weewxweather.weeWXAppCommon.LogMessage;
-import static com.odiousapps.weewxweather.weeWXAppCommon.getImage;
-import static com.odiousapps.weewxweather.weeWXAppCommon.processUpdateInBG;
-import static com.odiousapps.weewxweather.weeWXNotificationManager.observeNotifications;
-import static com.odiousapps.weewxweather.weeWXNotificationManager.removeNotificationObserver;
+import static com.odiousapps.weewxweather.WeeWXApp.getAndroidString;
+import static com.odiousapps.weewxweather.WeeWXApp.getColours;
+import static com.odiousapps.weewxweather.WeeWXApp.getHeight;
+import static com.odiousapps.weewxweather.WeeWXApp.getWidth;
+import static com.odiousapps.weewxweather.WeeWXApp.textToBitmap;
+import static com.odiousapps.weewxweather.WeeWXApp.webcamFilename;
+import static com.odiousapps.weewxweather.WeeWXApp.webcamInterval_default;
+import static com.odiousapps.weewxweather.WeeWXApp.webcamRefreshOptions;
+import static com.odiousapps.weewxweather.WeeWXAppCommon.LogMessage;
+import static com.odiousapps.weewxweather.WeeWXAppCommon.getImage;
+import static com.odiousapps.weewxweather.WeeWXAppCommon.processUpdateInBG;
+import static com.odiousapps.weewxweather.WeeWXNotificationManager.observeNotifications;
+import static com.odiousapps.weewxweather.WeeWXNotificationManager.removeNotificationObserver;
 
 public class Webcam extends Fragment
 {
@@ -302,12 +302,12 @@ public class Webcam extends Fragment
 	{
 		if(snapshotTime == null)
 			return;
-		File file = new File(weeWXAppCommon.getDataDir(), webcamFilename);
+		File file = new File(WeeWXAppCommon.getDataDir(), webcamFilename);
 		if(file.exists() && file.lastModified() > 0)
 		{
 			String time = DateFormat.getDateTimeInstance(DateFormat.SHORT, DateFormat.SHORT)
 					.format(new Date(file.lastModified()));
-			boolean hasLastModified = (boolean)KeyValue.readVar(weeWXAppCommon.WEBCAM_HAS_LAST_MODIFIED, false);
+			boolean hasLastModified = (boolean)KeyValue.readVar(WeeWXAppCommon.WEBCAM_HAS_LAST_MODIFIED, false);
 			snapshotTime.setText(getString(hasLastModified ? R.string.webcam_last_modified_at :
 					R.string.webcam_snapshot_saved_at, time));
 		} else {
@@ -338,13 +338,13 @@ public class Webcam extends Fragment
 	{
 		LogMessage("Webcam.notificationObserver notificationObserver: " + str);
 
-		if(str.equals(weeWXAppCommon.REFRESH_WEBCAM_INTENT))
+		if(str.equals(WeeWXAppCommon.REFRESH_WEBCAM_INTENT))
 			loadWebcamImage();
 
-		if(str.equals(weeWXAppCommon.STOP_WEBCAM_INTENT))
+		if(str.equals(WeeWXAppCommon.STOP_WEBCAM_INTENT))
 			stopRefreshing();
 
-		if(str.equals(weeWXAppCommon.EXIT_INTENT))
+		if(str.equals(WeeWXAppCommon.EXIT_INTENT))
 			onPause();
 	};
 

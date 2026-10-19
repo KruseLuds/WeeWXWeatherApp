@@ -21,7 +21,7 @@ import static java.lang.Math.ceil;
 import static java.lang.Math.cos;
 import static java.lang.Math.sin;
 
-import static com.odiousapps.weewxweather.weeWXAppCommon.LogMessage;
+import static com.odiousapps.weewxweather.WeeWXAppCommon.LogMessage;
 
 /**
  * <a href="https://github.com/rongi/rotate-layout">...</a>

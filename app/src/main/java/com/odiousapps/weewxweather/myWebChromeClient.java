@@ -3,8 +3,8 @@ package com.odiousapps.weewxweather;
 import android.webkit.ConsoleMessage;
 import android.webkit.WebChromeClient;
 
-import static com.odiousapps.weewxweather.weeWXAppCommon.LogMessage;
-import static com.odiousapps.weewxweather.weeWXAppCommon.is_blank;
+import static com.odiousapps.weewxweather.WeeWXAppCommon.LogMessage;
+import static com.odiousapps.weewxweather.WeeWXAppCommon.is_blank;
 
 class myWebChromeClient extends WebChromeClient
 {

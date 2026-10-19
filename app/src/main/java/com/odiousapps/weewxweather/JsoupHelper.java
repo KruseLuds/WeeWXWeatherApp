@@ -31,23 +31,23 @@ import java.util.concurrent.Executors;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import com.odiousapps.weewxweather.weeWXAppCommon.Result;
-import com.odiousapps.weewxweather.weeWXAppCommon.Result2;
+import com.odiousapps.weewxweather.WeeWXAppCommon.Result;
+import com.odiousapps.weewxweather.WeeWXAppCommon.Result2;
 
-import static com.odiousapps.weewxweather.weeWXApp.ERROR_E;
-import static com.odiousapps.weewxweather.weeWXApp.getInstance;
-import static com.odiousapps.weewxweather.weeWXApp.loadFileFromAssets;
-import static com.odiousapps.weewxweather.weeWXApp.metric_default;
-import static com.odiousapps.weewxweather.weeWXAppCommon.C2Fdeg;
-import static com.odiousapps.weewxweather.weeWXAppCommon.C2Fdeground;
-import static com.odiousapps.weewxweather.weeWXAppCommon.F2Cdeg;
-import static com.odiousapps.weewxweather.weeWXAppCommon.F2Cdeground;
-import static com.odiousapps.weewxweather.weeWXAppCommon.convertDaytoTS;
-import static com.odiousapps.weewxweather.weeWXAppCommon.doStackOutput;
-import static com.odiousapps.weewxweather.weeWXAppCommon.LogMessage;
-import static com.odiousapps.weewxweather.weeWXAppCommon.is_blank;
-import static com.odiousapps.weewxweather.weeWXAppCommon.str2Float;
-import static com.odiousapps.weewxweather.weeWXAppCommon.str2Int;
+import static com.odiousapps.weewxweather.WeeWXApp.ERROR_E;
+import static com.odiousapps.weewxweather.WeeWXApp.getInstance;
+import static com.odiousapps.weewxweather.WeeWXApp.loadFileFromAssets;
+import static com.odiousapps.weewxweather.WeeWXApp.metric_default;
+import static com.odiousapps.weewxweather.WeeWXAppCommon.C2Fdeg;
+import static com.odiousapps.weewxweather.WeeWXAppCommon.C2Fdeground;
+import static com.odiousapps.weewxweather.WeeWXAppCommon.F2Cdeg;
+import static com.odiousapps.weewxweather.WeeWXAppCommon.F2Cdeground;
+import static com.odiousapps.weewxweather.WeeWXAppCommon.convertDaytoTS;
+import static com.odiousapps.weewxweather.WeeWXAppCommon.doStackOutput;
+import static com.odiousapps.weewxweather.WeeWXAppCommon.LogMessage;
+import static com.odiousapps.weewxweather.WeeWXAppCommon.is_blank;
+import static com.odiousapps.weewxweather.WeeWXAppCommon.str2Float;
+import static com.odiousapps.weewxweather.WeeWXAppCommon.str2Int;
 
 @SuppressWarnings("StringBufferMayBeStringBuilder")
 class JsoupHelper
@@ -118,7 +118,7 @@ class JsoupHelper
 	{
 		boolean metric = (boolean)KeyValue.readVar("metric", metric_default);
 		List<Day> days = new ArrayList<>();
-		long timestamp = weeWXAppCommon.getRSSms();
+		long timestamp = WeeWXAppCommon.getRSSms();
 		String desc = "";
 		JSONArray jarr;
 		JSONObject jobj;
@@ -389,7 +389,7 @@ class JsoupHelper
 						{
 							boolean alreadyWrittenLight = false;
 							String outputLight = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
-												 weeWXAppCommon.convertRGB2Hex(lightSVG.outerHtml()) + "\n";
+												 WeeWXAppCommon.convertRGB2Hex(lightSVG.outerHtml()) + "\n";
 							String filenameLight = null;
 							for(int i = 0; i < 10; i++)
 							{
@@ -408,7 +408,7 @@ class JsoupHelper
 							}
 
 							if(!is_blank(filenameLight) && !alreadyWrittenLight)
-								weeWXAppCommon.uploadMissingIcon(Map.of(
+								WeeWXAppCommon.uploadMissingIcon(Map.of(
 										"svgName", filenameLight,
 										"svgHeight", "" + height,
 										"svgWidth", "" + width,
@@ -419,7 +419,7 @@ class JsoupHelper
 						{
 							boolean alreadyWrittenDark = false;
 							String outputDark = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
-												weeWXAppCommon.convertRGB2Hex(darkSVG.outerHtml()) + "\n";
+												WeeWXAppCommon.convertRGB2Hex(darkSVG.outerHtml()) + "\n";
 							String filenameDark = null;
 							for(int i = 0; i < 10; i++)
 							{
@@ -438,7 +438,7 @@ class JsoupHelper
 							}
 
 							if(!is_blank(filenameDark) && !alreadyWrittenDark)
-								weeWXAppCommon.uploadMissingIcon(Map.of(
+								WeeWXAppCommon.uploadMissingIcon(Map.of(
 										"svgName", filenameDark,
 										"svgHeight", "" + height,
 										"svgWidth", "" + width,
@@ -449,7 +449,7 @@ class JsoupHelper
 						{
 							boolean alreadyWritten = false;
 							String output = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
-											weeWXAppCommon.convertRGB2Hex(svg.outerHtml()) + "\n";
+											WeeWXAppCommon.convertRGB2Hex(svg.outerHtml()) + "\n";
 							String filename = null;
 							for(int i = 0; i < 10; i++)
 							{
@@ -468,7 +468,7 @@ class JsoupHelper
 							}
 
 							if(!is_blank(filename) && !alreadyWritten)
-								weeWXAppCommon.uploadMissingIcon(Map.of(
+								WeeWXAppCommon.uploadMissingIcon(Map.of(
 										"svgName", filename,
 										"svgHeight", "" + height,
 										"svgWidth", "" + width,
@@ -516,7 +516,7 @@ class JsoupHelper
 				lastTS = timestamp = df.getTime();
 
 			if(timestamp > 0)
-				weeWXAppCommon.updateCacheTime(timestamp);
+				WeeWXAppCommon.updateCacheTime(timestamp);
 
 			desc = data.split("<dt>Enregistrées à :</dt>", 2)[1].split("<dd class='mrgn-bttm-0'>")[1].split("</dd>")[0].strip();
 
@@ -650,7 +650,7 @@ class JsoupHelper
 				lastTS = timestamp = df.getTime();
 
 			if(timestamp > 0)
-				weeWXAppCommon.updateCacheTime(timestamp);
+				WeeWXAppCommon.updateCacheTime(timestamp);
 
 			desc = data.split("<dt>Observed at:</dt>", 2)[1].split("<dd class='mrgn-bttm-0'>")[1].split("</dd>")[0].strip();
 
@@ -788,7 +788,7 @@ class JsoupHelper
 				timestamp = df.getTime();
 
 			if(timestamp > 0)
-				weeWXAppCommon.updateCacheTime(timestamp);
+				WeeWXAppCommon.updateCacheTime(timestamp);
 
 			String[] bits = fcdiv.split("<dl class='forecast-summary'>");
 			String bit = bits[1];
@@ -1286,7 +1286,7 @@ class JsoupHelper
 		String desc = result2.desc();
 
 		boolean metric = (boolean)KeyValue.readVar("metric", metric_default);
-		boolean rainInInches = (boolean)KeyValue.readVar("rainInInches", weeWXApp.rain_in_inches_default);
+		boolean rainInInches = (boolean)KeyValue.readVar("rainInInches", WeeWXApp.rain_in_inches_default);
 		Day[] days = new Day[28];
 
 		LogMessage("processWZ2Forecasts() starting to process wzHTML...");
@@ -1414,7 +1414,7 @@ class JsoupHelper
 					if(metric)
 						temps.add(C + "&deg;C");
 					else
-						temps.add(weeWXAppCommon.C2Fdeground(C) + "&deg;F");
+						temps.add(WeeWXAppCommon.C2Fdeground(C) + "&deg;F");
 				}
 			}
 
@@ -1510,7 +1510,7 @@ class JsoupHelper
 
 		try
 		{
-			f = weeWXAppCommon.getExtFile(title);
+			f = WeeWXAppCommon.getExtFile(title);
 			if(f.exists() && f.length() > 0 && f.length() == len)
 			{
 				if(foundPNG)
@@ -1532,7 +1532,7 @@ class JsoupHelper
 			map.put("svg", svg);
 		}
 
-		weeWXAppCommon.uploadMissingIcon(map);
+		WeeWXAppCommon.uploadMissingIcon(map);
 
 		if(saveToFile && f != null)
 		{

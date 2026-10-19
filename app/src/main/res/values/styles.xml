@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<style name="AppTheme.weeWXApp.Light.Common" parent="AppTheme.weeWXApp.Light">
+	<style name="AppTheme.WeeWXApp.Light.Common" parent="AppTheme.WeeWXApp.Light">
 		<item name="windowNoTitle">true</item>
 		<item name="android:windowNoTitle">true</item>
 		<item name="android:windowLightStatusBar">false</item>
@@ -12,7 +12,7 @@
         <item name="android:navigationBarColor">@android:color/transparent</item>
 	</style>
 
-	<style name="AppTheme.weeWXApp.Dark.Common" parent="AppTheme.weeWXApp.Dark">
+	<style name="AppTheme.WeeWXApp.Dark.Common" parent="AppTheme.WeeWXApp.Dark">
 		<item name="windowNoTitle">true</item>
 		<item name="android:windowNoTitle">true</item>
 		<item name="android:windowLightStatusBar">false</item>
@@ -24,7 +24,7 @@
         <item name="android:navigationBarColor">@android:color/transparent</item>
 	</style>
 
-	<style name="AppTheme.weeWXApp.Common" parent="AppTheme.weeWXApp">
+	<style name="AppTheme.WeeWXApp.Common" parent="AppTheme.WeeWXApp">
 		<item name="windowNoTitle">true</item>
 		<item name="android:windowNoTitle">true</item>
 		<item name="android:windowLightStatusBar">false</item>
@@ -36,10 +36,10 @@
         <item name="android:navigationBarColor">@android:color/transparent</item>
 	</style>
 
-	<style name="Widget.weeWXApp">
+	<style name="Widget.WeeWXApp">
 	</style>
 
-	<style name="Widget.weeWXApp.NavBar" parent="AppTheme.weeWXApp.Common">
+	<style name="Widget.WeeWXApp.NavBar" parent="AppTheme.WeeWXApp.Common">
 		<item name="android:windowBackground">@color/MyAppNavBarColour</item>
 		<item name="android:background">@color/MyAppNavBarColour</item>
 		<item name="android:textColorPrimary">@color/MyAppNavBarTextColour</item>
@@ -48,7 +48,7 @@
 		<item name="android:textSize">20sp</item>
 	</style>
 
-	<style name="Widget.weeWXApp.AppBarLayout" parent="AppTheme.weeWXApp.Common">
+	<style name="Widget.WeeWXApp.AppBarLayout" parent="AppTheme.WeeWXApp.Common">
 		<item name="android:background">@color/MyAppNavBarColour</item>
 		<item name="android:textColorPrimary">@color/MyAppNavBarTextColour</item>
 		<item name="android:textColorSecondary">@color/MyAppNavBarTextColour</item>
@@ -56,7 +56,7 @@
 		<item name="android:textSize">20sp</item>
 	</style>
 
-	<style name="Widget.weeWXApp.TabBarLayout" parent="AppTheme.weeWXApp.Common">
+	<style name="Widget.WeeWXApp.TabBarLayout" parent="AppTheme.WeeWXApp.Common">
 		<item name="android:background">@color/MyAppNavBarColour</item>
 		<item name="android:textColorPrimary">@color/MyAppNavBarTextColour</item>
 		<item name="android:textColorSecondary">@color/MyAppNavBarTextColour</item>
@@ -71,12 +71,12 @@
 		<item name="tabMode">scrollable</item>
 	</style>
 
-	<style name="Widget.weeWXApp.RadioButtons" parent="AppTheme.weeWXApp.Common">
+	<style name="Widget.WeeWXApp.RadioButtons" parent="AppTheme.WeeWXApp.Common">
 		<item name="android:textSize">20sp</item>
 		<item name="buttonTint">@color/MyAppNavBarColour</item>
 	</style>
 
-	<style name="Widget.weeWXApp.Button" parent="AppTheme.weeWXApp.Common">
+	<style name="Widget.WeeWXApp.Button" parent="AppTheme.WeeWXApp.Common">
 		<item name="android:textSize">16sp</item>
 		<item name="android:insetTop">8dp</item>
 		<item name="android:insetBottom">8dp</item>
@@ -87,7 +87,7 @@
 		<item name="backgroundTint">@color/MyAppNavBarColour</item>
 	</style>
 
-	<style name="Widget.weeWXApp.Slider" parent="AppTheme.weeWXApp.Common">
+	<style name="Widget.WeeWXApp.Slider" parent="AppTheme.WeeWXApp.Common">
 		<item name="android:layout_width">match_parent</item>
 		<item name="android:layout_height">wrap_content</item>
 		<item name="android:layout_marginStart">10dp</item>
@@ -102,7 +102,7 @@
 		<item name="trackColorInactive">@color/LightBlueAccent</item>
 	</style>
 
-	<style name="Widget.weeWXApp.TextView">
+	<style name="Widget.WeeWXApp.TextView">
 		<item name="android:textSize">11sp</item>
 		<item name="android:letterSpacing">-0.08</item>
 		<item name="android:includeFontPadding">false</item>

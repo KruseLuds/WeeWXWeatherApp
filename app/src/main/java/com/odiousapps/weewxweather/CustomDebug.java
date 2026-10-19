@@ -21,9 +21,9 @@ import java.time.format.DateTimeFormatter;
 
 import androidx.fragment.app.FragmentActivity;
 
-import static com.odiousapps.weewxweather.weeWXApp.WEEWX_DIR;
-import static com.odiousapps.weewxweather.weeWXAppCommon.doStackOutput;
-import static com.odiousapps.weewxweather.weeWXAppCommon.LogMessage;
+import static com.odiousapps.weewxweather.WeeWXApp.WEEWX_DIR;
+import static com.odiousapps.weewxweather.WeeWXAppCommon.doStackOutput;
+import static com.odiousapps.weewxweather.WeeWXAppCommon.LogMessage;
 
 @SuppressWarnings("unused")
 class CustomDebug
@@ -32,7 +32,7 @@ class CustomDebug
 
 	static void writeDebug(String filename, String text) throws IOException
 	{
-		String mimetype = weeWXApp.CONTENT_TYPE;
+		String mimetype = WeeWXApp.CONTENT_TYPE;
 
 		filename = filename.strip();
 
@@ -92,7 +92,7 @@ class CustomDebug
 		if(depth > 20)
 			return;
 
-		Context context = weeWXApp.getInstance();
+		Context context = WeeWXApp.getInstance();
 		if(context == null)
 			return;
 
@@ -114,7 +114,7 @@ class CustomDebug
 					return;
 				}
 
-				weeWXAppCommon.publish(outFile);
+				WeeWXAppCommon.publish(outFile);
 			}
 
 			outFile = new File(outFile, filename);
@@ -132,7 +132,7 @@ class CustomDebug
 				LogMessage("File saved to " + context.getFileStreamPath(outFile.getAbsolutePath()));
 
 				if(needsPublishing)
-					weeWXAppCommon.publish(outFile);
+					WeeWXAppCommon.publish(outFile);
 			} catch(IOException e) {
 				doStackOutput(e);
 			}
@@ -163,7 +163,7 @@ class CustomDebug
 				return true;
 			}
 		} catch(Exception e) {
-			LogMessage(weeWXApp.ERROR_E + e, KeyValue.e);
+			LogMessage(WeeWXApp.ERROR_E + e, KeyValue.e);
 			doStackOutput(e);
 		}
 
@@ -177,7 +177,7 @@ class CustomDebug
 			if(file.exists())
 				return Math.round(file.lastModified() / 1_000D);
 		} catch(Exception e) {
-			LogMessage(weeWXApp.ERROR_E + e, KeyValue.e);
+			LogMessage(WeeWXApp.ERROR_E + e, KeyValue.e);
 			doStackOutput(e);
 		}
 
@@ -186,13 +186,13 @@ class CustomDebug
 
 	static void writeOutput(Context context, String prefix, String output, boolean isAdded, FragmentActivity fragmentActivity)
 	{
-		String filename = "weeWX_" + prefix + "_" + LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMdd_HHmmss")) + ".html";
+		String filename = "WeeWX_" + prefix + "_" + LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMdd_HHmmss")) + ".html";
 
 		File outFile = null;
 
 		try
 		{
-			outFile = weeWXAppCommon.getExtFile(filename);
+			outFile = WeeWXAppCommon.getExtFile(filename);
 			CustomDebug.writeDebug(outFile, output);
 			String theOutFile = outFile.getAbsolutePath();
 
@@ -223,8 +223,8 @@ class CustomDebug
 
 	private static String readFromMediaStore(String filename) throws IOException
 	{
-		ContentResolver resolver = weeWXApp.getInstance().getContentResolver();
-		String folderName = Environment.DIRECTORY_DOWNLOADS + "/" + weeWXApp.WEEWX_DIR + "/";
+		ContentResolver resolver = WeeWXApp.getInstance().getContentResolver();
+		String folderName = Environment.DIRECTORY_DOWNLOADS + "/" + WeeWXApp.WEEWX_DIR + "/";
 
 		long id;
 		Uri fileUri, filesCollection = MediaStore.Downloads.getContentUri(MediaStore.VOLUME_EXTERNAL_PRIMARY);
@@ -273,8 +273,8 @@ class CustomDebug
 
 	private static void outputWithMediaStore(String filename, String text, String mimetype) throws IOException
 	{
-		ContentResolver resolver = weeWXApp.getInstance().getContentResolver();
-		String folderName = Environment.DIRECTORY_DOWNLOADS + "/" + weeWXApp.WEEWX_DIR + "/";
+		ContentResolver resolver = WeeWXApp.getInstance().getContentResolver();
+		String folderName = Environment.DIRECTORY_DOWNLOADS + "/" + WeeWXApp.WEEWX_DIR + "/";
 
 		long id;
 		Uri fileUri = null;
@@ -320,8 +320,8 @@ class CustomDebug
 		{
 			if(os == null)
 			{
-				LogMessage("outputWithMediaStore() Failed to write to " + filename + weeWXApp.SKIPPING, KeyValue.e);
-				throw new IOException("Failed to write to " + filename + weeWXApp.SKIPPING);
+				LogMessage("outputWithMediaStore() Failed to write to " + filename + WeeWXApp.SKIPPING, KeyValue.e);
+				throw new IOException("Failed to write to " + filename + WeeWXApp.SKIPPING);
 			}
 
 			os.write(text.getBytes());

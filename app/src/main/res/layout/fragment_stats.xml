@@ -26,7 +26,7 @@
 			android:textSize="18sp"/>
 
 		<com.google.android.material.slider.Slider
-			style="@style/Widget.weeWXApp.Slider"
+			style="@style/Widget.WeeWXApp.Slider"
 			android:id="@+id/pageZoom" />
 
 		<FrameLayout

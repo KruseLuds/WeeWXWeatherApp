@@ -13,12 +13,12 @@ import java.util.List;
 import java.util.Map;
 
 
-import static com.odiousapps.weewxweather.weeWXApp.SAVE_APP_DEBUG_LOGS;
-import static com.odiousapps.weewxweather.weeWXApp.getInstance;
-import static com.odiousapps.weewxweather.weeWXApp.save_app_debug_logs_default;
-import static com.odiousapps.weewxweather.weeWXAppCommon.LogMessage;
-import static com.odiousapps.weewxweather.weeWXAppCommon.is_blank;
-import static com.odiousapps.weewxweather.weeWXAppCommon.json_keys;
+import static com.odiousapps.weewxweather.WeeWXApp.SAVE_APP_DEBUG_LOGS;
+import static com.odiousapps.weewxweather.WeeWXApp.getInstance;
+import static com.odiousapps.weewxweather.WeeWXApp.save_app_debug_logs_default;
+import static com.odiousapps.weewxweather.WeeWXAppCommon.LogMessage;
+import static com.odiousapps.weewxweather.WeeWXAppCommon.is_blank;
+import static com.odiousapps.weewxweather.WeeWXAppCommon.json_keys;
 
 @SuppressWarnings("unused")
 class KeyValue
@@ -220,7 +220,7 @@ class KeyValue
 				return true;
 		}
 
-		return weeWXAppCommon.isPrefSet(var);
+		return WeeWXAppCommon.isPrefSet(var);
 	}
 
 	static Object readVar(String var, Object defVal)
@@ -234,14 +234,14 @@ class KeyValue
 					return r.Val();
 			}
 
-			Object ret = weeWXAppCommon.readVar(var, defVal);
+			Object ret = WeeWXAppCommon.readVar(var, defVal);
 
 			if(ret != null)
 				return ret;
 
 			return defVal;
 		} catch(Exception err) {
-			Log.e(weeWXAppCommon.LOGTAG, "Error! err: ", err);
+			Log.e(WeeWXAppCommon.LOGTAG, "Error! err: ", err);
 		}
 
 		return defVal;
@@ -262,17 +262,17 @@ class KeyValue
 				if(tmpr.Key.equals(var))
 				{
 					prefs.remove(i);
-					weeWXAppCommon.setVar(var, null);
+					WeeWXAppCommon.setVar(var, null);
 					return;
 				}
 			}
 
-			weeWXAppCommon.setVar(var, null);
+			WeeWXAppCommon.setVar(var, null);
 			return;
 		}
 
 		Result r = new Result(var, val);
-		weeWXAppCommon.setVar(var, val);
+		WeeWXAppCommon.setVar(var, val);
 
 		if(!isSet)
 		{

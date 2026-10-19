@@ -17,10 +17,10 @@ import java.io.IOException;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
-import static com.odiousapps.weewxweather.weeWXAppCommon.doStackOutput;
-import static com.odiousapps.weewxweather.weeWXAppCommon.LogMessage;
-import static com.odiousapps.weewxweather.weeWXAppCommon.is_blank;
-import static com.odiousapps.weewxweather.weeWXAppCommon.is_valid_url;
+import static com.odiousapps.weewxweather.WeeWXAppCommon.doStackOutput;
+import static com.odiousapps.weewxweather.WeeWXAppCommon.LogMessage;
+import static com.odiousapps.weewxweather.WeeWXAppCommon.is_blank;
+import static com.odiousapps.weewxweather.WeeWXAppCommon.is_valid_url;
 
 @SuppressLint("unused")
 public class WebViewPreloader
@@ -73,7 +73,7 @@ public class WebViewPreloader
 				if(wvContainer == null)
 				{
 					LogMessage("WebViewPreloader.getHTML() Creating wvContainer...");
-					wvContainer = new FrameLayout(weeWXApp.getInstance());
+					wvContainer = new FrameLayout(WeeWXApp.getInstance());
 					wvContainer.setAlpha(0f);
 				}
 
@@ -92,7 +92,7 @@ public class WebViewPreloader
 
 				if(wv == null)
 				{
-					wv = new SafeWebView(weeWXApp.getInstance());
+					wv = new SafeWebView(WeeWXApp.getInstance());
 					LogMessage("WebViewPreloader.getHTML() Adding final_wv to wvContainer...");
 					wvContainer.addView(wv, new FrameLayout.LayoutParams(
 							ViewGroup.LayoutParams.MATCH_PARENT,
@@ -141,7 +141,7 @@ public class WebViewPreloader
 		try
 		{
 			LogMessage("WebViewPreloader.getHTML() Wait on background thread for HTML data");
-			boolean ok = latch.await(weeWXAppCommon.default_webview_timeout, TimeUnit.MILLISECONDS);
+			boolean ok = latch.await(WeeWXAppCommon.default_webview_timeout, TimeUnit.MILLISECONDS);
 			html = ok ? htmlHolder[0] : null;
 		} catch(InterruptedException e) {
 			LogMessage("WebViewPreloader.getHTML() Error! e: " + e, true, KeyValue.e);
@@ -221,7 +221,7 @@ public class WebViewPreloader
 			Element body = Jsoup.parse(html).body();
 
 //			LogMessage("injectHTML() Writting to WZtest_body_before_" + nowTS + ".html");
-//			CustomDebug.writeDebug("weeWX", "WZtest_body_before_" + nowTS + ".html", body.html());
+//			CustomDebug.writeDebug("WeeWX", "WZtest_body_before_" + nowTS + ".html", body.html());
 
 			JsoupHelper.cleanWZDoc(body);
 			if(!body.hasText())
@@ -231,7 +231,7 @@ public class WebViewPreloader
 			}
 
 //			LogMessage("injectHTML() Writting to WZtest_body_after_" + nowTS + ".html");
-//			CustomDebug.writeDebug("weeWX", "WZtest_body_after_" + nowTS + ".html", body.html());
+//			CustomDebug.writeDebug("WeeWX", "WZtest_body_after_" + nowTS + ".html", body.html());
 
 			String text = JsoupHelper.normaliseText(body.text());
 			if(is_blank(text))

@@ -3,7 +3,7 @@
 	xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:app="http://schemas.android.com/apk/res-auto"
 	xmlns:tools="http://schemas.android.com/tools"
-	style="@style/Widget.weeWXApp.NavBar"
+	style="@style/Widget.WeeWXApp.NavBar"
 	android:layout_width="match_parent"
 	android:layout_height="@dimen/nav_header_height"
 	android:paddingVertical="@dimen/activity_vertical_margin"

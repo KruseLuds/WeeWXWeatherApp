@@ -88,23 +88,23 @@ import okhttp3.Response;
 
 import static com.odiousapps.weewxweather.NetworkClient.getInstance;
 import static com.odiousapps.weewxweather.WidgetProvider.updateAppWidget;
-import static com.odiousapps.weewxweather.weeWXApp.CONTENT_TYPE;
-import static com.odiousapps.weewxweather.weeWXApp.ENABLE_MQTT;
-import static com.odiousapps.weewxweather.weeWXApp.ERROR_E;
-import static com.odiousapps.weewxweather.weeWXApp.FAILED_TO_CREATE_LOG_FILE_IN_MEDIA_STORE_FILES;
-import static com.odiousapps.weewxweather.weeWXApp.RSS_CHECK;
-import static com.odiousapps.weewxweather.weeWXApp.SAVE_APP_DEBUG_LOGS;
-import static com.odiousapps.weewxweather.weeWXApp.TIME_EXT;
-import static com.odiousapps.weewxweather.weeWXApp.enable_mqtt_default;
-import static com.odiousapps.weewxweather.weeWXApp.getAndroidString;
-import static com.odiousapps.weewxweather.weeWXApp.getEnglishAndroidString;
-import static com.odiousapps.weewxweather.weeWXNotificationManager.updateNotificationMessage;
+import static com.odiousapps.weewxweather.WeeWXApp.CONTENT_TYPE;
+import static com.odiousapps.weewxweather.WeeWXApp.ENABLE_MQTT;
+import static com.odiousapps.weewxweather.WeeWXApp.ERROR_E;
+import static com.odiousapps.weewxweather.WeeWXApp.FAILED_TO_CREATE_LOG_FILE_IN_MEDIA_STORE_FILES;
+import static com.odiousapps.weewxweather.WeeWXApp.RSS_CHECK;
+import static com.odiousapps.weewxweather.WeeWXApp.SAVE_APP_DEBUG_LOGS;
+import static com.odiousapps.weewxweather.WeeWXApp.TIME_EXT;
+import static com.odiousapps.weewxweather.WeeWXApp.enable_mqtt_default;
+import static com.odiousapps.weewxweather.WeeWXApp.getAndroidString;
+import static com.odiousapps.weewxweather.WeeWXApp.getEnglishAndroidString;
+import static com.odiousapps.weewxweather.WeeWXNotificationManager.updateNotificationMessage;
 
 @SuppressWarnings({"CallToPrintStackTrace", "SequencedCollectionMethodCanBeUsed", "unused"})
-class weeWXAppCommon
+class WeeWXAppCommon
 {
 	private final static String PREFS_NAME = "WeeWxWeatherPrefs";
-	final static String LOGTAG = "weeWXApp";
+	final static String LOGTAG = "WeeWXApp";
 	static final String MESSAGE = "message='";
 	static final int debug_level = KeyValue.i;
 	static final boolean debug_html = false;
@@ -301,7 +301,7 @@ class weeWXAppCommon
 
 	static void LogMessage(String text, boolean showAnyway, int level)
 	{
-		Context context = weeWXApp.getInstance();
+		Context context = WeeWXApp.getInstance();
 		if(context == null)
 			return;
 
@@ -310,12 +310,12 @@ class weeWXAppCommon
 
 		if(doingSaveSettings)
 		{
-			String timestamp = weeWXApp.getInstance().sdf13.format(System.currentTimeMillis());
+			String timestamp = WeeWXApp.getInstance().sdf13.format(System.currentTimeMillis());
 			String tmpStr = timestamp + " " + levelToName(level) + ": " + text.strip() + "\n";
 			saveSettingsLog.append(tmpStr);
 		}
 
-		if((boolean)KeyValue.readVar(SAVE_APP_DEBUG_LOGS, weeWXApp.save_app_debug_logs_default))
+		if((boolean)KeyValue.readVar(SAVE_APP_DEBUG_LOGS, WeeWXApp.save_app_debug_logs_default))
 		{
 			try {
 				appendWithMediaStore(text, level);
@@ -376,11 +376,11 @@ class weeWXAppCommon
 
 	private static String outputSaveSettingsWithMediaStore()
 	{
-		Context context = weeWXApp.getInstance();
+		Context context = WeeWXApp.getInstance();
 		if(context == null)
 			return "Context is null";
 
-		String folderName = Environment.DIRECTORY_DOWNLOADS + "/weeWX/";
+		String folderName = Environment.DIRECTORY_DOWNLOADS + "/WeeWX/";
 
 		Uri filesCollection = MediaStore.Files.getContentUri("external");
 
@@ -437,13 +437,13 @@ class weeWXAppCommon
 	{
 		try
 		{
-			File file = getExtFile(weeWXApp.debug_filename);
+			File file = getExtFile(WeeWXApp.debug_filename);
 			boolean needsPublishing = !file.exists();
 			FileOutputStream fos = new FileOutputStream(file, true);
 
-			if(weeWXApp.debug_filename.endsWith(".gz"))
+			if(WeeWXApp.debug_filename.endsWith(".gz"))
 				fos.write(gzipToBytes(text));
-			else if(weeWXApp.debug_filename.endsWith(".txt"))
+			else if(WeeWXApp.debug_filename.endsWith(".txt"))
 				fos.write(text.getBytes(StandardCharsets.UTF_8));
 
 			fos.close();
@@ -458,14 +458,14 @@ class weeWXAppCommon
 	@SuppressWarnings("ConstantValue")
 	private static void appendWithMediaStore(String text, int level) throws IOException
 	{
-		Context context = weeWXApp.getInstance();
+		Context context = WeeWXApp.getInstance();
 		if(context == null)
 			return;
 
-		String folderName = Environment.DIRECTORY_DOWNLOADS + "/weeWX/";
+		String folderName = Environment.DIRECTORY_DOWNLOADS + "/WeeWX/";
 
 		// ================
-		// 1. Ensure weeWX folder exists
+		// 1. Ensure WeeWX folder exists
 		// ================
 		Uri filesCollection = MediaStore.Files.getContentUri("external");
 
@@ -495,7 +495,7 @@ class weeWXAppCommon
 			String[] projection = { MediaStore.Files.FileColumns._ID };
 			String selection = MediaStore.Files.FileColumns.DISPLAY_NAME + "=? AND " +
 							   MediaStore.Files.FileColumns.RELATIVE_PATH + "=?";
-			String[] args = { weeWXApp.debug_filename, folderName };
+			String[] args = { WeeWXApp.debug_filename, folderName };
 
 			try(Cursor cursor = context.getContentResolver().query(filesCollection, projection, selection, args, null))
 			{
@@ -509,19 +509,19 @@ class weeWXAppCommon
 			}
 
 			// If not found, create it
-			if(logFileUri == null && weeWXApp.debug_filename.endsWith(".gz"))
+			if(logFileUri == null && WeeWXApp.debug_filename.endsWith(".gz"))
 			{
 				ContentValues values = new ContentValues();
-				values.put(MediaStore.Files.FileColumns.DISPLAY_NAME, weeWXApp.debug_filename);
+				values.put(MediaStore.Files.FileColumns.DISPLAY_NAME, WeeWXApp.debug_filename);
 				values.put(MediaStore.Files.FileColumns.MIME_TYPE, "application/gzip");
 				values.put(MediaStore.Files.FileColumns.RELATIVE_PATH, folderName);
 
 				logFileUri = context.getContentResolver().insert(filesCollection, values);
 				if(logFileUri == null)
 					throw new IOException(FAILED_TO_CREATE_LOG_FILE_IN_MEDIA_STORE_FILES);
-			} else if(logFileUri == null && weeWXApp.debug_filename.endsWith(".txt")) {
+			} else if(logFileUri == null && WeeWXApp.debug_filename.endsWith(".txt")) {
 				ContentValues values = new ContentValues();
-				values.put(MediaStore.Files.FileColumns.DISPLAY_NAME, weeWXApp.debug_filename);
+				values.put(MediaStore.Files.FileColumns.DISPLAY_NAME, WeeWXApp.debug_filename);
 				values.put(MediaStore.Files.FileColumns.MIME_TYPE, CONTENT_TYPE);
 				values.put(MediaStore.Files.FileColumns.RELATIVE_PATH, folderName);
 
@@ -538,7 +538,7 @@ class weeWXAppCommon
 		// ================
 		// 3. Append text to the log file
 		// ================
-		String timestamp = weeWXApp.getInstance().sdf13.format(System.currentTimeMillis());
+		String timestamp = WeeWXApp.getInstance().sdf13.format(System.currentTimeMillis());
 
 		String tmpStr = timestamp + " " + levelToName(level) + ": " + text.strip() + "\n";
 
@@ -547,7 +547,7 @@ class weeWXAppCommon
 			if(os == null)
 				return;
 
-			if(weeWXApp.debug_filename.endsWith(".gz"))
+			if(WeeWXApp.debug_filename.endsWith(".gz"))
 				os.write(gzipToBytes(tmpStr));
 			else
 				os.write(tmpStr.getBytes(StandardCharsets.UTF_8));
@@ -558,7 +558,7 @@ class weeWXAppCommon
 
 	private static SharedPreferences getPrefSettings()
 	{
-		return weeWXApp.getInstance().getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
+		return WeeWXApp.getInstance().getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
 	}
 
 	static void setVar(String string, Object val)
@@ -845,8 +845,8 @@ class weeWXAppCommon
 
 	static String headingTime(long when)
 	{
-		return weeWXApp.getInstance().sdf22.format(when) + " " + getTimeMonth(when) +
-				" " + weeWXApp.getInstance().sdf23.format(when);
+		return WeeWXApp.getInstance().sdf22.format(when) + " " + getTimeMonth(when) +
+				" " + WeeWXApp.getInstance().sdf23.format(when);
 	}
 
 	static String generateForecast(List<Day> days, long timestamp, boolean showHeader, boolean daily)
@@ -888,7 +888,7 @@ class weeWXAppCommon
 
 				sb.append("\t\t</div>\n");
 			} else {
-				sb.append(weeWXApp.currentSpacer);
+				sb.append(WeeWXApp.currentSpacer);
 			}
 
 			sb.append("\t\t<div class='wordToday'>").append(noaa && !is_blank(first.periodName) ? first.periodName : getAndroidString(R.string.today)).append("</div>\n");
@@ -897,14 +897,14 @@ class weeWXAppCommon
 
 			sb.append("\t\t\t<div class='maxTemp'>");
 			if(is_blank(first.max) || first.max.equals("&deg;C") || first.max.equals("&deg;F"))
-				sb.append(weeWXApp.emptyField);
+				sb.append(WeeWXApp.emptyField);
 			else
 				sb.append(first.max);
 			sb.append("</div>\n");
 
 			sb.append("\t\t\t<div class='minTemp'>");
 			if(is_blank(first.min) || first.min.equals("&deg;C") || first.min.equals("&deg;F"))
-				sb.append(weeWXApp.emptyField);
+				sb.append(WeeWXApp.emptyField);
 			else
 				sb.append(first.min);
 			sb.append("</div>\n\t\t</div>\n\t</div>\n");
@@ -943,7 +943,7 @@ class weeWXAppCommon
 			sb.append("\t\t<div class='dayTopRow'>\n");
 
 			if(is_blank(day.icon))
-				sb.append(weeWXApp.currentSpacer);
+				sb.append(WeeWXApp.currentSpacer);
 
 			sb.append("\t\t\t<div class='dayTitle'>");
 
@@ -954,19 +954,19 @@ class weeWXAppCommon
 				if(i == 0)
 					sb.append(getAndroidString(R.string.today));
 				else
-					sb.append(weeWXApp.getInstance().sdf21.format(day.timestamp))
+					sb.append(WeeWXApp.getInstance().sdf21.format(day.timestamp))
 							.append(" ").append(getTimeMonth(day.timestamp));
 			} else {
 				cal.setTimeInMillis(day.timestamp);
 				int hour = cal.get(Calendar.HOUR_OF_DAY);
 				// A midnight entry straight after its daily summary shows its time
 				if(day.isSummary || (hour == 0 && (i == 0 || !days.get(i - 1).isSummary)))
-					sb.append(weeWXApp.getInstance().sdf21.format(day.timestamp))
+					sb.append(WeeWXApp.getInstance().sdf21.format(day.timestamp))
 							.append(" ").append(getTimeMonth(day.timestamp));
 				else
-					sb.append(weeWXApp.getInstance().sdf22.format(day.timestamp))
+					sb.append(WeeWXApp.getInstance().sdf22.format(day.timestamp))
 							.append(" ").append(getTimeMonth(day.timestamp))
-							.append(", ").append(weeWXApp.getInstance().sdf19.format(day.timestamp));
+							.append(", ").append(WeeWXApp.getInstance().sdf19.format(day.timestamp));
 			}
 
 			sb.append("</div>\n");
@@ -1005,7 +1005,7 @@ class weeWXAppCommon
 
 	static void updateCacheTime(long timestamp)
 	{
-		LogMessage("weeWXAppCommon.updateCacheTime(" + timestamp + ")");
+		LogMessage("WeeWXAppCommon.updateCacheTime(" + timestamp + ")");
 
 		if(timestamp <= 0)
 			return;
@@ -1220,8 +1220,8 @@ class weeWXAppCommon
 
 		//LogMessage("data: " + data);
 
-		boolean metric = (boolean)KeyValue.readVar("metric", weeWXApp.metric_default);
-		boolean rainInInches = (boolean)KeyValue.readVar("rainInInches", weeWXApp.rain_in_inches_default);
+		boolean metric = (boolean)KeyValue.readVar("metric", WeeWXApp.metric_default);
+		boolean rainInInches = (boolean)KeyValue.readVar("rainInInches", WeeWXApp.rain_in_inches_default);
 
 		String desc = KeyValue.bomLocation;
 		LogMessage("processBoM3Hourly(): desc: " + desc);
@@ -1235,7 +1235,7 @@ class weeWXAppCommon
 
 			String tmp = jobj.getJSONObject("metadata").getString("issue_time");
 
-			Date df = weeWXApp.getInstance().sdf1.parse(tmp);
+			Date df = WeeWXApp.getInstance().sdf1.parse(tmp);
 			if(df != null)
 				timestamp = df.getTime();
 
@@ -1246,7 +1246,7 @@ class weeWXAppCommon
 				updateCacheTime(timestamp);
 
 			Date date = new Date(timestamp);
-			LogMessage("Last updated forecast: " + weeWXApp.getInstance().sdf5.format(date));
+			LogMessage("Last updated forecast: " + WeeWXApp.getInstance().sdf5.format(date));
 
 			JSONArray myhours = jobj.getJSONArray("data");
 			for(int i = 0; i < myhours.length(); i++)
@@ -1254,7 +1254,7 @@ class weeWXAppCommon
 				Day day = new Day();
 
 				day.timestamp = 0;
-				df = weeWXApp.getInstance().sdf1.parse(myhours.getJSONObject(i).getString("time"));
+				df = WeeWXApp.getInstance().sdf1.parse(myhours.getJSONObject(i).getString("time"));
 				if(df != null)
 					day.timestamp = df.getTime();
 
@@ -1289,7 +1289,7 @@ class weeWXAppCommon
 					day.icon = "icons/bom/" + fileName + ".svg";
 					if(!day.icon.equals("icons/bom/null.svg"))
 					{
-						String content = weeWXApp.loadFileFromAssets(day.icon);
+						String content = WeeWXApp.loadFileFromAssets(day.icon);
 						if(!is_blank(content))
 						{
 							missing = null;
@@ -1342,8 +1342,8 @@ class weeWXAppCommon
 
 		//LogMessage("data: " + data);
 
-		boolean metric = (boolean)KeyValue.readVar("metric", weeWXApp.metric_default);
-		boolean rainInInches = (boolean)KeyValue.readVar("rainInInches", weeWXApp.rain_in_inches_default);
+		boolean metric = (boolean)KeyValue.readVar("metric", WeeWXApp.metric_default);
+		boolean rainInInches = (boolean)KeyValue.readVar("rainInInches", WeeWXApp.rain_in_inches_default);
 
 		String desc = KeyValue.bomLocation;
 		List<Day> days = new ArrayList<>();
@@ -1356,7 +1356,7 @@ class weeWXAppCommon
 			//desc = jobj.getJSONObject("metadata").getString("forecast_region");
 			String tmp = jobj.getJSONObject("metadata").getString("issue_time");
 
-			Date df = weeWXApp.getInstance().sdf1.parse(tmp);
+			Date df = WeeWXApp.getInstance().sdf1.parse(tmp);
 			if(df != null)
 				timestamp = df.getTime();
 
@@ -1367,7 +1367,7 @@ class weeWXAppCommon
 				updateCacheTime(timestamp);
 
 			Date date = new Date(timestamp);
-			LogMessage("Last updated forecast: " + weeWXApp.getInstance().sdf5.format(date));
+			LogMessage("Last updated forecast: " + WeeWXApp.getInstance().sdf5.format(date));
 
 			JSONArray mydays = jobj.getJSONArray("data");
 			for(int i = 0; i < mydays.length(); i++)
@@ -1375,7 +1375,7 @@ class weeWXAppCommon
 				Day day = new Day();
 
 				day.timestamp = 0;
-				df = weeWXApp.getInstance().sdf1.parse(mydays.getJSONObject(i).getString("date"));
+				df = WeeWXApp.getInstance().sdf1.parse(mydays.getJSONObject(i).getString("date"));
 				if(df != null)
 					day.timestamp = df.getTime();
 
@@ -1412,7 +1412,7 @@ class weeWXAppCommon
 				{
 					day.icon = "icons/bom/" + fileName + ".svg";
 
-					String content = weeWXApp.loadFileFromAssets(day.icon);
+					String content = WeeWXApp.loadFileFromAssets(day.icon);
 					if(!is_blank(content))
 					{
 						missing = null;
@@ -1477,7 +1477,7 @@ class weeWXAppCommon
 		if(is_blank(data))
 			return null;
 
-		boolean metric = (boolean)KeyValue.readVar("metric", weeWXApp.metric_default);
+		boolean metric = (boolean)KeyValue.readVar("metric", WeeWXApp.metric_default);
 		long timestamp = getRSSms();
 
 		String desc;
@@ -1494,7 +1494,7 @@ class weeWXAppCommon
 			day.timestamp = 0;
 			try
 			{
-				Date df = weeWXApp.getInstance().sdf4.parse(date);
+				Date df = WeeWXApp.getInstance().sdf4.parse(date);
 				if(df != null)
 					day.timestamp = df.getTime();
 			} catch(Exception ignored) {}
@@ -1531,7 +1531,7 @@ class weeWXAppCommon
 		if(is_blank(data))
 			return null;
 
-		boolean metric = (boolean)KeyValue.readVar("metric", weeWXApp.metric_default);
+		boolean metric = (boolean)KeyValue.readVar("metric", WeeWXApp.metric_default);
 		List<Day> days = new ArrayList<>();
 		long timestamp;
 		String desc;
@@ -1544,7 +1544,7 @@ class weeWXAppCommon
 			String tmp = jobj.getString("creationDate");
 
 			timestamp = 0;
-			Date df = weeWXApp.getInstance().sdf1.parse(tmp);
+			Date df = WeeWXApp.getInstance().sdf1.parse(tmp);
 			if(df != null)
 				timestamp = df.getTime();
 
@@ -1641,7 +1641,7 @@ class weeWXAppCommon
 				}
 
 				day.timestamp = 0;
-				df = weeWXApp.getInstance().sdf1.parse(validTime.getString(i));
+				df = WeeWXApp.getInstance().sdf1.parse(validTime.getString(i));
 				if(df != null)
 					day.timestamp = df.getTime();
 
@@ -1669,7 +1669,7 @@ class weeWXAppCommon
 
 	private static boolean noaaAssetExists(String name)
 	{
-		try(InputStream in = weeWXApp.getInstance().getAssets().open("icons/wgov/" + name))
+		try(InputStream in = WeeWXApp.getInstance().getAssets().open("icons/wgov/" + name))
 		{
 			return true;
 		} catch(IOException e) {
@@ -1679,7 +1679,7 @@ class weeWXAppCommon
 
 	private static Bitmap loadNoaaAsset(String name)
 	{
-		try(InputStream in = weeWXApp.getInstance().getAssets().open("icons/wgov/" + name))
+		try(InputStream in = WeeWXApp.getInstance().getAssets().open("icons/wgov/" + name))
 		{
 			return BitmapFactory.decodeStream(in);
 		} catch(IOException e) {
@@ -1692,7 +1692,7 @@ class weeWXAppCommon
 		if(is_blank(data))
 			return null;
 
-		boolean metric = (boolean)KeyValue.readVar("metric", weeWXApp.metric_default);
+		boolean metric = (boolean)KeyValue.readVar("metric", WeeWXApp.metric_default);
 		String desc;
 		long timestamp;
 		List<Day> days = new ArrayList<>();
@@ -1706,7 +1706,7 @@ class weeWXAppCommon
 
 
 			timestamp = 0;
-			Date df = weeWXApp.getInstance().sdf15.parse(tmp);
+			Date df = WeeWXApp.getInstance().sdf15.parse(tmp);
 			if(df != null)
 				timestamp = df.getTime();
 
@@ -1722,7 +1722,7 @@ class weeWXAppCommon
 				String date = j.getString("forecastDate").strip();
 
 				day.timestamp = 0;
-				df = weeWXApp.getInstance().sdf4.parse(date);
+				df = WeeWXApp.getInstance().sdf4.parse(date);
 				if(df != null)
 					day.timestamp = df.getTime();
 
@@ -1766,7 +1766,7 @@ class weeWXAppCommon
 		if(is_blank(data))
 			return null;
 
-		boolean metric = (boolean)KeyValue.readVar("metric", weeWXApp.metric_default);
+		boolean metric = (boolean)KeyValue.readVar("metric", WeeWXApp.metric_default);
 		List<Day> days = new ArrayList<>();
 		String desc;
 		long timestamp;
@@ -1788,7 +1788,7 @@ class weeWXAppCommon
 				Day day = new Day();
 				JSONObject jtmp = loop.getJSONObject(i);
 
-				Date df = weeWXApp.getInstance().sdf1.parse(jtmp.getString("dateISO"));
+				Date df = WeeWXApp.getInstance().sdf1.parse(jtmp.getString("dateISO"));
 				if(df != null)
 					tmp_timestamp = df.getTime();
 
@@ -1812,7 +1812,7 @@ class weeWXAppCommon
 
 				day.icon = "icons/metservice/condition_" + day.icon + ".svg";
 
-				String content = weeWXApp.loadFileFromAssets(day.icon);
+				String content = WeeWXApp.loadFileFromAssets(day.icon);
 				if(!is_blank(content))
 					day.icon = "file:///android_asset/" + day.icon;
 				else
@@ -1841,7 +1841,7 @@ class weeWXAppCommon
 		if(is_blank(data))
 			return null;
 
-		boolean metric = (boolean)KeyValue.readVar("metric", weeWXApp.metric_default);
+		boolean metric = (boolean)KeyValue.readVar("metric", WeeWXApp.metric_default);
 		List<Day> days = new ArrayList<>();
 		String desc = "";
 		long timestamp = 0;
@@ -1857,7 +1857,7 @@ class weeWXAppCommon
 			String date = string_time.split("<td width='30%' class='stattime'>", 2)[1].split("</td>", 2)[0].strip();
 			string_time = date + " " + string_time.split("<td width='40%' class='stattime'>", 2)[1].split(" Uhr</td>", 2)[0].strip();
 
-			Date df = weeWXApp.getInstance().sdf11.parse(string_time);
+			Date df = WeeWXApp.getInstance().sdf11.parse(string_time);
 			if(df != null)
 				lastTS = timestamp = df.getTime();
 
@@ -1916,7 +1916,7 @@ class weeWXAppCommon
 		if(is_blank(data))
 			return null;
 
-		boolean metric = (boolean)KeyValue.readVar("metric", weeWXApp.metric_default);
+		boolean metric = (boolean)KeyValue.readVar("metric", WeeWXApp.metric_default);
 		List<Day> days = new ArrayList<>();
 		String desc;
 		long timestamp = 0;
@@ -1932,7 +1932,7 @@ class weeWXAppCommon
 
 			String elaborado = jobj.getString("elaborado");
 
-			Date df = weeWXApp.getInstance().sdf12.parse(elaborado);
+			Date df = WeeWXApp.getInstance().sdf12.parse(elaborado);
 			if(df != null)
 				timestamp = df.getTime();
 
@@ -1947,7 +1947,7 @@ class weeWXAppCommon
 				String fecha = jtmp.getString("fecha");
 
 				day.timestamp = 0;
-				df = weeWXApp.getInstance().sdf4.parse(fecha);
+				df = WeeWXApp.getInstance().sdf4.parse(fecha);
 				if(df != null)
 					day.timestamp = df.getTime();
 
@@ -2004,7 +2004,7 @@ class weeWXAppCommon
 		if(is_blank(data))
 			return null;
 
-		boolean metric = (boolean)KeyValue.readVar("metric", weeWXApp.metric_default);
+		boolean metric = (boolean)KeyValue.readVar("metric", WeeWXApp.metric_default);
 		long timestamp = getRSSms();
 		List<Day> days = new ArrayList<>();
 		String desc;
@@ -2036,7 +2036,7 @@ class weeWXAppCommon
 
 				day.icon = String.format(Locale.ENGLISH, "%02d", Integer.parseInt(day.icon));
 				day.icon = "icons/wcom/" + day.icon + ".svg";
-				String content = weeWXApp.loadFileFromAssets(day.icon);
+				String content = WeeWXApp.loadFileFromAssets(day.icon);
 				if(!is_blank(content))
 					day.icon = "file:///android_asset/" + day.icon;
 				else
@@ -2066,7 +2066,7 @@ class weeWXAppCommon
 		if(is_blank(data))
 			return null;
 
-		boolean metric = (boolean)KeyValue.readVar("metric", weeWXApp.metric_default);
+		boolean metric = (boolean)KeyValue.readVar("metric", WeeWXApp.metric_default);
 		long timestamp = getRSSms();
 		List<Day> days = new ArrayList<>();
 		String desc;
@@ -2151,10 +2151,10 @@ class weeWXAppCommon
 					{
 						if(firstTimeFrom == null)
 						{
-							firstTimeFrom = weeWXApp.getInstance().sdf1.parse(parser.getAttributeValue(null, "from"));
+							firstTimeFrom = WeeWXApp.getInstance().sdf1.parse(parser.getAttributeValue(null, "from"));
 						} else {
-							secondTimeFrom = weeWXApp.getInstance().sdf1.parse(parser.getAttributeValue(null, "from"));
-							secondTimeTo = weeWXApp.getInstance().sdf1.parse(parser.getAttributeValue(null, "to"));
+							secondTimeFrom = WeeWXApp.getInstance().sdf1.parse(parser.getAttributeValue(null, "from"));
+							secondTimeTo = WeeWXApp.getInstance().sdf1.parse(parser.getAttributeValue(null, "to"));
 						}
 					}
 
@@ -2211,10 +2211,10 @@ class weeWXAppCommon
 					Day day = new Day();
 
 					if(secondTimeFrom != null)
-						LogMessage("secondTimeFrom: " + weeWXApp.getInstance().sdf8.format(secondTimeFrom));
+						LogMessage("secondTimeFrom: " + WeeWXApp.getInstance().sdf8.format(secondTimeFrom));
 
 					if(secondTimeTo != null)
-						LogMessage("secondTimeTo: " + weeWXApp.getInstance().sdf8.format(secondTimeTo));
+						LogMessage("secondTimeTo: " + WeeWXApp.getInstance().sdf8.format(secondTimeTo));
 
 					if(days.isEmpty())
 						day.timestamp = now;
@@ -2242,7 +2242,7 @@ class weeWXAppCommon
 					symbolNo = String.format(Locale.ENGLISH, "%02d", Integer.parseInt(symbolNo));
 
 					day.icon = "icons/metie/y" + symbolNo + "d.png";
-					String content = weeWXApp.loadFileFromAssets(day.icon);
+					String content = WeeWXApp.loadFileFromAssets(day.icon);
 					if(!is_blank(content))
 						day.icon = "file:///android_asset/" + day.icon;
 					else
@@ -2252,7 +2252,7 @@ class weeWXAppCommon
 					if(!metric)
 						day.max = C2Fdeg(maxTemp);
 
-					boolean rainInInches = (boolean)KeyValue.readVar("rainInInches", weeWXApp.rain_in_inches_default);
+					boolean rainInInches = (boolean)KeyValue.readVar("rainInInches", WeeWXApp.rain_in_inches_default);
 					if(!metric || rainInInches)
 						day.min = mm2in(str2Float(rain)) + "in";
 					else
@@ -2288,7 +2288,7 @@ class weeWXAppCommon
 		List<Day> days = new ArrayList<>();
 		String desc;
 
-		boolean metric = (boolean)KeyValue.readVar("metric", weeWXApp.metric_default);
+		boolean metric = (boolean)KeyValue.readVar("metric", WeeWXApp.metric_default);
 		long timestamp = getRSSms();
 
 		try
@@ -2313,7 +2313,7 @@ class weeWXAppCommon
 				LogMessage("icon: " + icon);
 
 				day.icon = "icons/owm/" + icon + "_t@4x.png";
-				String content = weeWXApp.loadFileFromAssets(day.icon);
+				String content = WeeWXApp.loadFileFromAssets(day.icon);
 				if(!is_blank(content))
 					day.icon = "file:///android_asset/" + day.icon;
 				else
@@ -2346,8 +2346,8 @@ class weeWXAppCommon
 		if(is_blank(data))
 			return null;
 
-		boolean metric = (boolean)KeyValue.readVar("metric", weeWXApp.metric_default);
-		boolean rainInInches = (boolean)KeyValue.readVar("rainInInches", weeWXApp.rain_in_inches_default);
+		boolean metric = (boolean)KeyValue.readVar("metric", WeeWXApp.metric_default);
+		boolean rainInInches = (boolean)KeyValue.readVar("rainInInches", WeeWXApp.rain_in_inches_default);
 		long timestamp = 0;
 		List<Day> days = new ArrayList<>();
 
@@ -2366,7 +2366,7 @@ class weeWXAppCommon
 			String updated_at = meta.getString("updated_at");
 			JSONArray timeseries = jobj.getJSONArray("timeseries");
 
-			Date df = weeWXApp.getInstance().sdf1.parse(updated_at);
+			Date df = WeeWXApp.getInstance().sdf1.parse(updated_at);
 			if(df != null)
 			{
 				timestamp = df.getTime();
@@ -2468,14 +2468,14 @@ class weeWXAppCommon
 					day.text = Math.round(windSpeed * 2.236936) + "mph from the " + degtoname(windDir);
 			}
 
-			Date df = weeWXApp.getInstance().sdf1.parse(jobj2.getString("time"));
+			Date df = WeeWXApp.getInstance().sdf1.parse(jobj2.getString("time"));
 			if(df != null)
 				day.timestamp = df.getTime();
 			else
 				day.timestamp = System.currentTimeMillis();
 
 			day.icon = "icons/metno/" + icon + ".svg";
-			String content = weeWXApp.loadFileFromAssets(day.icon);
+			String content = WeeWXApp.loadFileFromAssets(day.icon);
 			if(!is_blank(content))
 				day.icon = "file:///android_asset/" + day.icon;
 			else
@@ -2550,7 +2550,7 @@ class weeWXAppCommon
 	@SuppressWarnings("SameParameterValue")
 	static Boolean passesRegularCheck(boolean forced, boolean has_json_combined)
 	{
-		if(!forced && !KeyValue.isPrefSet(weeWXApp.UPDATE_FREQUENCY))
+		if(!forced && !KeyValue.isPrefSet(WeeWXApp.UPDATE_FREQUENCY))
 		{
 			if(has_json_combined)
 			{
@@ -2563,12 +2563,12 @@ class weeWXAppCommon
 			return false;
 		}
 
-		int pos = (int)KeyValue.readVar(weeWXApp.UPDATE_FREQUENCY, weeWXApp.UpdateFrequency_default);
-		if(pos < 0 || pos >= weeWXApp.updateOptions.length)
-			pos = weeWXApp.UpdateFrequency_default;
+		int pos = (int)KeyValue.readVar(WeeWXApp.UPDATE_FREQUENCY, WeeWXApp.UpdateFrequency_default);
+		if(pos < 0 || pos >= WeeWXApp.updateOptions.length)
+			pos = WeeWXApp.UpdateFrequency_default;
 
 		LogMessage("passesRegularCheck() pos: " + pos + ", update interval set to: " +
-				   weeWXApp.updateOptions[pos] + ", forced set to: " + forced);
+				   WeeWXApp.updateOptions[pos] + ", forced set to: " + forced);
 
 		if(!forced && pos == 0)
 		{
@@ -2825,7 +2825,7 @@ class weeWXAppCommon
 
 	static void checkRainfallAlert()
 	{
-		boolean rainfall_alert = (boolean)KeyValue.readVar("rainfall_alert", weeWXApp.rainfall_alert_default);
+		boolean rainfall_alert = (boolean)KeyValue.readVar("rainfall_alert", WeeWXApp.rainfall_alert_default);
 
 		if(!rainfall_alert)
 		{
@@ -2859,12 +2859,12 @@ class weeWXAppCommon
 
 		float rainfall = (float)getJson("day_rain_sum", 0f);
 
-		float rainfall_limit = (int)KeyValue.readVar("RainfallLimit", weeWXApp.RainfallLimit_default) / 100f;
+		float rainfall_limit = (int)KeyValue.readVar("RainfallLimit", WeeWXApp.RainfallLimit_default) / 100f;
 
 		if(rainfall >= rainfall_limit)
 		{
 			KeyValue.putVar("LastRainfallAlert", System.currentTimeMillis());
-			weeWXApp.sendRainfallAlert(rainfall, rainfall_limit);
+			WeeWXApp.sendRainfallAlert(rainfall, rainfall_limit);
 			LogMessage("checkRainfallAlert() rainfall (" + rainfall + ") >= rainfall_limit (" + rainfall_limit + ") notification triggered");
 		} else {
 			if(!MainActivity.mqttEnabled)
@@ -2875,9 +2875,9 @@ class weeWXAppCommon
 	static void checkRainrateAlert()
 	{
 		boolean[] rainrate_alerts = {
-			(boolean)KeyValue.readVar(weeWXApp.RAINRATE_ALERT_WATCH, weeWXApp.rainrate_alert_watch_default),
-			(boolean)KeyValue.readVar(weeWXApp.RAINRATE_ALERT_WARNING, weeWXApp.rainrate_alert_warning_default),
-			(boolean)KeyValue.readVar(weeWXApp.RAINRATE_ALERT_SEVERE, weeWXApp.rainrate_alert_severe_default),
+			(boolean)KeyValue.readVar(WeeWXApp.RAINRATE_ALERT_WATCH, WeeWXApp.rainrate_alert_watch_default),
+			(boolean)KeyValue.readVar(WeeWXApp.RAINRATE_ALERT_WARNING, WeeWXApp.rainrate_alert_warning_default),
+			(boolean)KeyValue.readVar(WeeWXApp.RAINRATE_ALERT_SEVERE, WeeWXApp.rainrate_alert_severe_default),
 		};
 
 		if(!rainrate_alerts[0] && !rainrate_alerts[1] && !rainrate_alerts[2])
@@ -2890,8 +2890,8 @@ class weeWXAppCommon
 		if(!MainActivity.mqttEnabled)
 			LogMessage("checkRainrateAlert() At least one rainrate alert is true");
 
-		boolean metric = (boolean)KeyValue.readVar("metric", weeWXApp.metric_default) &&
-						 !(boolean)KeyValue.readVar("rainInInches", weeWXApp.rain_in_inches_default);
+		boolean metric = (boolean)KeyValue.readVar("metric", WeeWXApp.metric_default) &&
+						 !(boolean)KeyValue.readVar("rainInInches", WeeWXApp.rain_in_inches_default);
 
 		int[] totals = {
 			Math.round((float)getJson("rain_600", 0f) * 100),
@@ -2949,7 +2949,7 @@ class weeWXAppCommon
 			if(!metric)
 				tmpStr = String.format(Locale.ENGLISH, "%.2f", totals[period] / 100f) + "in";
 
-			weeWXApp.sendRainrateAlert(tmpStr, level, timelen, timelen_unit);
+			WeeWXApp.sendRainrateAlert(tmpStr, level, timelen, timelen_unit);
 			LogMessage("checkRainrateAlert() rainfall (" + totals[period] + unit +
 					   ") >= rainfall_limit (" + FLOOD_THRESHOLDS[period][level] + unit + ") " +
 					   "fell in " + timelen + " " + debugunit + " so notification triggered");
@@ -2980,7 +2980,7 @@ class weeWXAppCommon
 
 	static void checkTempAlerts()
 	{
-		boolean morning_temp_alert = (boolean)KeyValue.readVar("morning_temp_alert", weeWXApp.morning_temp_alert_default);
+		boolean morning_temp_alert = (boolean)KeyValue.readVar("morning_temp_alert", WeeWXApp.morning_temp_alert_default);
 
 		Calendar cal = Calendar.getInstance();
 		Calendar cal1 = Calendar.getInstance();
@@ -3007,7 +3007,7 @@ class weeWXAppCommon
 				return;
 			}
 
-			float morning_temp_limit = (int)KeyValue.readVar("MorningTemp", weeWXApp.MorningTemp_default) / 10f;
+			float morning_temp_limit = (int)KeyValue.readVar("MorningTemp", WeeWXApp.MorningTemp_default) / 10f;
 
 			float minObservedTemp = Math.min(temps.minObservedTemp, temps.CurrTemp);
 
@@ -3027,7 +3027,7 @@ class weeWXAppCommon
 			if(hasWarmedUp)
 			{
 				KeyValue.putVar("LastMorningTempAlert", System.currentTimeMillis());
-				weeWXApp.sendTemperatureAlert(temps.CurrTemp, morning_temp_limit, false);
+				WeeWXApp.sendTemperatureAlert(temps.CurrTemp, morning_temp_limit, false);
 				LogMessage("checkTempAlerts() CurrTemp (" + temps.CurrTemp + ") >= morning_temp_limit (" +
 						   morning_temp_limit + ") notification triggered");
 			} else {
@@ -3046,7 +3046,7 @@ class weeWXAppCommon
 			return;
 		}
 
-		boolean afternoon_temp_alert = (boolean)KeyValue.readVar("afternoon_temp_alert", weeWXApp.afternoon_temp_alert_default);
+		boolean afternoon_temp_alert = (boolean)KeyValue.readVar("afternoon_temp_alert", WeeWXApp.afternoon_temp_alert_default);
 
 		if(afternoon_temp_alert)
 		{
@@ -3064,13 +3064,13 @@ class weeWXAppCommon
 				return;
 			}
 
-			float afternoon_temp_limit = (int)KeyValue.readVar("AfternoonTemp", weeWXApp.AfternoonTemp_default) / 10f;
+			float afternoon_temp_limit = (int)KeyValue.readVar("AfternoonTemp", WeeWXApp.AfternoonTemp_default) / 10f;
 
 			float maxObservedTemp = Math.max(temps.CurrTemp, temps.maxObservedTemp);
 
 //			for(int i = 0; i < temps.outTemp_trend_ts.length; i++)
 //			{
-//				LogMessage("checkTempAlerts() outTemp_trend_ts[" + i + "]: " + weeWXApp.getInstance().sdf10.format(new Date(temps.outTemp_trend_ts[i])));
+//				LogMessage("checkTempAlerts() outTemp_trend_ts[" + i + "]: " + WeeWXApp.getInstance().sdf10.format(new Date(temps.outTemp_trend_ts[i])));
 //				LogMessage("checkTempAlerts() outTemp_trend_signal[" + i + "]: " + temps.outTemp_trend_signal[i]);
 //				LogMessage("checkTempAlerts() outTemp_trend_count[" + i + "]: " + temps.outTemp_trend_count[i]);
 //			}
@@ -3098,7 +3098,7 @@ class weeWXAppCommon
 			if(hasCooledOffEnough)
 			{
 				KeyValue.putVar("LastAfternoonTempAlert", System.currentTimeMillis());
-				weeWXApp.sendTemperatureAlert(temps.CurrTemp, afternoon_temp_limit, true);
+				WeeWXApp.sendTemperatureAlert(temps.CurrTemp, afternoon_temp_limit, true);
 				LogMessage("checkTempAlerts() CurrTemp (" + temps.CurrTemp + ") <= afternoon_temp_limit (" +
 						   afternoon_temp_limit + ") notification triggered");
 			} else {
@@ -3214,7 +3214,7 @@ class weeWXAppCommon
 
 	static String getHourMin(long when)
 	{
-		return weeWXApp.getInstance().sdf19.format(when);
+		return WeeWXApp.getInstance().sdf19.format(when);
 	}
 
 	static String getHourMinNext(long when)
@@ -3223,7 +3223,7 @@ class weeWXAppCommon
 		Calendar cal2 = Calendar.getInstance();
 		cal2.setTimeInMillis(when);
 
-		String str = weeWXApp.getInstance().sdf20.format(when);
+		String str = WeeWXApp.getInstance().sdf20.format(when);
 
 		if(cal1.get(Calendar.YEAR) != cal2.get(Calendar.YEAR) ||
 		   cal1.get(Calendar.DAY_OF_YEAR) != cal2.get(Calendar.DAY_OF_YEAR))
@@ -3248,7 +3248,7 @@ class weeWXAppCommon
 
 	static String widgetTime(long when)
 	{
-		return weeWXApp.getInstance().sdf19.format(new Date(when)) + " " + getTimeMonth(when) + " " + getShortMonth(when);
+		return WeeWXApp.getInstance().sdf19.format(new Date(when)) + " " + getTimeMonth(when) + " " + getShortMonth(when);
 	}
 
 	static String getShortMonth(long when)
@@ -3522,7 +3522,7 @@ class weeWXAppCommon
 				LogMessage("sent UPDATE_ERRORS intent...");
 			}
 
-			LogMessage("weeWXAppCommon.processUpdates() Not on wifi and not a forced refresh, skipping...", KeyValue.d);
+			LogMessage("WeeWXAppCommon.processUpdates() Not on wifi and not a forced refresh, skipping...", KeyValue.d);
 			if(weather)
 				updateNotificationMessage(STOP_WEATHER_INTENT);
 
@@ -3547,7 +3547,7 @@ class weeWXAppCommon
 				LogMessage("sent UPDATE_ERRORS intent...");
 			}
 
-			LogMessage("weeWXAppCommon.processUpdates() downloader is running already, skipping update...", KeyValue.d);
+			LogMessage("WeeWXAppCommon.processUpdates() downloader is running already, skipping update...", KeyValue.d);
 			if(weather)
 				updateNotificationMessage(STOP_WEATHER_INTENT);
 
@@ -3634,7 +3634,7 @@ class weeWXAppCommon
 
 			if(doForecast)
 			{
-				fctype = (String)KeyValue.readVar(weeWXApp.FCTYPE, "");
+				fctype = (String)KeyValue.readVar(WeeWXApp.FCTYPE, "");
 				if(is_blank(fctype))
 				{
 					LogMessage("UpdateCheck.java Unable to get forecast defaults for fctype: " + fctype, KeyValue.w);
@@ -3644,7 +3644,7 @@ class weeWXAppCommon
 
 			if(doForecast)
 			{
-				fcDef = weeWXApp.getFCdefs(fctype);
+				fcDef = WeeWXApp.getFCdefs(fctype);
 				if(fcDef == null)
 				{
 					LogMessage("UpdateCheck.java Unable to get forecast defaults for fctype: " + fctype, KeyValue.w);
@@ -3655,11 +3655,11 @@ class weeWXAppCommon
 
 			if(doForecast)
 			{
-				LogMessage("weeWXAppCommon.processUpdates() fctype: " + fctype);
+				LogMessage("WeeWXAppCommon.processUpdates() fctype: " + fctype);
 
 				if(fctype.equals("weatherzone3") || fctype.equals("metservice2"))
 				{
-					LogMessage("weeWXAppCommon.processUpdates() fctype == weatherzone3 || metservice2, skipping...", KeyValue.d);
+					LogMessage("WeeWXAppCommon.processUpdates() fctype == weatherzone3 || metservice2, skipping...", KeyValue.d);
 					noteError(R.string.forecast_type_is_invalid, new Object[]{fctype});
 					doForecast = false;
 				}
@@ -3670,7 +3670,7 @@ class weeWXAppCommon
 				String forecast_url = (String)KeyValue.readVar("FORECAST_URL", "");
 				if(is_blank(forecast_url))
 				{
-					LogMessage("weeWXAppCommon.processUpdates() FORECAST_URL == null || isBlank(), skipping...", KeyValue.e);
+					LogMessage("WeeWXAppCommon.processUpdates() FORECAST_URL == null || isBlank(), skipping...", KeyValue.e);
 					noteError(R.string.forecast_url_not_set, new Object[]{"inigo-settings.txt"});
 					doForecast = false;
 				}
@@ -3678,23 +3678,23 @@ class weeWXAppCommon
 
 			if(doForecast)
 			{
-				int pos = (int)KeyValue.readVar(weeWXApp.UPDATE_FREQUENCY, weeWXApp.UpdateFrequency_default);
+				int pos = (int)KeyValue.readVar(WeeWXApp.UPDATE_FREQUENCY, WeeWXApp.UpdateFrequency_default);
 				if(!forced && pos == 0)
 				{
 					if(!hasForecastGson)
-						LogMessage("weeWXAppCommon.processUpdates() hasForecastGson is false, skipping...", KeyValue.w);
+						LogMessage("WeeWXAppCommon.processUpdates() hasForecastGson is false, skipping...", KeyValue.w);
 					else
-						LogMessage("weeWXAppCommon.processUpdates() hasForecastGson is true, skipping...", KeyValue.w);
+						LogMessage("WeeWXAppCommon.processUpdates() hasForecastGson is true, skipping...", KeyValue.w);
 
 					doForecast = false;
 				}
 			}
 
 			long now = System.currentTimeMillis();
-			LogMessage("weeWXAppCommon.processUpdates() current_time: " + now);
+			LogMessage("WeeWXAppCommon.processUpdates() current_time: " + now);
 
 			long rssCheckTime = getRSSms();
-			LogMessage("weeWXAppCommon.processUpdates() rssCheckTime: " + rssCheckTime);
+			LogMessage("WeeWXAppCommon.processUpdates() rssCheckTime: " + rssCheckTime);
 
 			long lastAttemptedForecastDownload = getLAFDms();
 
@@ -3703,9 +3703,9 @@ class weeWXAppCommon
 				if(rssCheckTime == 0)
 				{
 					if(!hasForecastGson)
-						LogMessage("weeWXAppCommon.processUpdates() hasForecastGson is false, skipping...", KeyValue.e);
+						LogMessage("WeeWXAppCommon.processUpdates() hasForecastGson is false, skipping...", KeyValue.e);
 					else
-						LogMessage("weeWXAppCommon.processUpdates() hasForecastGson is true, skipping...", KeyValue.e);
+						LogMessage("WeeWXAppCommon.processUpdates() hasForecastGson is true, skipping...", KeyValue.e);
 
 					doForecast = false;
 				}
@@ -3716,7 +3716,7 @@ class weeWXAppCommon
 				long dur = (now - lastAttemptedForecastDownload) / 1000;
 				if(!forced && lastAttemptedForecastDownload > 0 && dur < fcDef.delay_before_downloading)
 				{
-					LogMessage("weeWXAppCommon.processUpdates() !forced and last attempt was less than " + fcDef.delay_before_downloading +
+					LogMessage("WeeWXAppCommon.processUpdates() !forced and last attempt was less than " + fcDef.delay_before_downloading +
 							   "s ago (" + dur + "s ago)");
 					doForecast = false;
 				}
@@ -3727,7 +3727,7 @@ class weeWXAppCommon
 				long dur = (now - rssCheckTime) / 1000;
 				if(!forced && dur < fcDef.default_forecast_refresh)
 				{
-					LogMessage("weeWXAppCommon.processUpdates() !forced and cache isn't more than " +
+					LogMessage("WeeWXAppCommon.processUpdates() !forced and cache isn't more than " +
 							   fcDef.default_forecast_refresh + "s old (" + dur + "s ago), skipping...");
 					doForecast = false;
 				}
@@ -3748,7 +3748,7 @@ class weeWXAppCommon
 
 			if(radar)
 			{
-				String radtype = (String)KeyValue.readVar("radtype", weeWXApp.radtype_default);
+				String radtype = (String)KeyValue.readVar("radtype", WeeWXApp.radtype_default);
 				if(radtype != null && radtype.equals("image"))
 				{
 					String radarURL = (String)KeyValue.readVar("RADAR_URL", "");
@@ -3783,7 +3783,7 @@ class weeWXAppCommon
 					LogMessage("sent UPDATE_ERRORS intent...");
 				}
 
-				LogMessage("weeWXAppCommon.processUpdates() No jobs to run...", KeyValue.w);
+				LogMessage("WeeWXAppCommon.processUpdates() No jobs to run...", KeyValue.w);
 				if(weather)
 					updateNotificationMessage(STOP_WEATHER_INTENT);
 
@@ -3813,7 +3813,7 @@ class weeWXAppCommon
 				List<ParallelDownloader.DownloadResult> failed = results.stream().filter(r -> !r.success()).toList();
 				for(ParallelDownloader.DownloadResult r : failed)
 				{
-					LogMessage("weeWXAppcommon.processUpdates(" + r.id() + ") Error! " + r.error(), KeyValue.e);
+					LogMessage("WeeWXAppcommon.processUpdates(" + r.id() + ") Error! " + r.error(), KeyValue.e);
 					for(int i = 0; i < PossibleErrors.size(); i++)
 					{
 						if(idtype.get(i) == r.id())
@@ -3890,7 +3890,7 @@ class weeWXAppCommon
 
 					if(r.id() == 5 && r.bytes() != null)
 					{
-						File file = getFile(getDataDir(), weeWXApp.webcamFilename);
+						File file = getFile(getDataDir(), WeeWXApp.webcamFilename);
 						try
 						{
 							// BitmapFactory detects JPEG, PNG and supported WebP data by content,
@@ -3938,7 +3938,7 @@ class weeWXAppCommon
 
 			if(errorCount() > 0)
 			{
-				LogMessage("weeWXAppcommon.processUpdates() Line 3621");
+				LogMessage("WeeWXAppcommon.processUpdates() Line 3621");
 
 				LogMessage("sending UPDATE_ERRORS intent...");
 				updateNotificationMessage(UPDATE_ERRORS);
@@ -3989,7 +3989,7 @@ class weeWXAppCommon
 					updateNotificationMessage(STOP_WEBCAM_INTENT);
 			}
 		} catch(Exception e) {
-			LogMessage("weeWXAppcommon.processUpdates() Error! e: " + e.getMessage(), KeyValue.e);
+			LogMessage("WeeWXAppcommon.processUpdates() Error! e: " + e.getMessage(), KeyValue.e);
 			doStackOutput(e);
 		}
 	}
@@ -4022,10 +4022,10 @@ class weeWXAppCommon
 		}
 
 		int version = jsonObject.optInt("version", 0);
-		if(id == 0 && version < weeWXApp.minimum_inigo_version)
+		if(id == 0 && version < WeeWXApp.minimum_inigo_version)
 		{
 			LogMessage("processWeather() sendAlert() triggered because version (" + version +
-					   ") < weeWXApp.minimum_inigo_version (" + weeWXApp.minimum_inigo_version + ")");
+					   ") < WeeWXApp.minimum_inigo_version (" + WeeWXApp.minimum_inigo_version + ")");
 			updateNotificationMessage(INIGO_INTENT);
 			return false;
 		}
@@ -4063,8 +4063,8 @@ class weeWXAppCommon
 		KeyValue.putVar(json_keys[id] + "_str", jsonObject.toString());
 		KeyValue.putVar("LastWeatherError", null);
 
-		LogMessage("processWeather() Last Server Update Time: " + weeWXApp.getInstance().sdf14.format(jsonObject.optInt("report_time") * 1_000L));
-		LogMessage("processWeather() LastDownloadTime: " + weeWXApp.getInstance().sdf14.format(now));
+		LogMessage("processWeather() Last Server Update Time: " + WeeWXApp.getInstance().sdf14.format(jsonObject.optInt("report_time") * 1_000L));
+		LogMessage("processWeather() LastDownloadTime: " + WeeWXApp.getInstance().sdf14.format(now));
 
 		if(error_count == 0)
 			return true;
@@ -4075,10 +4075,10 @@ class weeWXAppCommon
 	//	https://stackoverflow.com/questions/3841317/how-do-i-see-if-wi-fi-is-connected-on-android
 	static boolean notCheckConnection()
 	{
-		if(!(boolean)KeyValue.readVar("onlyWIFI", weeWXApp.onlyWIFI_default))
+		if(!(boolean)KeyValue.readVar("onlyWIFI", WeeWXApp.onlyWIFI_default))
 			return false;
 
-		ConnectivityManager connMgr = (ConnectivityManager)weeWXApp.getInstance().getSystemService(Context.CONNECTIVITY_SERVICE);
+		ConnectivityManager connMgr = (ConnectivityManager)WeeWXApp.getInstance().getSystemService(Context.CONNECTIVITY_SERVICE);
 		if(connMgr == null)
 			return true;
 
@@ -4093,7 +4093,7 @@ class weeWXAppCommon
 	// https://stackoverflow.com/questions/8710515/reading-an-image-file-into-bitmap-from-sdcard-why-am-i-getting-a-nullpointerexc
 	private static Bitmap combineImage(Bitmap bmp1, String fnum, String snum)
 	{
-		Context context = weeWXApp.getInstance();
+		Context context = WeeWXApp.getInstance();
 		if(context == null)
 			return null;
 
@@ -4169,7 +4169,7 @@ class weeWXAppCommon
 
 	private static Bitmap combineImages(Bitmap bmp1, Bitmap bmp2, String fimg, String simg, String fnum, String snum)
 	{
-		Context context = weeWXApp.getInstance();
+		Context context = WeeWXApp.getInstance();
 
 		try
 		{
@@ -4294,7 +4294,7 @@ class weeWXAppCommon
 		canvas.drawBitmap(bmp1, 0f, 0f, null);
 		canvas.drawBitmap(bmp2, 0f, bmp1.getHeight() - bmp2.getHeight(), paint);
 		paint.setAntiAlias(true);
-		paint.setColor(ContextCompat.getColor(weeWXApp.getInstance(), R.color.LightPrussianBlue));
+		paint.setColor(ContextCompat.getColor(WeeWXApp.getInstance(), R.color.LightPrussianBlue));
 		paint.setTextSize(13);
 		paint.setTypeface(tf_bold);
 		Rect textBounds = new Rect();
@@ -4312,7 +4312,7 @@ class weeWXAppCommon
 	{
 		try
 		{
-			InputStream is = weeWXApp.openRawResource(R.raw.nws);
+			InputStream is = WeeWXApp.openRawResource(R.raw.nws);
 			int size = is.available();
 			byte[] buffer = new byte[size];
 			if(is.read(buffer) > 0)
@@ -4391,8 +4391,8 @@ class weeWXAppCommon
 		for(Map.Entry<String, String> arg: args.entrySet())
 			fb.add(arg.getKey(), arg.getValue());
 
-		fb.add("appName", weeWXApp.APPLICATION_ID);
-		fb.add("appVersion", weeWXApp.VERSION_NAME);
+		fb.add("appName", WeeWXApp.APPLICATION_ID);
+		fb.add("appVersion", WeeWXApp.VERSION_NAME);
 
 		RequestBody requestBody = fb.build();
 
@@ -4458,7 +4458,7 @@ class weeWXAppCommon
 
 	static void uploadMissingIcon(Map<String,String> args)
 	{
-		HttpUrl url = HttpUrl.parse(weeWXApp.missingIconURL);
+		HttpUrl url = HttpUrl.parse(WeeWXApp.missingIconURL);
 		if(url == null)
 			return;
 
@@ -4466,8 +4466,8 @@ class weeWXAppCommon
 
 		LogMessage("uploadMissingIcon() Adding appName and appVersion to FormBody");
 
-		fb.add("appName", weeWXApp.APPLICATION_ID);
-		fb.add("appVersion", weeWXApp.VERSION_NAME);
+		fb.add("appName", WeeWXApp.APPLICATION_ID);
+		fb.add("appVersion", WeeWXApp.VERSION_NAME);
 
 		for(Map.Entry<String, String> arg : args.entrySet())
 		{
@@ -4569,7 +4569,7 @@ class weeWXAppCommon
 		{
 			LogMessage("Let's tell Android about: " + f.getAbsolutePath());
 
-			MediaScannerConnection.scanFile(weeWXApp.getInstance(),
+			MediaScannerConnection.scanFile(WeeWXApp.getInstance(),
 					new String[]{f.getAbsolutePath()}, null, null);
 		} else
 			LogMessage(f.getAbsolutePath() + " doesn't exist, skipping...");
@@ -4653,19 +4653,19 @@ class weeWXAppCommon
 		if(!hasForecastGson)
 			return null;
 
-		LogMessage("weeWXAppCommon.String2Gson() forecastGson.length(): " + forecastGson.length());
+		LogMessage("WeeWXAppCommon.String2Gson() forecastGson.length(): " + forecastGson.length());
 
 		GsonHelper gh = new GsonHelper(forecastGson);
 		if(gh.days == null || gh.days.isEmpty())
 		{
-			LogMessage("weeWXAppCommon.String2Gson() #2 Failed to process WZ forecast data...");
+			LogMessage("WeeWXAppCommon.String2Gson() #2 Failed to process WZ forecast data...");
 			return null;
 		}
 
 		if(!gh.isDaily)
 			gh.days = filterByInterval(gh.days, modhour);
 
-		LogMessage("weeWXAppCommon.String2Gson() displayDays.size(): " + gh.days.size());
+		LogMessage("WeeWXAppCommon.String2Gson() displayDays.size(): " + gh.days.size());
 
 		return gh;
 	}
@@ -4682,12 +4682,12 @@ class weeWXAppCommon
 		String content = generateForecast(gh.days, gh.timestamp, showHeader, gh.isDaily || modhour == 24);
 		if(is_blank(content))
 		{
-			LogMessage("weeWXAppCommon.getGsonContent() #3 Failed to process forecast data...");
+			LogMessage("WeeWXAppCommon.getGsonContent() #3 Failed to process forecast data...");
 			return new String[]{"error", getAndroidString(R.string.failed_to_process_forecast_data)};
 		}
 
-		LogMessage("weeWXAppCommon.getGsonContent() content.length(): " + content.length());
-//		LogMessage("weeWXAppCommon.getGsonContent() content: " + content);
+		LogMessage("WeeWXAppCommon.getGsonContent() content.length(): " + content.length());
+//		LogMessage("WeeWXAppCommon.getGsonContent() content: " + content);
 		return new String[]{null, content, gh.desc != null ? gh.desc : ""};
 	}
 
@@ -4986,12 +4986,12 @@ class weeWXAppCommon
 	static File getExtFile(String filename) throws IOException
 	{
 		File dir = new File(Environment.getExternalStorageDirectory(), "Download");
-		dir = new File(dir, weeWXApp.WEEWX_DIR);
+		dir = new File(dir, WeeWXApp.WEEWX_DIR);
 
 		if(dir.exists() && !dir.isDirectory())
 		{
-			LogMessage("Something called '" + weeWXApp.WEEWX_DIR + "' already exist, but it isn't a directory...", KeyValue.w);
-			throw new IOException("There is already something named " + weeWXApp.WEEWX_DIR + " but it's not a directory");
+			LogMessage("Something called '" + WeeWXApp.WEEWX_DIR + "' already exist, but it isn't a directory...", KeyValue.w);
+			throw new IOException("There is already something named " + WeeWXApp.WEEWX_DIR + " but it's not a directory");
 		}
 
 		if(!dir.exists())
@@ -5010,8 +5010,8 @@ class weeWXAppCommon
 
 	static File getDataDir()
 	{
-		LogMessage("filesDir: " + weeWXApp.getInstance().getFilesDir().getAbsolutePath());
-		return weeWXApp.getInstance().getFilesDir();
+		LogMessage("filesDir: " + WeeWXApp.getInstance().getFilesDir().getAbsolutePath());
+		return WeeWXApp.getInstance().getFilesDir();
 	}
 
 	static File getDir()
@@ -5044,7 +5044,7 @@ class weeWXAppCommon
 	// Webcam and radar images can be far larger than the screen, so decode them downsampled
 	static Bitmap getImage(String filename)
 	{
-		DisplayMetrics dm = weeWXApp.getInstance().getResources().getDisplayMetrics();
+		DisplayMetrics dm = WeeWXApp.getInstance().getResources().getDisplayMetrics();
 		// Use the longest side for both, as these images may be shown rotated
 		int maxSide = Math.max(dm.widthPixels, dm.heightPixels);
 		return getImage(new File(getDataDir(), filename), maxSide, maxSide);
@@ -5095,7 +5095,7 @@ class weeWXAppCommon
 
 	static Activity getActivity()
 	{
-		Context context = weeWXApp.getInstance();
+		Context context = WeeWXApp.getInstance();
 
 		while(context instanceof ContextWrapper)
 		{
@@ -5115,7 +5115,7 @@ class weeWXAppCommon
 
 		String tmpStr = "<img class='wi'";
 
-		if((int)KeyValue.readVar("theme", weeWXApp.theme_default) == R.style.AppTheme_weeWXApp_Dark_Common)
+		if((int)KeyValue.readVar("theme", WeeWXApp.theme_default) == R.style.AppTheme_WeeWXApp_Dark_Common)
 			tmpStr += " style='filter:invert(1);'";
 
 		tmpStr += " src='";
@@ -5286,13 +5286,13 @@ class weeWXAppCommon
 
 		String tmpStr = "<img class='wi'";
 
-		int theme = (int)KeyValue.readVar("theme", weeWXApp.theme_default);
+		int theme = (int)KeyValue.readVar("theme", WeeWXApp.theme_default);
 
-		if((cssname.equals("wi-wind-deg") && Angle != null) || theme == R.style.AppTheme_weeWXApp_Dark_Common)
+		if((cssname.equals("wi-wind-deg") && Angle != null) || theme == R.style.AppTheme_WeeWXApp_Dark_Common)
 		{
 			tmpStr += " style='";
 
-			if(theme == R.style.AppTheme_weeWXApp_Dark_Common)
+			if(theme == R.style.AppTheme_WeeWXApp_Dark_Common)
 				tmpStr += "filter:invert(1);";
 
 			if(cssname.equals("wi-wind-deg") && Angle instanceof Integer angle)
@@ -5315,7 +5315,7 @@ class weeWXAppCommon
 
 	static int[] getIntervalTime()
 	{
-		int pos = (int)KeyValue.readVar("UpdateInterval", weeWXApp.UpdateInterval_default);
+		int pos = (int)KeyValue.readVar("UpdateInterval", WeeWXApp.UpdateInterval_default);
 		return getIntervalTime(pos);
 	}
 
@@ -5346,13 +5346,13 @@ class weeWXAppCommon
 	{
 		long now = System.currentTimeMillis();
 
-		String string_time = weeWXApp.getInstance().sdf8.format(now);
+		String string_time = WeeWXApp.getInstance().sdf8.format(now);
 		LogMessage("getNPWSLL() now: " + string_time);
 
 		long period = 300_000L;
 		long wait = 45_000L;
 
-		int pos = (int)KeyValue.readVar(weeWXApp.UPDATE_FREQUENCY, weeWXApp.UpdateFrequency_default);
+		int pos = (int)KeyValue.readVar(WeeWXApp.UPDATE_FREQUENCY, WeeWXApp.UpdateFrequency_default);
 		if(pos > 0)
 		{
 			switch(pos)
@@ -5368,28 +5368,28 @@ class weeWXAppCommon
 
 		long report_time = getLDTms() + wait;
 
-		string_time = weeWXApp.getInstance().sdf8.format(report_time);
+		string_time = WeeWXApp.getInstance().sdf8.format(report_time);
 		LogMessage("getNPWSLL() report_time: " + string_time);
 
 		long start = Math.round((double)now / (double)period) * period;
 
-		string_time = weeWXApp.getInstance().sdf8.format(start);
+		string_time = WeeWXApp.getInstance().sdf8.format(start);
 		LogMessage("getNPWSLL() start: " + string_time);
 
 		start += wait;
 
-		string_time = weeWXApp.getInstance().sdf8.format(start);
+		string_time = WeeWXApp.getInstance().sdf8.format(start);
 		LogMessage("getNPWSLL() start+wait: " + string_time);
 
 		while(start < now + 3_000L)
 			start += period;
 
-		string_time = weeWXApp.getInstance().sdf8.format(start);
+		string_time = WeeWXApp.getInstance().sdf8.format(start);
 		LogMessage("getNPWSLL() next start: " + string_time);
 
 		long lastStart = start - period;
 
-		string_time = weeWXApp.getInstance().sdf8.format(lastStart);
+		string_time = WeeWXApp.getInstance().sdf8.format(lastStart);
 		LogMessage("getNPWSLL() lastStart: " + string_time);
 
 		return new NPWSLL(now, period, wait, start, lastStart, report_time);

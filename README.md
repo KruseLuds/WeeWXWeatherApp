@@ -1,4 +1,4 @@
-## weeWXWeatherApp -- A weather app for weeWX
+## WeeWXWeatherApp -- A weather app for WeeWX
 
 Unlike general weather apps, which get data from third party websites, this app gets data from weather stations connected to a server hosting output from [WeeWX](https://weewx.com).
 
@@ -7,20 +7,20 @@ This is a community maintained project that I do in my free time. While all effo
 ## Contents
 
  - [Screen Shots](#screen-shots)
- - [Installation](https://github.com/evilbunny2008/weeWXWeatherApp/wiki)
-   - [Concise Instructions](https://github.com/evilbunny2008/weeWXWeatherApp/wiki#concise-instructions)
-   - [Expanded Installation Instructions](https://github.com/evilbunny2008/weeWXWeatherApp/wiki#expanded-installation-instructions)
+ - [Installation](https://github.com/evilbunny2008/WeeWXWeatherApp/wiki)
+   - [Concise Instructions](https://github.com/evilbunny2008/WeeWXWeatherApp/wiki#concise-instructions)
+   - [Expanded Installation Instructions](https://github.com/evilbunny2008/WeeWXWeatherApp/wiki#expanded-installation-instructions)
  - [License](#license)
  - [Credits](#credits)
 
 ## Screen Shots
 
-<img width="300px" src="https://github.com/evilbunny2008/weeWXWeatherApp/raw/master/screenshots/Screenshot_20181021-181146.jpg"> <img width="300px" src="https://github.com/evilbunny2008/weeWXWeatherApp/blob/master/screenshots/Screenshot_20181021-181157.jpg"> <img width="300px" src="https://github.com/evilbunny2008/weeWXWeatherApp/blob/master/screenshots/Screenshot_20181021-181214.jpg">
-<img width="300px" src="https://github.com/evilbunny2008/weeWXWeatherApp/blob/master/screenshots/Screenshot_20181021-181247.jpg"><br>
+<img width="300px" src="https://github.com/evilbunny2008/WeeWXWeatherApp/raw/master/screenshots/Screenshot_20181021-181146.jpg"> <img width="300px" src="https://github.com/evilbunny2008/WeeWXWeatherApp/blob/master/screenshots/Screenshot_20181021-181157.jpg"> <img width="300px" src="https://github.com/evilbunny2008/WeeWXWeatherApp/blob/master/screenshots/Screenshot_20181021-181214.jpg">
+<img width="300px" src="https://github.com/evilbunny2008/WeeWXWeatherApp/blob/master/screenshots/Screenshot_20181021-181247.jpg"><br>
 
 ## Installation
 
-Installation instructions have moved to [the wiki](https://github.com/evilbunny2008/weeWXWeatherApp/wiki/home)
+Installation instructions have moved to [the wiki](https://github.com/evilbunny2008/WeeWXWeatherApp/wiki/home)
 
 ## License
 
@@ -28,7 +28,7 @@ Source code is made available under the GPLv3 licence, in the hope the code migh
 
 ## Credits
 
-Big thanks to the [weeWX project](https://weeWX.com), as this app wouldn't be possible otherwise.
+Big thanks to the [WeeWX project](https://WeeWX.com), as this app wouldn't be possible otherwise.
 
 Weather Icons from [FlatIcon](https://www.flaticon.com) and is licensed under [CC 3.0 BY](https://creativecommons.org/licenses/by/3.0/)
 

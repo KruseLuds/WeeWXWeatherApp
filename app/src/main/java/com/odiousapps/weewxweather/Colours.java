@@ -4,11 +4,11 @@ import android.content.Context;
 
 import androidx.core.content.ContextCompat;
 
-import static com.odiousapps.weewxweather.weeWXApp.bgColour_default;
-import static com.odiousapps.weewxweather.weeWXApp.fgColour_default;
-import static com.odiousapps.weewxweather.weeWXApp.getInstance;
-import static com.odiousapps.weewxweather.weeWXApp.widgetBG_default;
-import static com.odiousapps.weewxweather.weeWXApp.widgetFG_default;
+import static com.odiousapps.weewxweather.WeeWXApp.bgColour_default;
+import static com.odiousapps.weewxweather.WeeWXApp.fgColour_default;
+import static com.odiousapps.weewxweather.WeeWXApp.getInstance;
+import static com.odiousapps.weewxweather.WeeWXApp.widgetBG_default;
+import static com.odiousapps.weewxweather.WeeWXApp.widgetFG_default;
 
 @SuppressWarnings("unused")
 class Colours

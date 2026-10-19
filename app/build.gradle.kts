@@ -122,7 +122,7 @@ abstract class CopyApkTask : DefaultTask() {
 
 androidComponents {
 	onVariants(selector().withBuildType("release")) { variant ->
-		val appName = "weeWXApp"
+		val appName = "WeeWXApp"
 		val versionName = variant.outputs.first().versionName
 		val variantNameCapitalized = variant.name.replaceFirstChar { it.uppercase() }
 

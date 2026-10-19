@@ -14,9 +14,9 @@
 <uses-permission android:name="android.permission.WAKE_LOCK" />
 
 <application
-	android:name=".weeWXApp"
+	android:name=".WeeWXApp"
 	android:enableOnBackInvokedCallback="true"
-	android:theme="@style/AppTheme.weeWXApp.Common"
+	android:theme="@style/AppTheme.WeeWXApp.Common"
 	android:resizeableActivity="true"
 	android:icon="@mipmap/ic_launcher"
     android:roundIcon="@mipmap/ic_launcher"
@@ -46,7 +46,7 @@
 
 	<receiver
 		android:name="WidgetProvider"
-		android:label="weeWX (2x1)"
+		android:label="WeeWX (2x1)"
 		android:exported="true">
 		<intent-filter>
 			<action android:name="android.appwidget.action.APPWIDGET_UPDATE" />

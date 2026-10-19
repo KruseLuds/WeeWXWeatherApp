@@ -3,7 +3,7 @@ package com.odiousapps.weewxweather;
 import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.Observer;
 
-public class weeWXNotificationManager
+public class WeeWXNotificationManager
 {
 	private final static EventBroadcaster<String> broadcaster = new EventBroadcaster<>();
 

@@ -10,7 +10,7 @@
 	tools:ignore="VisualLintBounds">
 
 	<com.google.android.material.appbar.AppBarLayout
-		style="@style/Widget.weeWXApp.AppBarLayout"
+		style="@style/Widget.WeeWXApp.AppBarLayout"
 		android:id="@+id/appbar"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content">
@@ -31,7 +31,7 @@
 				android:visibility="gone"/>
 
 			<com.google.android.material.tabs.TabLayout
-				style="@style/Widget.weeWXApp.TabBarLayout"
+				style="@style/Widget.WeeWXApp.TabBarLayout"
 				android:id="@+id/tabs"
 				android:layout_width="0dp"
 				android:layout_height="wrap_content"

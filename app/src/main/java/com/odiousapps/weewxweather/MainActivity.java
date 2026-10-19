@@ -96,53 +96,53 @@ import static com.github.evilbunny2008.colourpicker.ColourPickerCommon.parseHexT
 import static com.github.evilbunny2008.colourpicker.ColourPickerCommon.to_ARGB_hex;
 
 import static com.odiousapps.weewxweather.WidgetProvider.updateAppWidget;
-import static com.odiousapps.weewxweather.weeWXApp.CUSTOM_URL;
-import static com.odiousapps.weewxweather.weeWXApp.ENABLE_MQTT;
-import static com.odiousapps.weewxweather.weeWXApp.MQTT_TOPIC;
-import static com.odiousapps.weewxweather.weeWXApp.MQTT_URL;
-import static com.odiousapps.weewxweather.weeWXApp.RAINRATE_ALERT_SEVERE;
-import static com.odiousapps.weewxweather.weeWXApp.RAINRATE_ALERT_WARNING;
-import static com.odiousapps.weewxweather.weeWXApp.RAINRATE_ALERT_WATCH;
-import static com.odiousapps.weewxweather.weeWXApp.SAVE_APP_DEBUG_LOGS;
-import static com.odiousapps.weewxweather.weeWXApp.SETUP_FINISHED;
-import static com.odiousapps.weewxweather.weeWXApp.custom_url;
-import static com.odiousapps.weewxweather.weeWXApp.enable_mqtt_default;
-import static com.odiousapps.weewxweather.weeWXApp.getAndroidString;
-import static com.odiousapps.weewxweather.weeWXApp.getEnglishAndroidString;
-import static com.odiousapps.weewxweather.weeWXApp.getEnglishPlural;
-import static com.odiousapps.weewxweather.weeWXApp.getPlural;
-import static com.odiousapps.weewxweather.weeWXAppCommon.C2F;
-import static com.odiousapps.weewxweather.weeWXAppCommon.F2C;
-import static com.odiousapps.weewxweather.weeWXAppCommon.FAILED_TO_MERGE;
-import static com.odiousapps.weewxweather.weeWXAppCommon.INIGO_INTENT;
-import static com.odiousapps.weewxweather.weeWXAppCommon.PROCESSING_ERRORS;
-import static com.odiousapps.weewxweather.weeWXAppCommon.UPDATE_ERRORS;
-import static com.odiousapps.weewxweather.weeWXAppCommon.WIDGET_THEME_MODE;
-import static com.odiousapps.weewxweather.weeWXAppCommon.checkRainfallAlert;
-import static com.odiousapps.weewxweather.weeWXAppCommon.checkRainrateAlert;
-import static com.odiousapps.weewxweather.weeWXAppCommon.checkTempAlerts;
-import static com.odiousapps.weewxweather.weeWXAppCommon.doStackOutput;
-import static com.odiousapps.weewxweather.weeWXAppCommon.LogMessage;
-import static com.odiousapps.weewxweather.weeWXAppCommon.getDateTimeStr;
-import static com.odiousapps.weewxweather.weeWXAppCommon.getFileNameFromURL;
-import static com.odiousapps.weewxweather.weeWXAppCommon.headingTime;
-import static com.odiousapps.weewxweather.weeWXAppCommon.in2mm;
-import static com.odiousapps.weewxweather.weeWXAppCommon.is_blank;
-import static com.odiousapps.weewxweather.weeWXAppCommon.getFile;
-import static com.odiousapps.weewxweather.weeWXAppCommon.getIntervalTime;
-import static com.odiousapps.weewxweather.weeWXAppCommon.getJSONerrors;
-import static com.odiousapps.weewxweather.weeWXAppCommon.is_valid_url;
-import static com.odiousapps.weewxweather.weeWXAppCommon.json_keys;
-import static com.odiousapps.weewxweather.weeWXAppCommon.json_labels;
-import static com.odiousapps.weewxweather.weeWXAppCommon.mm2in;
-import static com.odiousapps.weewxweather.weeWXAppCommon.notMergeJsonObjects;
-import static com.odiousapps.weewxweather.weeWXAppCommon.processForecast;
-import static com.odiousapps.weewxweather.weeWXAppCommon.processWeather;
-import static com.odiousapps.weewxweather.weeWXAppCommon.saveJSONerrors;
-import static com.odiousapps.weewxweather.weeWXAppCommon.str2Float;
-import static com.odiousapps.weewxweather.weeWXAppCommon.Result3;
-import static com.odiousapps.weewxweather.weeWXNotificationManager.observeNotifications;
-import static com.odiousapps.weewxweather.weeWXNotificationManager.removeNotificationObserver;
+import static com.odiousapps.weewxweather.WeeWXApp.CUSTOM_URL;
+import static com.odiousapps.weewxweather.WeeWXApp.ENABLE_MQTT;
+import static com.odiousapps.weewxweather.WeeWXApp.MQTT_TOPIC;
+import static com.odiousapps.weewxweather.WeeWXApp.MQTT_URL;
+import static com.odiousapps.weewxweather.WeeWXApp.RAINRATE_ALERT_SEVERE;
+import static com.odiousapps.weewxweather.WeeWXApp.RAINRATE_ALERT_WARNING;
+import static com.odiousapps.weewxweather.WeeWXApp.RAINRATE_ALERT_WATCH;
+import static com.odiousapps.weewxweather.WeeWXApp.SAVE_APP_DEBUG_LOGS;
+import static com.odiousapps.weewxweather.WeeWXApp.SETUP_FINISHED;
+import static com.odiousapps.weewxweather.WeeWXApp.custom_url;
+import static com.odiousapps.weewxweather.WeeWXApp.enable_mqtt_default;
+import static com.odiousapps.weewxweather.WeeWXApp.getAndroidString;
+import static com.odiousapps.weewxweather.WeeWXApp.getEnglishAndroidString;
+import static com.odiousapps.weewxweather.WeeWXApp.getEnglishPlural;
+import static com.odiousapps.weewxweather.WeeWXApp.getPlural;
+import static com.odiousapps.weewxweather.WeeWXAppCommon.C2F;
+import static com.odiousapps.weewxweather.WeeWXAppCommon.F2C;
+import static com.odiousapps.weewxweather.WeeWXAppCommon.FAILED_TO_MERGE;
+import static com.odiousapps.weewxweather.WeeWXAppCommon.INIGO_INTENT;
+import static com.odiousapps.weewxweather.WeeWXAppCommon.PROCESSING_ERRORS;
+import static com.odiousapps.weewxweather.WeeWXAppCommon.UPDATE_ERRORS;
+import static com.odiousapps.weewxweather.WeeWXAppCommon.WIDGET_THEME_MODE;
+import static com.odiousapps.weewxweather.WeeWXAppCommon.checkRainfallAlert;
+import static com.odiousapps.weewxweather.WeeWXAppCommon.checkRainrateAlert;
+import static com.odiousapps.weewxweather.WeeWXAppCommon.checkTempAlerts;
+import static com.odiousapps.weewxweather.WeeWXAppCommon.doStackOutput;
+import static com.odiousapps.weewxweather.WeeWXAppCommon.LogMessage;
+import static com.odiousapps.weewxweather.WeeWXAppCommon.getDateTimeStr;
+import static com.odiousapps.weewxweather.WeeWXAppCommon.getFileNameFromURL;
+import static com.odiousapps.weewxweather.WeeWXAppCommon.headingTime;
+import static com.odiousapps.weewxweather.WeeWXAppCommon.in2mm;
+import static com.odiousapps.weewxweather.WeeWXAppCommon.is_blank;
+import static com.odiousapps.weewxweather.WeeWXAppCommon.getFile;
+import static com.odiousapps.weewxweather.WeeWXAppCommon.getIntervalTime;
+import static com.odiousapps.weewxweather.WeeWXAppCommon.getJSONerrors;
+import static com.odiousapps.weewxweather.WeeWXAppCommon.is_valid_url;
+import static com.odiousapps.weewxweather.WeeWXAppCommon.json_keys;
+import static com.odiousapps.weewxweather.WeeWXAppCommon.json_labels;
+import static com.odiousapps.weewxweather.WeeWXAppCommon.mm2in;
+import static com.odiousapps.weewxweather.WeeWXAppCommon.notMergeJsonObjects;
+import static com.odiousapps.weewxweather.WeeWXAppCommon.processForecast;
+import static com.odiousapps.weewxweather.WeeWXAppCommon.processWeather;
+import static com.odiousapps.weewxweather.WeeWXAppCommon.saveJSONerrors;
+import static com.odiousapps.weewxweather.WeeWXAppCommon.str2Float;
+import static com.odiousapps.weewxweather.WeeWXAppCommon.Result3;
+import static com.odiousapps.weewxweather.WeeWXNotificationManager.observeNotifications;
+import static com.odiousapps.weewxweather.WeeWXNotificationManager.removeNotificationObserver;
 
 @SuppressWarnings({"SequencedCollectionMethodCanBeUsed", "DataFlowIssue", "SourceLockedOrientationActivity", "Convert2MethodRef", "unused"})
 public class MainActivity extends FragmentActivity
@@ -250,25 +250,25 @@ public class MainActivity extends FragmentActivity
 			return;
 		}
 
-		theme = (int)KeyValue.readVar("theme", weeWXApp.theme_default);
+		theme = (int)KeyValue.readVar("theme", WeeWXApp.theme_default);
 
 		setTheme(theme);
 
-		if(weeWXApp.theme_default == R.style.AppTheme_weeWXApp_Light_Common)
-			LogMessage("MainActivity.onCreate() weeWXApp.theme_default: R.style.AppTheme_weeWXApp_Light_Common");
-		else if(weeWXApp.theme_default == R.style.AppTheme_weeWXApp_Dark_Common)
-			LogMessage("MainActivity.onCreate() weeWXApp.theme_default: R.style.AppTheme_weeWXApp_Dark_Common");
-		else if(weeWXApp.theme_default == R.style.AppTheme_weeWXApp_Common)
-			LogMessage("MainActivity.onCreate() weeWXApp.theme_default: R.style.AppTheme_weeWXApp_Common");
+		if(WeeWXApp.theme_default == R.style.AppTheme_WeeWXApp_Light_Common)
+			LogMessage("MainActivity.onCreate() WeeWXApp.theme_default: R.style.AppTheme_WeeWXApp_Light_Common");
+		else if(WeeWXApp.theme_default == R.style.AppTheme_WeeWXApp_Dark_Common)
+			LogMessage("MainActivity.onCreate() WeeWXApp.theme_default: R.style.AppTheme_WeeWXApp_Dark_Common");
+		else if(WeeWXApp.theme_default == R.style.AppTheme_WeeWXApp_Common)
+			LogMessage("MainActivity.onCreate() WeeWXApp.theme_default: R.style.AppTheme_WeeWXApp_Common");
 		else
-			LogMessage("MainActivity.onCreate() theme: " + weeWXApp.theme_default);
+			LogMessage("MainActivity.onCreate() theme: " + WeeWXApp.theme_default);
 
-		if(theme == R.style.AppTheme_weeWXApp_Light_Common)
-			LogMessage("MainActivity.onCreate() theme: R.style.AppTheme_weeWXApp_Light_Common");
-		else if(theme == R.style.AppTheme_weeWXApp_Dark_Common)
-			LogMessage("MainActivity.onCreate() theme: R.style.AppTheme_weeWXApp_Dark_Common");
-		else if(theme == R.style.AppTheme_weeWXApp_Common)
-			LogMessage("MainActivity.onCreate() theme: R.style.AppTheme_weeWXApp_Common");
+		if(theme == R.style.AppTheme_WeeWXApp_Light_Common)
+			LogMessage("MainActivity.onCreate() theme: R.style.AppTheme_WeeWXApp_Light_Common");
+		else if(theme == R.style.AppTheme_WeeWXApp_Dark_Common)
+			LogMessage("MainActivity.onCreate() theme: R.style.AppTheme_WeeWXApp_Dark_Common");
+		else if(theme == R.style.AppTheme_WeeWXApp_Common)
+			LogMessage("MainActivity.onCreate() theme: R.style.AppTheme_WeeWXApp_Common");
 		else
 			LogMessage("MainActivity.onCreate() theme: " + theme);
 
@@ -342,13 +342,13 @@ public class MainActivity extends FragmentActivity
 
 		WindowCompat.setDecorFitsSystemWindows(getWindow(), false);
 
-		LogMessage("MainActivity.onCreate() smallestScreenWidthDp: " + weeWXApp.smallestScreenWidth());
-		LogMessage("MainActivity.onCreate() minWidth=" + weeWXApp.getWidth() +
-								  ", minHeight=" + weeWXApp.getHeight());
+		LogMessage("MainActivity.onCreate() smallestScreenWidthDp: " + WeeWXApp.smallestScreenWidth());
+		LogMessage("MainActivity.onCreate() minWidth=" + WeeWXApp.getWidth() +
+								  ", minHeight=" + WeeWXApp.getHeight());
 
-		extraPx = (int)(75 * weeWXApp.getInstance().getResources().getDisplayMetrics().density + 0.5f);
+		extraPx = (int)(75 * WeeWXApp.getInstance().getResources().getDisplayMetrics().density + 0.5f);
 
-		if(!weeWXApp.isTablet())
+		if(!WeeWXApp.isTablet())
 			setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
 		setContentView(R.layout.main_activity);
@@ -381,7 +381,7 @@ public class MainActivity extends FragmentActivity
 		}
 
 		myLinearLayout cd = findViewById(R.id.custom_drawer);
-		cd.setBackgroundColor(weeWXApp.getColours().bgColour);
+		cd.setBackgroundColor(WeeWXApp.getColours().bgColour);
 		cd.setOnTouchedListener(() ->
 		{
 			//LogMessage("MainActivity.onCreate() cd.TouchedListener()");
@@ -446,7 +446,7 @@ public class MainActivity extends FragmentActivity
 
 			int top = dlInitialTop + sb.top;
 			int bottom = dlInitialBottom + Math.max(nb.bottom, ime.bottom);
-			view.setBackgroundColor(weeWXApp.getColour(R.color.MyAppNavBarColour));
+			view.setBackgroundColor(WeeWXApp.getColour(R.color.MyAppNavBarColour));
 			view.setPadding(dlInitialLeft, top, dlInitialRight, bottom);
 			return insets;
 		});
@@ -456,7 +456,7 @@ public class MainActivity extends FragmentActivity
 			Insets nb = insets.getInsets(WindowInsetsCompat.Type.navigationBars());
 			Insets ime = insets.getInsets(WindowInsetsCompat.Type.ime());
 			int bottom = rvInitialBottom + Math.max(nb.bottom, ime.bottom);
-			view.setBackgroundColor(weeWXApp.getColour(R.color.MyAppNavBarColour));
+			view.setBackgroundColor(WeeWXApp.getColour(R.color.MyAppNavBarColour));
 			view.setPadding(rvInitialLeft, rvInitialTop, rvInitialRight, bottom);
 
 			Insets gestureInsets = insets.getInsets(WindowInsetsCompat.Type.systemGestures());
@@ -484,7 +484,7 @@ public class MainActivity extends FragmentActivity
 
 		String[] tabTitles;
 		if(KeyValue.isPrefSet("radarforecast") &&
-		   (boolean)KeyValue.readVar("radarforecast", weeWXApp.radarforecast_default) == weeWXApp.RadarOnHomeScreen)
+		   (boolean)KeyValue.readVar("radarforecast", WeeWXApp.radarforecast_default) == WeeWXApp.RadarOnHomeScreen)
 			tabTitles = new String[]{getAndroidString(R.string.weather2),
 									 getAndroidString(R.string.stats2),
 									 getAndroidString(R.string.forecast2),
@@ -752,47 +752,47 @@ public class MainActivity extends FragmentActivity
 			}
 		}
 
-		UpdateFrequency = (int)KeyValue.readVar(weeWXApp.UPDATE_FREQUENCY, weeWXApp.UpdateFrequency_default);
-		UpdateInterval = (int)KeyValue.readVar("UpdateInterval", weeWXApp.UpdateInterval_default);
-		webcamInterval = (int)KeyValue.readVar("webcamInterval", weeWXApp.webcamInterval_default);
-		DayNightMode = (int)KeyValue.readVar("DayNightMode", weeWXApp.DayNightMode_default);
-		widget_theme_mode =	(int)KeyValue.readVar(WIDGET_THEME_MODE, weeWXApp.widget_theme_mode_default);
+		UpdateFrequency = (int)KeyValue.readVar(WeeWXApp.UPDATE_FREQUENCY, WeeWXApp.UpdateFrequency_default);
+		UpdateInterval = (int)KeyValue.readVar("UpdateInterval", WeeWXApp.UpdateInterval_default);
+		webcamInterval = (int)KeyValue.readVar("webcamInterval", WeeWXApp.webcamInterval_default);
+		DayNightMode = (int)KeyValue.readVar("DayNightMode", WeeWXApp.DayNightMode_default);
+		widget_theme_mode =	(int)KeyValue.readVar(WIDGET_THEME_MODE, WeeWXApp.widget_theme_mode_default);
 
 		LogMessage("MainActivity.onCreate() DayNightMode: " + DayNightMode);
 
-		bg = (int)KeyValue.readVar("widgetBG", weeWXApp.widgetBG_default);
-		fg = (int)KeyValue.readVar("widgetFG", weeWXApp.widgetFG_default);
+		bg = (int)KeyValue.readVar("widgetBG", WeeWXApp.widgetBG_default);
+		fg = (int)KeyValue.readVar("widgetFG", WeeWXApp.widgetFG_default);
 
-		wo = (boolean)KeyValue.readVar("onlyWIFI", weeWXApp.onlyWIFI_default);
-		met = (boolean)KeyValue.readVar("metric", weeWXApp.metric_default);
-		rii = (boolean)KeyValue.readVar("rainInInches", weeWXApp.rain_in_inches_default);
-		si = (boolean)KeyValue.readVar("showIndoor", weeWXApp.showIndoor_default);
-		sr = (boolean)KeyValue.readVar("radarforecast", weeWXApp.radarforecast_default);
+		wo = (boolean)KeyValue.readVar("onlyWIFI", WeeWXApp.onlyWIFI_default);
+		met = (boolean)KeyValue.readVar("metric", WeeWXApp.metric_default);
+		rii = (boolean)KeyValue.readVar("rainInInches", WeeWXApp.rain_in_inches_default);
+		si = (boolean)KeyValue.readVar("showIndoor", WeeWXApp.showIndoor_default);
+		sr = (boolean)KeyValue.readVar("radarforecast", WeeWXApp.radarforecast_default);
 
-		uea = (boolean)KeyValue.readVar("use_exact_alarm", weeWXApp.use_exact_alarm_default);
-		sadl = (boolean)KeyValue.readVar(SAVE_APP_DEBUG_LOGS, weeWXApp.save_app_debug_logs_default);
-		nm = (boolean)KeyValue.readVar("next_moon", weeWXApp.next_moon_default);
-		fdm = (boolean)KeyValue.readVar(FORCE_DARK_MODE, weeWXApp.force_dark_mode_default);
+		uea = (boolean)KeyValue.readVar("use_exact_alarm", WeeWXApp.use_exact_alarm_default);
+		sadl = (boolean)KeyValue.readVar(SAVE_APP_DEBUG_LOGS, WeeWXApp.save_app_debug_logs_default);
+		nm = (boolean)KeyValue.readVar("next_moon", WeeWXApp.next_moon_default);
+		fdm = (boolean)KeyValue.readVar(FORCE_DARK_MODE, WeeWXApp.force_dark_mode_default);
 
-		mta = (boolean)KeyValue.readVar("morning_temp_alert", weeWXApp.morning_temp_alert_default);
-		mt = (int)KeyValue.readVar("MorningTemp", weeWXApp.MorningTemp_default);
+		mta = (boolean)KeyValue.readVar("morning_temp_alert", WeeWXApp.morning_temp_alert_default);
+		mt = (int)KeyValue.readVar("MorningTemp", WeeWXApp.MorningTemp_default);
 
-		ata = (boolean)KeyValue.readVar("afternoon_temp_alert", weeWXApp.afternoon_temp_alert_default);
-		at = (int)KeyValue.readVar("AfternoonTemp", weeWXApp.AfternoonTemp_default);
+		ata = (boolean)KeyValue.readVar("afternoon_temp_alert", WeeWXApp.afternoon_temp_alert_default);
+		at = (int)KeyValue.readVar("AfternoonTemp", WeeWXApp.AfternoonTemp_default);
 
-		rfa = (boolean)KeyValue.readVar("rainfall_alert", weeWXApp.rainfall_alert_default);
-		rfl = (int)KeyValue.readVar("RainfallLimit", weeWXApp.RainfallLimit_default);
+		rfa = (boolean)KeyValue.readVar("rainfall_alert", WeeWXApp.rainfall_alert_default);
+		rfl = (int)KeyValue.readVar("RainfallLimit", WeeWXApp.RainfallLimit_default);
 
-		rra_watch = (boolean)KeyValue.readVar(RAINRATE_ALERT_WATCH, weeWXApp.rainrate_alert_watch_default);
-		rra_warning = (boolean)KeyValue.readVar(RAINRATE_ALERT_WARNING, weeWXApp.rainrate_alert_warning_default);
-		rra_severe = (boolean)KeyValue.readVar(RAINRATE_ALERT_SEVERE, weeWXApp.rainrate_alert_severe_default);
+		rra_watch = (boolean)KeyValue.readVar(RAINRATE_ALERT_WATCH, WeeWXApp.rainrate_alert_watch_default);
+		rra_warning = (boolean)KeyValue.readVar(RAINRATE_ALERT_WARNING, WeeWXApp.rainrate_alert_warning_default);
+		rra_severe = (boolean)KeyValue.readVar(RAINRATE_ALERT_SEVERE, WeeWXApp.rainrate_alert_severe_default);
 
 		em = (boolean)KeyValue.readVar(ENABLE_MQTT, enable_mqtt_default);
 
 		if(savedInstanceState != null)
 		{
 			LogMessage("MainActivity.onCreate() Reading current settings that were saved in a bundle....");
-			UpdateFrequency = savedInstanceState.getInt(weeWXApp.UPDATE_FREQUENCY, UpdateFrequency);
+			UpdateFrequency = savedInstanceState.getInt(WeeWXApp.UPDATE_FREQUENCY, UpdateFrequency);
 			UpdateInterval = savedInstanceState.getInt("UpdateInterval", UpdateInterval);
 			webcamInterval = savedInstanceState.getInt("webcamInterval", webcamInterval);
 			DayNightMode = savedInstanceState.getInt("DayNightMode", DayNightMode);
@@ -835,14 +835,14 @@ public class MainActivity extends FragmentActivity
 			LogMessage("MainActivity.onCreate() DayNightMode: " + DayNightMode);
 		}
 
-		if(UpdateFrequency < 0 || UpdateFrequency >= weeWXApp.updateOptions.length)
-			UpdateFrequency = weeWXApp.UpdateFrequency_default;
+		if(UpdateFrequency < 0 || UpdateFrequency >= WeeWXApp.updateOptions.length)
+			UpdateFrequency = WeeWXApp.UpdateFrequency_default;
 
-		if(UpdateInterval < 0 || UpdateInterval >= weeWXApp.updateInterval.length)
-			UpdateInterval = weeWXApp.UpdateInterval_default;
+		if(UpdateInterval < 0 || UpdateInterval >= WeeWXApp.updateInterval.length)
+			UpdateInterval = WeeWXApp.UpdateInterval_default;
 
-		if(webcamInterval < 0 || webcamInterval >= weeWXApp.webcamRefreshOptions.length)
-			webcamInterval = weeWXApp.webcamInterval_default;
+		if(webcamInterval < 0 || webcamInterval >= WeeWXApp.webcamRefreshOptions.length)
+			webcamInterval = WeeWXApp.webcamInterval_default;
 
 		// https://github.com/Pes8/android-material-color-picker-dialog
 		String hex = CPEditText.getFixedChar() + String.format("%08X", bg).toUpperCase();
@@ -924,7 +924,7 @@ public class MainActivity extends FragmentActivity
 			closeKeyboard();
 
 			int layout = R.layout.layout_loading_dialog_dark;
-			if(KeyValue.theme == R.style.AppTheme_weeWXApp_Light_Common)
+			if(KeyValue.theme == R.style.AppTheme_WeeWXApp_Light_Common)
 				layout = R.layout.layout_loading_dialog_light;
 
 			LogMessage("MainActivity.onCreate() show dialog");
@@ -956,7 +956,7 @@ public class MainActivity extends FragmentActivity
 			scrollView.smoothScrollTo(0, 0);
 		});
 
-		settingsURL.setText((String)KeyValue.readVar("SETTINGS_URL", weeWXApp.SETTINGS_URL_default));
+		settingsURL.setText((String)KeyValue.readVar("SETTINGS_URL", WeeWXApp.SETTINGS_URL_default));
 		settingsURL.setOnFocusChangeListener((v, hasFocus) ->
 		{
 			if(!hasFocus)
@@ -1000,17 +1000,17 @@ public class MainActivity extends FragmentActivity
 			root.getViewTreeObserver().addOnGlobalLayoutListener(listener);
 		});
 
-		ArrayAdapter<String> adapter1 = newArrayAdapter(R.layout.spinner_layout, weeWXApp.updateOptions);
-		ArrayAdapter<String> adapter2 = newArrayAdapter(R.layout.spinner_layout, weeWXApp.themeOptions);
-		ArrayAdapter<String> adapter3 = newArrayAdapter(R.layout.spinner_layout, weeWXApp.widgetThemeOptions);
-		ArrayAdapter<String> adapter4 = newArrayAdapter(R.layout.spinner_layout, weeWXApp.updateInterval);
-		ArrayAdapter<String> adapter5 = newArrayAdapter(R.layout.spinner_layout, weeWXApp.webcamRefreshOptions);
+		ArrayAdapter<String> adapter1 = newArrayAdapter(R.layout.spinner_layout, WeeWXApp.updateOptions);
+		ArrayAdapter<String> adapter2 = newArrayAdapter(R.layout.spinner_layout, WeeWXApp.themeOptions);
+		ArrayAdapter<String> adapter3 = newArrayAdapter(R.layout.spinner_layout, WeeWXApp.widgetThemeOptions);
+		ArrayAdapter<String> adapter4 = newArrayAdapter(R.layout.spinner_layout, WeeWXApp.updateInterval);
+		ArrayAdapter<String> adapter5 = newArrayAdapter(R.layout.spinner_layout, WeeWXApp.webcamRefreshOptions);
 
 		s1.setAdapter(adapter1);
-		s1.setText(weeWXApp.updateOptions[UpdateFrequency], false);
+		s1.setText(WeeWXApp.updateOptions[UpdateFrequency], false);
 
 		s2.setAdapter(adapter2);
-		s2.setText(weeWXApp.themeOptions[DayNightMode], false);
+		s2.setText(WeeWXApp.themeOptions[DayNightMode], false);
 
 		if(widget_theme_mode == 4)
 		{
@@ -1022,13 +1022,13 @@ public class MainActivity extends FragmentActivity
 		}
 
 		s3.setAdapter(adapter3);
-		s3.setText(weeWXApp.widgetThemeOptions[widget_theme_mode], false);
+		s3.setText(WeeWXApp.widgetThemeOptions[widget_theme_mode], false);
 
 		s4.setAdapter(adapter4);
-		s4.setText(weeWXApp.updateInterval[UpdateInterval], false);
+		s4.setText(WeeWXApp.updateInterval[UpdateInterval], false);
 
 		s5.setAdapter(adapter5);
-		s5.setText(weeWXApp.webcamRefreshOptions[webcamInterval], false);
+		s5.setText(WeeWXApp.webcamRefreshOptions[webcamInterval], false);
 
 		EdgeToEdge.enable(this);
 
@@ -1037,8 +1037,8 @@ public class MainActivity extends FragmentActivity
 		updateColours();
 		updateAppWidget();
 
-		if(!(boolean)KeyValue.readVar("metric", weeWXApp.metric_default) ||
-			(boolean)KeyValue.readVar("rainInInches", weeWXApp.rain_in_inches_default))
+		if(!(boolean)KeyValue.readVar("metric", WeeWXApp.metric_default) ||
+			(boolean)KeyValue.readVar("rainInInches", WeeWXApp.rain_in_inches_default))
 			rainFormat = "%.2f";
 
 		LogMessage("MainActivity.onCreate() loading observeNotifications()..");
@@ -1047,7 +1047,7 @@ public class MainActivity extends FragmentActivity
 		if(!screen_elements.isEmpty())
 		{
 			Setting s = screen_elements.get(0);
-			weeWXAppCommon.LogColour(findViewById(s.ResId()), s.name());
+			WeeWXAppCommon.LogColour(findViewById(s.ResId()), s.name());
 		}
 
 		LogMessage("MainActivity.onCreate() has finished...", KeyValue.d);
@@ -1088,7 +1088,7 @@ public class MainActivity extends FragmentActivity
 		morning = Math.round(morning);
 
 		if(morning < minTemp || morning > maxTemp)
-			morning = weeWXApp.MorningTemp_default;
+			morning = WeeWXApp.MorningTemp_default;
 
 		sliderMorningTemp.setValue(morning);
 		sliderMorningTemp.setValueFrom(minTemp);
@@ -1100,7 +1100,7 @@ public class MainActivity extends FragmentActivity
 		afternoon = Math.round(afternoon);
 
 		if(afternoon < minTemp || afternoon > maxTemp)
-			afternoon = weeWXApp.AfternoonTemp_default;
+			afternoon = WeeWXApp.AfternoonTemp_default;
 
 		sliderAfternoonTemp.setValue(afternoon);
 		sliderAfternoonTemp.setValueFrom(minTemp);
@@ -1143,7 +1143,7 @@ public class MainActivity extends FragmentActivity
 			rainfall = Math.round(rainfall / step) * step;
 
 		if(rainfall < lowerlimit || rainfall > upperLimit)
-			rainfall = weeWXApp.RainfallLimit_default;
+			rainfall = WeeWXApp.RainfallLimit_default;
 
 		sliderRainfall.setValue(rainfall);
 		sliderRainfall.setValueFrom(lowerlimit);
@@ -1207,7 +1207,7 @@ public class MainActivity extends FragmentActivity
 		float MAXMEMORY = maxMemory / 1_048_576f;
 
 		MaterialTextView tv1 = findViewById(R.id.aboutText);
-		String about_blurb = weeWXApp.current_about_blurb
+		String about_blurb = WeeWXApp.current_about_blurb
 				.replace("USEDMEMORY", String.format(Locale.ENGLISH, "%.1f MB", USEDMEMORY))
 				.replace("MAXMEMORY", String.format(Locale.ENGLISH, "%.1f MB", MAXMEMORY));
 
@@ -1262,8 +1262,8 @@ public class MainActivity extends FragmentActivity
 		}
 
 		rainFormat = "%.1f";
-		if(!(boolean)KeyValue.readVar("metric", weeWXApp.metric_default) ||
-			(boolean)KeyValue.readVar("rainInInches", weeWXApp.rain_in_inches_default))
+		if(!(boolean)KeyValue.readVar("metric", WeeWXApp.metric_default) ||
+			(boolean)KeyValue.readVar("rainInInches", WeeWXApp.rain_in_inches_default))
 			rainFormat = "%.2f";
 
 		if((boolean)KeyValue.readVar(ENABLE_MQTT, enable_mqtt_default))
@@ -1282,7 +1282,7 @@ public class MainActivity extends FragmentActivity
 
 				Mqtt5ClientBuilder mqttClientBuilder = MqttClient.builder()
 					.useMqttVersion5()
-					.identifier("weeWXApp-" + weeWXApp.VERSION_NAME + "-" + UUID.randomUUID().toString())
+					.identifier("WeeWXApp-" + WeeWXApp.VERSION_NAME + "-" + UUID.randomUUID().toString())
 					.serverHost(MQTTURL.host())
 					.automaticReconnectWithDefaultConfig();
 
@@ -1420,7 +1420,7 @@ public class MainActivity extends FragmentActivity
 
 	private void updateColours()
 	{
-		int fgColour = weeWXApp.getColours().fgColour;
+		int fgColour = WeeWXApp.getColours().fgColour;
 
 		LogMessage("MainActivity.onCreate() fgColour: #" + Integer.toHexString(fgColour));
 
@@ -1548,7 +1548,7 @@ public class MainActivity extends FragmentActivity
 
 		LogMessage("MainActivity.onSaveInstanceState() Stashing current settings into a bundle....");
 		outState.putInt("page", mViewPager.getCurrentItem());
-		outState.putInt(weeWXApp.UPDATE_FREQUENCY, UpdateFrequency);
+		outState.putInt(WeeWXApp.UPDATE_FREQUENCY, UpdateFrequency);
 		outState.putInt("UpdateInterval", UpdateInterval);
 		outState.putInt("webcamInterval", webcamInterval);
 		outState.putInt("DayNightMode", DayNightMode);
@@ -1566,7 +1566,7 @@ public class MainActivity extends FragmentActivity
 			int bg = parseHexToColour(edit.toString());
 			outState.putInt("bg", bg);
 		} else {
-			outState.putInt("bg", weeWXApp.widgetBG_default);
+			outState.putInt("bg", WeeWXApp.widgetBG_default);
 		}
 
 		edit = widgetFG.getText();
@@ -1575,7 +1575,7 @@ public class MainActivity extends FragmentActivity
 			int fg = parseHexToColour(edit.toString());
 			outState.putInt("fg", fg);
 		} else {
-			outState.putInt("fg", weeWXApp.widgetFG_default);
+			outState.putInt("fg", WeeWXApp.widgetFG_default);
 		}
 
 		outState.putBoolean("wo", wifi_only.isChecked());
@@ -1606,11 +1606,11 @@ public class MainActivity extends FragmentActivity
 
 	private void setStrings()
 	{
-		int fgColour = weeWXApp.getColours().fgColour;
+		int fgColour = WeeWXApp.getColours().fgColour;
 
-		int disabled = weeWXApp.getColours().LightGray;
-		if(theme == R.style.AppTheme_weeWXApp_Dark_Common)
-			disabled = weeWXApp.getColours().DarkGray;
+		int disabled = WeeWXApp.getColours().LightGray;
+		if(theme == R.style.AppTheme_WeeWXApp_Dark_Common)
+			disabled = WeeWXApp.getColours().DarkGray;
 
 		strokeColors = new ColorStateList(new int[][]{new int[]{android.R.attr.state_enabled},	  // default enabled
 													  new int[]{-android.R.attr.state_enabled},	 // disabled
@@ -1632,8 +1632,8 @@ public class MainActivity extends FragmentActivity
 			public View getView(int position, View convertView, @NonNull ViewGroup parent)
 			{
 				MaterialTextView view = (MaterialTextView)super.getView(position, convertView, parent);
-				view.setBackgroundColor(weeWXApp.getColours().bgColour);
-				view.setTextColor(weeWXApp.getColours().fgColour);
+				view.setBackgroundColor(WeeWXApp.getColours().bgColour);
+				view.setTextColor(WeeWXApp.getColours().fgColour);
 				return view;
 			}
 
@@ -1641,8 +1641,8 @@ public class MainActivity extends FragmentActivity
 			public View getDropDownView(int position, View convertView, @NonNull ViewGroup parent)
 			{
 				MaterialTextView view = (MaterialTextView)super.getDropDownView(position, convertView, parent);
-				view.setBackgroundColor(weeWXApp.getColours().bgColour);
-				view.setTextColor(weeWXApp.getColours().fgColour);
+				view.setBackgroundColor(WeeWXApp.getColours().bgColour);
+				view.setTextColor(WeeWXApp.getColours().fgColour);
 				return view;
 			}
 		};
@@ -1759,7 +1759,7 @@ public class MainActivity extends FragmentActivity
 	}
 	private void showUpdateAvailable()
 	{
-		int updateVer = weeWXApp.minimum_inigo_version;
+		int updateVer = WeeWXApp.minimum_inigo_version;
 
 		if((boolean)KeyValue.readVar("shownUpdate_" + updateVer, false))
 			return;
@@ -1792,14 +1792,14 @@ public class MainActivity extends FragmentActivity
 	private void showUpdateAvailable2()
 	{
 		LogMessage("Will now show update2 dialog now...");
-		String str = getAndroidString(R.string.json_formatted_data, "weeWX App", "JSON formatted", weeWXApp.WEEWX_DIR, "Inigo Plugin", "inigo-settings.txt", "GitHub.com");
+		String str = getAndroidString(R.string.json_formatted_data, "WeeWX App", "JSON formatted", WeeWXApp.WEEWX_DIR, "Inigo Plugin", "inigo-settings.txt", "GitHub.com");
 		new AlertDialog.Builder(this)
 				.setIcon(R.drawable.ic_launcher_fg)
 				.setTitle(getEnglishAndroidString(R.string.app_name))
 				.setMessage(str)
 				.setPositiveButton(getAndroidString(R.string.ok), (dialog_interface, i) ->
 				{
-					String url = "https://github.com/evilbunny2008/weeWXWeatherApp/wiki/JSON-formatted-data-file";
+					String url = "https://github.com/evilbunny2008/WeeWXWeatherApp/wiki/JSON-formatted-data-file";
 					Intent urlIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
 					startActivity(urlIntent);
 				})
@@ -1850,8 +1850,8 @@ public class MainActivity extends FragmentActivity
 
 	private void processSettings()
 	{
-		weeWXAppCommon.doingSaveSettings = true;
-		weeWXAppCommon.saveSettingsLog = new StringBuilder();
+		WeeWXAppCommon.doingSaveSettings = true;
+		WeeWXAppCommon.saveSettingsLog = new StringBuilder();
 
 		LogMessage("MainActivity.java processSettings() running the background updates...");
 
@@ -1865,7 +1865,7 @@ public class MainActivity extends FragmentActivity
 			if(dur < 30)
 			{
 				LogMessage("processSettings() executor is still running and is less than 30s old (" +
-						   dur + weeWXApp.SKIPPING_S,	true, KeyValue.w);
+						   dur + WeeWXApp.SKIPPING_S,	true, KeyValue.w);
 				return;
 			}
 
@@ -1912,7 +1912,7 @@ public class MainActivity extends FragmentActivity
 
 			LogMessage("processSettings() settings_url: " + uiSettingsURL);
 
-			if(!is_valid_url(uiSettingsURL) || uiSettingsURL.equals(weeWXApp.SETTINGS_URL_default))
+			if(!is_valid_url(uiSettingsURL) || uiSettingsURL.equals(WeeWXApp.SETTINGS_URL_default))
 			{
 				errorDialog(R.string.url_was_default_or_empty);
 				return;
@@ -1920,7 +1920,7 @@ public class MainActivity extends FragmentActivity
 
 			try
 			{
-				String settingsData = weeWXAppCommon.downloadSettings(uiSettingsURL).strip();
+				String settingsData = WeeWXAppCommon.downloadSettings(uiSettingsURL).strip();
 				//LogMessage("processSettings() settingsData: " + settingsData);
 
 				if(is_blank(settingsData) || settingsData.length() < 128)
@@ -1955,13 +1955,13 @@ public class MainActivity extends FragmentActivity
 							case "radar" -> radarURL = mb[1].strip();
 							case "radtype" -> radtype = mb[1].toLowerCase(Locale.ENGLISH).strip();
 							case "forecast" -> forecastURL = mb[1].strip();
-							case weeWXApp.FCTYPE -> fctype = mb[1].toLowerCase(Locale.ENGLISH).strip();
+							case WeeWXApp.FCTYPE -> fctype = mb[1].toLowerCase(Locale.ENGLISH).strip();
 							case "webcam" -> webcamURL = mb[1].strip();
 							case "custom" -> CustomURL = mb[1].strip();
 							case "mqtt-url" -> mqttURL = mb[1].strip();
 							case "mqtt-topic" -> mqttTopic = mb[1].strip();
 							default -> LogMessage("processSettings() Invalid setting: " + mb[0] +
-												  "=" + mb[1] + weeWXApp.SKIPPING, true, KeyValue.w);
+												  "=" + mb[1] + WeeWXApp.SKIPPING, true, KeyValue.w);
 						}
 					}
 				}
@@ -2121,7 +2121,7 @@ public class MainActivity extends FragmentActivity
 							int attempt = 1;
 							do
 							{
-								wzHTML = weeWXAppCommon.downloadWZHTML(forecastURL, addDelay, true);
+								wzHTML = WeeWXAppCommon.downloadWZHTML(forecastURL, addDelay, true);
 								addDelay = true;
 							} while((wzHTML == null || wzHTML.length() < 10_000) && attempt++ <= 3);
 
@@ -2133,7 +2133,7 @@ public class MainActivity extends FragmentActivity
 
 							if(++loops <= allURLs.length)
 							{
-								int random = weeWXAppCommon.getNextRandom(5_000, 10_000);
+								int random = WeeWXAppCommon.getNextRandom(5_000, 10_000);
 								LogMessage("processSettings() Sleeping for " + random + "ms...");
 								Thread.sleep(random);
 							}
@@ -2154,14 +2154,14 @@ public class MainActivity extends FragmentActivity
 						LogMessage("processSettings() fctype: " + fctype);
 						LogMessage("processSettings() forecastURL:" + forecastURL);
 /*
-						String metService = weeWXApp.wvpl.getHTML(forecastURL);
+						String metService = WeeWXApp.wvpl.getHTML(forecastURL);
 						if(metService != null && metService.length() > 1024)
 						{
 							String pretty = Jsoup.parse(metService).outputSettings(
 									new Document.OutputSettings().indentAmount(2).prettyPrint(true)
 							).outerHtml();
 
-							//CustomDebug.writeDebug("weeWX", "metservice.com.7day.html", pretty);
+							//CustomDebug.writeDebug("WeeWX", "metservice.com.7day.html", pretty);
 							//LogMessage("processSettings() wrote content to metservice.com.7day.html");
 						}
 */
@@ -2216,7 +2216,7 @@ public class MainActivity extends FragmentActivity
 
 							String url = "https://odiousapps.com/get-location-name-by-ll.php";
 
-							forecastLocationName = weeWXAppCommon.downloadString(url, Map.of(
+							forecastLocationName = WeeWXAppCommon.downloadString(url, Map.of(
 									"lat", "" + lat,
 									"lon", "" + lon));
 
@@ -2271,7 +2271,7 @@ public class MainActivity extends FragmentActivity
 						{
 							KeyValue.bomGeohash = forecastURL.strip();
 							String newurl = "https://api.weather.bom.gov.au/v1/locations/" + forecastURL.strip();
-							String text = weeWXAppCommon.downloadString(newurl);
+							String text = WeeWXAppCommon.downloadString(newurl);
 							LogMessage("processSettings(): text: " + text);
 
 							JSONObject jobj = new JSONObject(text);
@@ -2341,7 +2341,7 @@ public class MainActivity extends FragmentActivity
 
 							String url = "https://odiousapps.com/get-location-name-by-ll.php";
 
-							forecastLocationName = weeWXAppCommon.downloadString(url, Map.of(
+							forecastLocationName = WeeWXAppCommon.downloadString(url, Map.of(
 									"lat", "" + lat,
 									"lon", "" + lon));
 
@@ -2529,7 +2529,7 @@ public class MainActivity extends FragmentActivity
 						out.write(r.bytes());
 						LogMessage("3Got past the save... ");
 					} catch(Exception e) {
-						LogMessage(weeWXApp.ERROR_E + e, KeyValue.e);
+						LogMessage(WeeWXApp.ERROR_E + e, KeyValue.e);
 						doStackOutput(e);
 						errorDialog(e);
 						return;
@@ -2538,20 +2538,20 @@ public class MainActivity extends FragmentActivity
 
 				if(r.id() == 5 && r.bytes() != null)
 				{
-					File file = getFile(getDataDir(), weeWXApp.webcamFilename);
+					File file = getFile(getDataDir(), WeeWXApp.webcamFilename);
 					try(FileOutputStream out = new FileOutputStream(file))
 					{
 						LogMessage("Attempting to save to " + file.getAbsoluteFile());
 						out.write(r.bytes());
 						LogMessage("4Got past the save... ");
 					} catch(Exception e) {
-						LogMessage(weeWXApp.ERROR_E + e, KeyValue.e);
+						LogMessage(WeeWXApp.ERROR_E + e, KeyValue.e);
 						doStackOutput(e);
 						errorDialog(e);
 						return;
 					}
 
-					weeWXAppCommon.setWebcamFileTime(file, r.lastModified());
+					WeeWXAppCommon.setWebcamFileTime(file, r.lastModified());
 
 					LogMessage("Here1!");
 				}
@@ -2600,7 +2600,7 @@ public class MainActivity extends FragmentActivity
 			KeyValue.putVar("bomGeohash", KeyValue.bomGeohash);
 
 			KeyValue.putVar("SETTINGS_URL", uiSettingsURL);
-			KeyValue.putVar(weeWXApp.UPDATE_FREQUENCY, UpdateFrequency);
+			KeyValue.putVar(WeeWXApp.UPDATE_FREQUENCY, UpdateFrequency);
 			KeyValue.putVar("UpdateInterval", UpdateInterval);
 			KeyValue.putVar("webcamInterval", webcamInterval);
 
@@ -2610,7 +2610,7 @@ public class MainActivity extends FragmentActivity
 				KeyValue.putVar(json_keys[i] + "_url", json_urls[i]);
 
 			KeyValue.putVar("FORECAST_URL", forecastURL);
-			KeyValue.putVar(weeWXApp.FCTYPE, fctype);
+			KeyValue.putVar(WeeWXApp.FCTYPE, fctype);
 
 			if(is_blank(forecastLocationName))
 				forecastLocationName = null;
@@ -2724,8 +2724,8 @@ public class MainActivity extends FragmentActivity
 				onResume();
 
 				LogMessage("processSettings() Apply the new theme");
-				setTheme((int)KeyValue.readVar("theme", weeWXApp.theme_default));
-				weeWXApp.applyTheme(false);
+				setTheme((int)KeyValue.readVar("theme", WeeWXApp.theme_default));
+				WeeWXApp.applyTheme(false);
 
 				if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE)
 				{
@@ -2743,7 +2743,7 @@ public class MainActivity extends FragmentActivity
 	@SuppressWarnings("UnusedReturnValue")
 	boolean saveSetupLog()
 	{
-		String saveLogReturn = weeWXAppCommon.outputSaveSettings();
+		String saveLogReturn = WeeWXAppCommon.outputSaveSettings();
 		if(saveLogReturn != null)
 		{
 			runOnUiThread(() ->
@@ -3090,7 +3090,7 @@ public class MainActivity extends FragmentActivity
 		if(KeyValue.values.get(key) instanceof Float val)
 			return val;
 
-		return (float)weeWXAppCommon.getJson(key, 0f);
+		return (float)WeeWXAppCommon.getJson(key, 0f);
 	}
 
 	private void processStatsValue(String key, Float f, String format)
@@ -3130,7 +3130,7 @@ public class MainActivity extends FragmentActivity
 			return;
 
 		KeyValue.values.put(key, i);
-		putOutput(mqttOutput2, key, weeWXAppCommon.cssToSVG("wi-wind-deg", i));
+		putOutput(mqttOutput2, key, WeeWXAppCommon.cssToSVG("wi-wind-deg", i));
 		queueJSON(key, i);
 	}
 
@@ -3238,7 +3238,7 @@ public class MainActivity extends FragmentActivity
 					return;
 
 				KeyValue.values.put(key, i);
-				putOutput(mqttOutput, "gustDirComp", weeWXAppCommon.cssToSVG("wi-wind-deg", i));
+				putOutput(mqttOutput, "gustDirComp", WeeWXAppCommon.cssToSVG("wi-wind-deg", i));
 				queueJSON("current_windGustDir", i);
 			}
 			case "windGustDir_str" -> processCompass(mqttOutput, key, "gustDirStr", "current_windGustDir_str", s);
@@ -3405,7 +3405,7 @@ public class MainActivity extends FragmentActivity
 				processStatsPacket(key, f, l, i, s);
 		}
 
-		weeWXAppCommon.updateJSON(pendingJSON);
+		WeeWXAppCommon.updateJSON(pendingJSON);
 
 		if(weather != null && weather.pageReady && mqttOutput != null && mqttOutput.length() > 0)
 		{

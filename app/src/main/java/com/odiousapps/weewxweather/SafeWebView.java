@@ -35,9 +35,9 @@ import okhttp3.Response;
 
 import static com.odiousapps.weewxweather.NetworkClient.getInstance;
 import static com.odiousapps.weewxweather.NetworkClient.getRequest;
-import static com.odiousapps.weewxweather.weeWXAppCommon.doStackOutput;
-import static com.odiousapps.weewxweather.weeWXAppCommon.LogMessage;
-import static com.odiousapps.weewxweather.weeWXAppCommon.is_blank;
+import static com.odiousapps.weewxweather.WeeWXAppCommon.doStackOutput;
+import static com.odiousapps.weewxweather.WeeWXAppCommon.LogMessage;
+import static com.odiousapps.weewxweather.WeeWXAppCommon.is_blank;
 
 @SuppressWarnings({"SequencedCollectionMethodCanBeUsed", "unused"})
 public class SafeWebView extends WebView
@@ -391,7 +391,7 @@ public class SafeWebView extends WebView
 
 					String method = request.getMethod();
 					if(method.equalsIgnoreCase("options"))
-						return new WebResourceResponse(weeWXApp.CONTENT_TYPE, "UTF-8", new ByteArrayInputStream(new byte[0]));
+						return new WebResourceResponse(WeeWXApp.CONTENT_TYPE, "UTF-8", new ByteArrayInputStream(new byte[0]));
 
 					List<String> paths = request.getUrl().getPathSegments();
 					if(!paths.isEmpty())
@@ -446,7 +446,7 @@ public class SafeWebView extends WebView
 						ByteArrayInputStream bais = new ByteArrayInputStream(bytes);
 
 						String encoding = "UTF-8";
-						String mime = weeWXApp.CONTENT_TYPE;
+						String mime = WeeWXApp.CONTENT_TYPE;
 
 						MediaType mt = response.body().contentType();
 						if(mt != null)
@@ -554,7 +554,7 @@ public class SafeWebView extends WebView
 		}
 
 		webViewToRemake.destroy();
-		webViewToRemake = new SafeWebView(weeWXApp.getInstance());
+		webViewToRemake = new SafeWebView(WeeWXApp.getInstance());
 		if(this.Url != null)
 		{
 			LogMessage("SafeWebView.restartWebview() restarting with URL: " + this.Url, KeyValue.w);

@@ -26,10 +26,10 @@ import okhttp3.Response;
 import static com.odiousapps.weewxweather.NetworkClient.getInstance;
 import static com.odiousapps.weewxweather.NetworkClient.getRequest;
 import static com.odiousapps.weewxweather.NetworkClient.getStream;
-import static com.odiousapps.weewxweather.weeWXAppCommon.LogMessage;
-import static com.odiousapps.weewxweather.weeWXAppCommon.doStackOutput;
-import static com.odiousapps.weewxweather.weeWXAppCommon.is_blank;
-import static com.odiousapps.weewxweather.weeWXAppCommon.is_valid_url;
+import static com.odiousapps.weewxweather.WeeWXAppCommon.LogMessage;
+import static com.odiousapps.weewxweather.WeeWXAppCommon.doStackOutput;
+import static com.odiousapps.weewxweather.WeeWXAppCommon.is_blank;
+import static com.odiousapps.weewxweather.WeeWXAppCommon.is_valid_url;
 
 public class ParallelDownloader
 {

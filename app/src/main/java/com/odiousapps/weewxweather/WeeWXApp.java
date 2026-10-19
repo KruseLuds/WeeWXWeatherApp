@@ -54,16 +54,16 @@ import androidx.core.content.ContextCompat;
 import androidx.core.os.ConfigurationCompat;
 import androidx.core.os.LocaleListCompat;
 
-import static com.odiousapps.weewxweather.weeWXAppCommon.LOGTAG;
-import static com.odiousapps.weewxweather.weeWXAppCommon.is_blank;
-import static com.odiousapps.weewxweather.weeWXAppCommon.WIDGET_THEME_MODE;
-import static com.odiousapps.weewxweather.weeWXAppCommon.doStackOutput;
-import static com.odiousapps.weewxweather.weeWXAppCommon.LogMessage;
-import static com.odiousapps.weewxweather.weeWXAppCommon.str2Int;
-import static com.odiousapps.weewxweather.weeWXNotificationManager.updateNotificationMessage;
+import static com.odiousapps.weewxweather.WeeWXAppCommon.LOGTAG;
+import static com.odiousapps.weewxweather.WeeWXAppCommon.is_blank;
+import static com.odiousapps.weewxweather.WeeWXAppCommon.WIDGET_THEME_MODE;
+import static com.odiousapps.weewxweather.WeeWXAppCommon.doStackOutput;
+import static com.odiousapps.weewxweather.WeeWXAppCommon.LogMessage;
+import static com.odiousapps.weewxweather.WeeWXAppCommon.str2Int;
+import static com.odiousapps.weewxweather.WeeWXNotificationManager.updateNotificationMessage;
 
 @SuppressWarnings({"deprecation", "SameParameterValue", "RedundantSuppression", "unused"})
-public class weeWXApp extends Application
+public class WeeWXApp extends Application
 {
 	private static final String html_header =   """
 												<!DOCTYPE html>
@@ -144,8 +144,8 @@ public class weeWXApp extends Application
 														}
 													});
 	
-													if(window.weeWXApp && typeof window.weeWXApp.onReady === 'function')
-														window.weeWXApp.onReady();
+													if(window.WeeWXApp && typeof window.WeeWXApp.onReady === 'function')
+														window.WeeWXApp.onReady();
 												} catch(e) {
 													console.log('error: ' + e.message);
 												}
@@ -155,7 +155,7 @@ public class weeWXApp extends Application
 										""";
 
 	private static final String about_blurb =   """
-												Big thanks to the <a href='https://weewx.com'>weeWX project</a>, as this app
+												Big thanks to the <a href='https://weewx.com'>WeeWX project</a>, as this app
 												wouldn't be possible otherwise.<br><br>
 												Weather Icons from <a href='https://www.flaticon.com/'>FlatIcon</a> and
 												is licensed under <a href='https://creativecommons.org/licenses/by/3.0/'>CC 3.0 BY</a> and
@@ -164,7 +164,7 @@ public class weeWXApp extends Application
 												<br><br>
 												Current WebView Library Version: WEBVIEWVER
 												<br/><br/>
-												weeWX Weather App vAPPVERSION is by <a href='https://odiousapps.com'>OdiousApps</a>.
+												WeeWX Weather App vAPPVERSION is by <a href='https://odiousapps.com'>OdiousApps</a>.
 												<br/>
 												<b>Memory Statistics:</b>
 												<br/>
@@ -240,7 +240,7 @@ public class weeWXApp extends Application
 	static final String SAVE_APP_DEBUG_LOGS = "save_app_debug_logs";
 	static final String FAILED_TO_CREATE_LOG_FILE_IN_MEDIA_STORE_FILES = "Failed to create log file in MediaStore.Files";
 	static final String CONTENT_TYPE = "text/plain";
-	static final String WEEWX_DIR = "weeWX";
+	static final String WEEWX_DIR = "WeeWX";
 	static final String RSS_CHECK = "rssCheck";
 	static final String TIME_EXT = "_time";
 
@@ -259,7 +259,7 @@ public class weeWXApp extends Application
 	final static String emptyField = "<div style='span:3;'>\u00A0</div>\n";
 	final static String currentSpacer = "\t\t\t<div class='currentSpacer'>\u00A0</div>\n";
 
-	private static weeWXApp instance = null;
+	private static WeeWXApp instance = null;
 	private static Colours colours;
 	private static int lastNightMode = -1;
 
@@ -291,7 +291,7 @@ public class weeWXApp extends Application
 	final static int mySlider_default = 100;
 	final static int DayNightMode_default = 2;
 	final static int widget_theme_mode_default = 4;
-	final static int theme_default = R.style.AppTheme_weeWXApp_Light_Common;
+	final static int theme_default = R.style.AppTheme_WeeWXApp_Light_Common;
 	final static int mode_default = AppCompatDelegate.MODE_NIGHT_NO;
 
 	final static boolean morning_temp_alert_default = false;
@@ -312,7 +312,7 @@ public class weeWXApp extends Application
 	final static String missingIconURL = "https://odiousapps.com/weewxweatherapp-icon-missing.php";
 
 	final static String webcamFilename = "webcam.jpg";
-	final static String debug_filename = "weeWXApp_Debug.txt.gz";
+	final static String debug_filename = "WeeWXApp_Debug.txt.gz";
 
 	final static boolean RadarOnHomeScreen = true;
 	final static boolean RadarOnForecastScreen = !RadarOnHomeScreen;
@@ -345,7 +345,7 @@ public class weeWXApp extends Application
 		RAINRATE_ALERT_SEVERE,
 	};
 
-	static PendingIntent showweeWXApp;
+	static PendingIntent showWeeWXApp;
 
 	ForecastDefaults fcDef = null;
 
@@ -386,10 +386,10 @@ public class weeWXApp extends Application
 
 		Intent intent = new Intent();
 		intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-		showweeWXApp = PendingIntent.getActivity(this, 0, intent,
+		showWeeWXApp = PendingIntent.getActivity(this, 0, intent,
 			PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
 
-		Log.i("weeWXApp", "onCreate()");
+		Log.i("WeeWXApp", "onCreate()");
 
 		cacheDir = getCacheDir();
 		customDns = new CustomDns();
@@ -481,7 +481,7 @@ public class weeWXApp extends Application
 				KeyValue.webview_major_version = str2Int(parts[0]);
 			}
 		} catch(Exception e) {
-			Log.e(weeWXAppCommon.LOGTAG, ERROR_E + e.getMessage(), e);
+			Log.e(WeeWXAppCommon.LOGTAG, ERROR_E + e.getMessage(), e);
 			//noinspection CallToPrintStackTrace
 			e.printStackTrace();
 		}
@@ -545,7 +545,7 @@ public class weeWXApp extends Application
 
 		LogMessage("java app_version: " + VERSION_NAME + " starting...", KeyValue.i);
 
-		if(weeWXAppCommon.fixtypes())
+		if(WeeWXAppCommon.fixtypes())
 			LogMessage("java successfully converted preference object types...", KeyValue.d);
 		else
 			LogMessage("java didn't need to convert preference object types...", KeyValue.d);
@@ -740,12 +740,12 @@ public class weeWXApp extends Application
 				mode = (int)s.Val();
 		}
 
-		if(theme == R.style.AppTheme_weeWXApp_Light_Common)
-			LogMessage("onCreate() theme: R.style.AppTheme_weeWXApp_Light_Common");
-		else if(theme == R.style.AppTheme_weeWXApp_Dark_Common)
-			LogMessage("onCreate() theme: R.style.AppTheme_weeWXApp_Dark_Common");
-		else if(theme == R.style.AppTheme_weeWXApp_Common)
-			LogMessage("onCreate() theme: R.style.AppTheme_weeWXApp_Common");
+		if(theme == R.style.AppTheme_WeeWXApp_Light_Common)
+			LogMessage("onCreate() theme: R.style.AppTheme_WeeWXApp_Light_Common");
+		else if(theme == R.style.AppTheme_WeeWXApp_Dark_Common)
+			LogMessage("onCreate() theme: R.style.AppTheme_WeeWXApp_Dark_Common");
+		else if(theme == R.style.AppTheme_WeeWXApp_Common)
+			LogMessage("onCreate() theme: R.style.AppTheme_WeeWXApp_Common");
 		else
 			LogMessage("onCreate() theme: " + theme);
 
@@ -763,7 +763,7 @@ public class weeWXApp extends Application
 		String main_css = loadFileFromAssets("main.css");
 		if(!is_blank(main_css))
 		{
-			if(theme == R.style.AppTheme_weeWXApp_Light_Common)
+			if(theme == R.style.AppTheme_WeeWXApp_Light_Common)
 				main_css = main_css.replace("ARROW_COLOUR", "#fff")
 						.replace("ARROW_BG_COLOUR", "#333");
 			else
@@ -782,14 +782,14 @@ public class weeWXApp extends Application
 							  "\n</style>\n" +
 							  dialog_html_header_rest;
 
-		if(theme == R.style.AppTheme_weeWXApp_Light_Common)
+		if(theme == R.style.AppTheme_WeeWXApp_Light_Common)
 			inline_arrow = inline_arrow_light;
 		else
 			inline_arrow = inline_arrow_dark;
 
 		replaceHex6String("BG_HEX", colours.bgColour);
 		replaceHex6String("FG_HEX", colours.fgColour);
-		if((int)KeyValue.readVar("theme", theme_default) == R.style.AppTheme_weeWXApp_Dark_Common)
+		if((int)KeyValue.readVar("theme", theme_default) == R.style.AppTheme_WeeWXApp_Dark_Common)
 		{
 			replaceHex6String("ACCENT_HEX", colours.DarkBlueAccent);
 			replaceHex6String("GRAY_HEX", colours.DarkGray);
@@ -810,17 +810,17 @@ public class weeWXApp extends Application
 
 		if(forced)
 		{
-			updateNotificationMessage(weeWXAppCommon.STOP_FORECAST_INTENT);
-			updateNotificationMessage(weeWXAppCommon.STOP_RADAR_INTENT);
-			updateNotificationMessage(weeWXAppCommon.STOP_WEATHER_INTENT);
-			updateNotificationMessage(weeWXAppCommon.STOP_WEBCAM_INTENT);
+			updateNotificationMessage(WeeWXAppCommon.STOP_FORECAST_INTENT);
+			updateNotificationMessage(WeeWXAppCommon.STOP_RADAR_INTENT);
+			updateNotificationMessage(WeeWXAppCommon.STOP_WEATHER_INTENT);
+			updateNotificationMessage(WeeWXAppCommon.STOP_WEBCAM_INTENT);
 		}
 
 		LogMessage("Theme should have updated!");
 
 		LogMessage("DayNightMode == " + AppCompatDelegate.getDefaultNightMode());
 
-		updateNotificationMessage(weeWXAppCommon.REFRESH_DARKMODE_INTENT);
+		updateNotificationMessage(WeeWXAppCommon.REFRESH_DARKMODE_INTENT);
 	}
 
 	static void replaceHex6String(String html_tag, int colour)
@@ -842,7 +842,7 @@ public class weeWXApp extends Application
 		return base_html.replace(html_tag, replacement);
 	}
 
-	static weeWXApp getInstance()
+	static WeeWXApp getInstance()
 	{
 		return instance;
 	}
@@ -956,11 +956,11 @@ public class weeWXApp extends Application
 
 			bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
 			Canvas canvas = new Canvas(bitmap);
-			canvas.drawColor(weeWXApp.getColours().bgColour);
+			canvas.drawColor(WeeWXApp.getColours().bgColour);
 
 			// 3️⃣ Prepare the paint
 			TextPaint paint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
-			paint.setColor(weeWXApp.getColours().fgColour);
+			paint.setColor(WeeWXApp.getColours().fgColour);
 			paint.setTextAlign(Paint.Align.LEFT);
 			paint.setTextSize(textSize);
 
@@ -1027,7 +1027,7 @@ public class weeWXApp extends Application
 		if(prefSet && nightDaySetting == 0)
 		{
 			LogMessage("Set to Light...");
-			theme = R.style.AppTheme_weeWXApp_Light_Common;
+			theme = R.style.AppTheme_WeeWXApp_Light_Common;
 			mode = AppCompatDelegate.MODE_NIGHT_NO;
 			bgColour = White;
 			fgColour = Black;
@@ -1036,7 +1036,7 @@ public class weeWXApp extends Application
 		if(prefSet && nightDaySetting == 1)
 		{
 			LogMessage("Set to Dark...");
-			theme = R.style.AppTheme_weeWXApp_Dark_Common;
+			theme = R.style.AppTheme_WeeWXApp_Dark_Common;
 			mode = AppCompatDelegate.MODE_NIGHT_NO;
 			bgColour = Black;
 			fgColour = White;
@@ -1047,14 +1047,14 @@ public class weeWXApp extends Application
 			if(nightDaySetting == 2 && nightModeFlags == Configuration.UI_MODE_NIGHT_NO)
 			{
 				LogMessage("Pref not set or set to follow system and dark mode off...");
-				theme = R.style.AppTheme_weeWXApp_Light_Common;
+				theme = R.style.AppTheme_WeeWXApp_Light_Common;
 				mode = AppCompatDelegate.MODE_NIGHT_NO;
 				bgColour = White;
 				fgColour = Black;
 			} else
 			{
 				LogMessage("Pref not set or set to follow system and dark mode on...");
-				theme = R.style.AppTheme_weeWXApp_Dark_Common;
+				theme = R.style.AppTheme_WeeWXApp_Dark_Common;
 				mode = AppCompatDelegate.MODE_NIGHT_NO;
 				bgColour = Black;
 				fgColour = White;
@@ -1139,10 +1139,10 @@ public class weeWXApp extends Application
 		settings.add(new Setting("widgetBG", widgetBG));
 		settings.add(new Setting("widgetFG", widgetFG));
 
-		LogMessage("weeWXApp.getDayNightMode() bgColour: #" + Integer.toHexString(bgColour));
-		LogMessage("weeWXApp.getDayNightMode() fgColour: #" + Integer.toHexString(fgColour));
-		LogMessage("weeWXApp.getDayNightMode() widgetBG: #" + Integer.toHexString(widgetBG));
-		LogMessage("weeWXApp.getDayNightMode() widgetFG: #" + Integer.toHexString(widgetFG));
+		LogMessage("WeeWXApp.getDayNightMode() bgColour: #" + Integer.toHexString(bgColour));
+		LogMessage("WeeWXApp.getDayNightMode() fgColour: #" + Integer.toHexString(fgColour));
+		LogMessage("WeeWXApp.getDayNightMode() widgetBG: #" + Integer.toHexString(widgetBG));
+		LogMessage("WeeWXApp.getDayNightMode() widgetFG: #" + Integer.toHexString(widgetFG));
 
 		return settings;
 	}
@@ -1206,7 +1206,7 @@ public class weeWXApp extends Application
 		if(ActivityCompat.checkSelfPermission(instance, Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED && !KeyValue.hasNotificationPerm)
 			return;
 
-		boolean metric = (boolean)KeyValue.readVar("metric", weeWXApp.metric_default);
+		boolean metric = (boolean)KeyValue.readVar("metric", WeeWXApp.metric_default);
 
 		String temp = String.format(Locale.ENGLISH, "%.1f", temperature);
 		String templimit = String.format(Locale.ENGLISH, "%.1f", limit);
@@ -1222,7 +1222,7 @@ public class weeWXApp extends Application
 		}
 
 		NotificationCompat.Builder builder = new NotificationCompat.Builder(instance, "temperature_alerts")
-			.setContentIntent(showweeWXApp)
+			.setContentIntent(showWeeWXApp)
 			.setAutoCancel(true)
 			.setContentText(str)
 			.setContentTitle(getAndroidString(R.string.temperature_alert_str))
@@ -1241,8 +1241,8 @@ public class weeWXApp extends Application
 		if(ActivityCompat.checkSelfPermission(instance, Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED && !KeyValue.hasNotificationPerm)
 			return;
 
-		boolean metric = (boolean)KeyValue.readVar("metric", weeWXApp.metric_default);
-		boolean rainInInches = (boolean)KeyValue.readVar("rainInInches", weeWXApp.rain_in_inches_default);
+		boolean metric = (boolean)KeyValue.readVar("metric", WeeWXApp.metric_default);
+		boolean rainInInches = (boolean)KeyValue.readVar("rainInInches", WeeWXApp.rain_in_inches_default);
 
 		String rf = String.format(Locale.ENGLISH, "%.1f", rainfall) + "mm";
 		String rfl = String.format(Locale.ENGLISH, "%.1f", rainfalllimit) + "mm";
@@ -1254,7 +1254,7 @@ public class weeWXApp extends Application
 
 		String str = getAndroidString(R.string.rainfall_alert_notification, rf, rfl);
 		NotificationCompat.Builder builder = new NotificationCompat.Builder(instance, "rainfall_alert")
-			.setContentIntent(showweeWXApp)
+			.setContentIntent(showWeeWXApp)
 			.setAutoCancel(true)
 			.setContentText(str)
 			.setContentTitle(getAndroidString(R.string.rainfall_alert_str))
@@ -1285,7 +1285,7 @@ public class weeWXApp extends Application
 			priority = NotificationCompat.PRIORITY_MAX;
 
 		NotificationCompat.Builder builder = new NotificationCompat.Builder(instance, alert_channels[level])
-			.setContentIntent(showweeWXApp)
+			.setContentIntent(showWeeWXApp)
 			.setAutoCancel(true)
 			.setContentText(str)
 			.setContentTitle(getAndroidString(R.string.rainrate_alert_str))

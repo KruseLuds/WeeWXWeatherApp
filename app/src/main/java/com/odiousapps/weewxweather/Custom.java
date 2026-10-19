@@ -23,19 +23,19 @@ import androidx.webkit.WebViewFeature;
 
 import static com.odiousapps.weewxweather.MainActivity.FORCE_DARK_MODE;
 import static com.odiousapps.weewxweather.MainActivity.CUSTOM_PAGE_ZOOM;
-import static com.odiousapps.weewxweather.weeWXApp.CUSTOM_URL;
-import static com.odiousapps.weewxweather.weeWXApp.WARNING_BODY;
-import static com.odiousapps.weewxweather.weeWXApp.custom_url;
-import static com.odiousapps.weewxweather.weeWXApp.force_dark_mode_default;
-import static com.odiousapps.weewxweather.weeWXApp.getAndroidString;
-import static com.odiousapps.weewxweather.weeWXApp.getInstance;
-import static com.odiousapps.weewxweather.weeWXAppCommon.NPWSLL;
-import static com.odiousapps.weewxweather.weeWXAppCommon.is_valid_url;
-import static com.odiousapps.weewxweather.weeWXAppCommon.doStackOutput;
-import static com.odiousapps.weewxweather.weeWXAppCommon.LogMessage;
-import static com.odiousapps.weewxweather.weeWXAppCommon.getNPWSLL;
-import static com.odiousapps.weewxweather.weeWXNotificationManager.observeNotifications;
-import static com.odiousapps.weewxweather.weeWXNotificationManager.removeNotificationObserver;
+import static com.odiousapps.weewxweather.WeeWXApp.CUSTOM_URL;
+import static com.odiousapps.weewxweather.WeeWXApp.WARNING_BODY;
+import static com.odiousapps.weewxweather.WeeWXApp.custom_url;
+import static com.odiousapps.weewxweather.WeeWXApp.force_dark_mode_default;
+import static com.odiousapps.weewxweather.WeeWXApp.getAndroidString;
+import static com.odiousapps.weewxweather.WeeWXApp.getInstance;
+import static com.odiousapps.weewxweather.WeeWXAppCommon.NPWSLL;
+import static com.odiousapps.weewxweather.WeeWXAppCommon.is_valid_url;
+import static com.odiousapps.weewxweather.WeeWXAppCommon.doStackOutput;
+import static com.odiousapps.weewxweather.WeeWXAppCommon.LogMessage;
+import static com.odiousapps.weewxweather.WeeWXAppCommon.getNPWSLL;
+import static com.odiousapps.weewxweather.WeeWXNotificationManager.observeNotifications;
+import static com.odiousapps.weewxweather.WeeWXNotificationManager.removeNotificationObserver;
 
 @SuppressWarnings({"deprecation", "RequiresFeature"})
 public class Custom extends Fragment
@@ -160,7 +160,7 @@ public class Custom extends Fragment
 	private void setMode()
 	{
 		boolean fdm = (boolean)KeyValue.readVar(FORCE_DARK_MODE, force_dark_mode_default);
-		boolean darkmode = (int)KeyValue.readVar("mode", weeWXApp.mode_default) == 1;
+		boolean darkmode = (int)KeyValue.readVar("mode", WeeWXApp.mode_default) == 1;
 
 		if(darkmode && !fdm)
 			darkmode = false;
@@ -227,7 +227,7 @@ public class Custom extends Fragment
 		NPWSLL npwsll = getNPWSLL();
 		if(!forced && npwsll.periodTime() <= 0L)
 		{
-			String tmpStr = weeWXApp.current_dialog_html
+			String tmpStr = WeeWXApp.current_dialog_html
 					.replace(WARNING_BODY, getAndroidString(R.string.manual_update_set_refresh_screen_to_load));
 
 			wv.post(() ->
@@ -271,7 +271,7 @@ public class Custom extends Fragment
 	{
 		LogMessage("Custom.java notificationObserver: " + str);
 
-		if(str.equals(weeWXAppCommon.REFRESH_DARKMODE_INTENT))
+		if(str.equals(WeeWXAppCommon.REFRESH_DARKMODE_INTENT))
 			setMode();
 	};
 }

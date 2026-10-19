@@ -25,10 +25,10 @@ import okhttp3.Request;
 import okhttp3.Response;
 import okhttp3.TlsVersion;
 
-import static com.odiousapps.weewxweather.weeWXApp.cacheDir;
-import static com.odiousapps.weewxweather.weeWXApp.customDns;
-import static com.odiousapps.weewxweather.weeWXAppCommon.LogMessage;
-import static com.odiousapps.weewxweather.weeWXAppCommon.getNextRandom;
+import static com.odiousapps.weewxweather.WeeWXApp.cacheDir;
+import static com.odiousapps.weewxweather.WeeWXApp.customDns;
+import static com.odiousapps.weewxweather.WeeWXAppCommon.LogMessage;
+import static com.odiousapps.weewxweather.WeeWXAppCommon.getNextRandom;
 
 @SuppressLint({"CustomX509TrustManager", "TrustAllX509TrustManager"})
 class NetworkClient
@@ -128,10 +128,10 @@ class NetworkClient
 				.build();
 
 			clientInstance = defaultBuilder.build().newBuilder()
-				.connectTimeout(weeWXAppCommon.default_timeout, TimeUnit.MILLISECONDS)
-				.writeTimeout(weeWXAppCommon.default_timeout, TimeUnit.MILLISECONDS)
-				.readTimeout(weeWXAppCommon.default_timeout, TimeUnit.MILLISECONDS)
-				.callTimeout(weeWXAppCommon.default_timeout * 2, TimeUnit.MILLISECONDS)
+				.connectTimeout(WeeWXAppCommon.default_timeout, TimeUnit.MILLISECONDS)
+				.writeTimeout(WeeWXAppCommon.default_timeout, TimeUnit.MILLISECONDS)
+				.readTimeout(WeeWXAppCommon.default_timeout, TimeUnit.MILLISECONDS)
+				.callTimeout(WeeWXAppCommon.default_timeout * 2, TimeUnit.MILLISECONDS)
 				.dns(customDns)
 				.cache(cache)
 				.build();

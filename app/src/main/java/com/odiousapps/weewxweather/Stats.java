@@ -26,22 +26,22 @@ import androidx.lifecycle.Observer;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 
-import static com.odiousapps.weewxweather.weeWXApp.getAndroidString;
-import static com.odiousapps.weewxweather.weeWXAppCommon.LogMessage;
-import static com.odiousapps.weewxweather.weeWXAppCommon.headingTime;
-import static com.odiousapps.weewxweather.weeWXAppCommon.is_blank;
-import static com.odiousapps.weewxweather.weeWXAppCommon.cssToSVG;
-import static com.odiousapps.weewxweather.weeWXAppCommon.deg2Str;
-import static com.odiousapps.weewxweather.weeWXAppCommon.fiToSVG;
-import static com.odiousapps.weewxweather.weeWXAppCommon.formatString;
-import static com.odiousapps.weewxweather.weeWXAppCommon.getDateTimeStr;
-import static com.odiousapps.weewxweather.weeWXAppCommon.getJson;
-import static com.odiousapps.weewxweather.weeWXAppCommon.getSinceHour;
-import static com.odiousapps.weewxweather.weeWXAppCommon.hasElement;
-import static com.odiousapps.weewxweather.weeWXAppCommon.processUpdateInBG;
-import static com.odiousapps.weewxweather.weeWXAppCommon.str2Float;
-import static com.odiousapps.weewxweather.weeWXNotificationManager.observeNotifications;
-import static com.odiousapps.weewxweather.weeWXNotificationManager.removeNotificationObserver;
+import static com.odiousapps.weewxweather.WeeWXApp.getAndroidString;
+import static com.odiousapps.weewxweather.WeeWXAppCommon.LogMessage;
+import static com.odiousapps.weewxweather.WeeWXAppCommon.headingTime;
+import static com.odiousapps.weewxweather.WeeWXAppCommon.is_blank;
+import static com.odiousapps.weewxweather.WeeWXAppCommon.cssToSVG;
+import static com.odiousapps.weewxweather.WeeWXAppCommon.deg2Str;
+import static com.odiousapps.weewxweather.WeeWXAppCommon.fiToSVG;
+import static com.odiousapps.weewxweather.WeeWXAppCommon.formatString;
+import static com.odiousapps.weewxweather.WeeWXAppCommon.getDateTimeStr;
+import static com.odiousapps.weewxweather.WeeWXAppCommon.getJson;
+import static com.odiousapps.weewxweather.WeeWXAppCommon.getSinceHour;
+import static com.odiousapps.weewxweather.WeeWXAppCommon.hasElement;
+import static com.odiousapps.weewxweather.WeeWXAppCommon.processUpdateInBG;
+import static com.odiousapps.weewxweather.WeeWXAppCommon.str2Float;
+import static com.odiousapps.weewxweather.WeeWXNotificationManager.observeNotifications;
+import static com.odiousapps.weewxweather.WeeWXNotificationManager.removeNotificationObserver;
 
 @SuppressLint("unused")
 public class Stats extends Fragment
@@ -60,7 +60,7 @@ public class Stats extends Fragment
 		LogMessage("Stats.onCreateView()");
 		super.onCreateView(inflater, container, savedInstanceState);
 
-		int bgColour = weeWXApp.getColours().bgColour;
+		int bgColour = WeeWXApp.getColours().bgColour;
 
 		rootView = inflater.inflate(R.layout.fragment_stats, container, false);
 
@@ -71,7 +71,7 @@ public class Stats extends Fragment
 		swipeLayout.setOnRefreshListener(() ->
 		{
 			swipeLayout.setRefreshing(true);
-			LogMessage("weeWXAppCommon.getWeather(true, false)...");
+			LogMessage("WeeWXAppCommon.getWeather(true, false)...");
 			processUpdateInBG(true, true, false, false, false);
 		});
 
@@ -92,8 +92,8 @@ public class Stats extends Fragment
 
 		if(wv == null)
 		{
-			wv = new SafeWebView(weeWXApp.getInstance());
-			wv.addJavascriptInterface(this, "weeWXApp");
+			wv = new SafeWebView(WeeWXApp.getInstance());
+			wv.addJavascriptInterface(this, "WeeWXApp");
 		}
 
 		FrameLayout fl = rootView.findViewById(R.id.webViewFrameLayout);
@@ -107,7 +107,7 @@ public class Stats extends Fragment
 
 			if(currZoom == 0)
 			{
-				currZoom = sanitiseZoom((int)KeyValue.readVar("mySlider", weeWXApp.mySlider_default));
+				currZoom = sanitiseZoom((int)KeyValue.readVar("mySlider", WeeWXApp.mySlider_default));
 				LogMessage("Stats.setOnPageFinishedListener() currZoom: " + currZoom + "%", KeyValue.d);
 				wv.postDelayed(() -> setZoom(currZoom, false), 50);
 			}
@@ -129,7 +129,7 @@ public class Stats extends Fragment
 	{
 		super.onResume();
 
-		currZoom = sanitiseZoom((int)KeyValue.readVar("mySlider", weeWXApp.mySlider_default));
+		currZoom = sanitiseZoom((int)KeyValue.readVar("mySlider", WeeWXApp.mySlider_default));
 
 		LogMessage("Stats.onResume() currZoom: " + currZoom + "%", KeyValue.d);
 
@@ -262,10 +262,10 @@ public class Stats extends Fragment
 	{
 		LogMessage("Stats.notificationObserver: " + str);
 
-		if(str.equals(weeWXAppCommon.REFRESH_WEATHER_INTENT))
+		if(str.equals(WeeWXAppCommon.REFRESH_WEATHER_INTENT))
 			updateFields();
 
-		if(str.equals(weeWXAppCommon.STOP_WEATHER_INTENT))
+		if(str.equals(WeeWXAppCommon.STOP_WEATHER_INTENT))
 			stopRefreshing();
 	};
 
@@ -274,15 +274,15 @@ public class Stats extends Fragment
 		if(!tv.getText().toString().equals(txt))
 			tv.post(() ->
 			{
-				tv.setBackgroundColor(weeWXApp.getColours().bgColour);
-				tv.setTextColor(weeWXApp.getColours().fgColour);
+				tv.setBackgroundColor(WeeWXApp.getColours().bgColour);
+				tv.setTextColor(WeeWXApp.getColours().fgColour);
 				tv.setText(txt);
 			});
 	}
 
 	private String createRowLeft()
 	{
-		return createRowLeft(null, weeWXApp.emptyField, weeWXApp.emptyField);
+		return createRowLeft(null, WeeWXApp.emptyField, WeeWXApp.emptyField);
 	}
 
 	private String createRowLeft(String class1, String str1, String str2)
@@ -298,23 +298,23 @@ public class Stats extends Fragment
 	{
 		return "\t\t<div class='statsDataRow'>\n" +
 			   "\t\t\t<div class='statsDataCell left'>" + icon + "</div>\n" +
-			   weeWXApp.currentSpacer +
+			   WeeWXApp.currentSpacer +
 			   "\t\t\t<div class='statsDataCell midleft'>" + str1 + "</div>\n" +
-			   weeWXApp.currentSpacer +
+			   WeeWXApp.currentSpacer +
 			   "\t\t\t<div class='statsDataCell midright'>" + str2 + "</div>\n";
 	}
 
 	private String createRowRight()
 	{
-		return createRowRight(null, weeWXApp.emptyField, weeWXApp.emptyField);
+		return createRowRight(null, WeeWXApp.emptyField, WeeWXApp.emptyField);
 	}
 
 	private String createRowRight2(String icon, String str3, String str4)
 	{
 		return "\t\t\t<div class='statsDataCell midleft'>" + str3 + "</div>\n" +
-			   weeWXApp.currentSpacer +
+			   WeeWXApp.currentSpacer +
 			   "\t\t\t<div class='statsDataCell midright'>" + str4 + "</div>\n" +
-			   weeWXApp.currentSpacer +
+			   WeeWXApp.currentSpacer +
 			   "\t\t\t<div class='statsDataCell right'>" + icon + "</div>\n" +
 			   "\t\t</div>\n\n";
 	}
@@ -335,7 +335,7 @@ public class Stats extends Fragment
 			return "";
 
 		return createRowLeft(class1, str1, str2) +
-			   weeWXApp.currentSpacer +
+			   WeeWXApp.currentSpacer +
 			   createRowRight(class2, str3, str4);
 	}
 
@@ -344,16 +344,16 @@ public class Stats extends Fragment
 		return "\t\t<div class='statsDataRow'>\n" +
 			   "\t\t\t<div class='statsDataCell left'><span id='" + id + "'>" +
 			   cssToSVG("wi-wind-deg", degree) + "</span></div>\n" +
-			   weeWXApp.currentSpacer +
+			   WeeWXApp.currentSpacer +
 			   "\t\t\t<div class='statsDataCell midleft'>" + str1 + "</div>\n" +
-			   weeWXApp.currentSpacer +
+			   WeeWXApp.currentSpacer +
 			   "\t\t\t<div class='statsDataCell midright'>" + dateTime + "</div>\n";
 	}
 
 	private String createRow(String id, int degree, String str1, String dateTime, String since, String str2)
 	{
 		return createRowLeft(id, degree, str1, dateTime) +
-			   weeWXApp.currentSpacer +
+			   WeeWXApp.currentSpacer +
 			   createRowRight("wi-umbrella", since, str2);
 	}
 
@@ -388,7 +388,7 @@ public class Stats extends Fragment
 			out += createRowLeft();
 		}
 
-		out += weeWXApp.currentSpacer;
+		out += WeeWXApp.currentSpacer;
 
 		if(key2 != null && !key2.equals("404"))
 		{
@@ -451,7 +451,7 @@ public class Stats extends Fragment
 						formatString(timeperiod + loop[i] + "_min") + "</span>" + syms[i] + "</p>"));
 		}
 
-		if((boolean)KeyValue.readVar("showIndoor", weeWXApp.showIndoor_default))
+		if((boolean)KeyValue.readVar("showIndoor", WeeWXApp.showIndoor_default))
 		{
 			long maxtime = Math.round((double)getJson(timeperiod + "inTemp_maxtime", 0D) * 1_000L);
 			long mintime = Math.round((double)getJson(timeperiod + "inTemp_mintime", 0D) * 1_000L);
@@ -498,7 +498,7 @@ public class Stats extends Fragment
 			else
 				sb.append(createRowLeft());
 
-			sb.append(weeWXApp.currentSpacer);
+			sb.append(WeeWXApp.currentSpacer);
 
 			if(hasET)
 				sb.append(createRowRight2(cssToSVG("evaporation"), "ET",
@@ -535,7 +535,7 @@ public class Stats extends Fragment
 
 		final StringBuilder sb = new StringBuilder();
 
-		sb.append(weeWXApp.current_html_headers);
+		sb.append(WeeWXApp.current_html_headers);
 
 		if(currZoom != 100)
 		{
@@ -544,9 +544,9 @@ public class Stats extends Fragment
 			sb.append("\n\t\t<style>\n\t\t\tbody\n\t\t\t{\n\t\t\t\tzoom: ").append(newZoom).append(";\n\t\t\t}\n\t\t</style>\n");
 		}
 
-		sb.append(weeWXApp.script_header)
-				.append(weeWXApp.html_header_rest)
-				.append(weeWXApp.inline_arrow);
+		sb.append(WeeWXApp.script_header)
+				.append(WeeWXApp.html_header_rest)
+				.append(WeeWXApp.inline_arrow);
 
 		sb.append("\n<div class='statsLayout'>\n\n");
 
@@ -591,14 +591,14 @@ public class Stats extends Fragment
 		sb.append(generateSection(R.string.all_time_stats, "alltime_"));
 		sb.append("\t</div>\n\n");
 
-		sb.append("</div>\n").append(weeWXApp.arrow_spacer);
+		sb.append("</div>\n").append(WeeWXApp.arrow_spacer);
 
-		if(weeWXAppCommon.web_debug_on)
-			sb.append(weeWXApp.debug_html);
+		if(WeeWXAppCommon.web_debug_on)
+			sb.append(WeeWXApp.debug_html);
 
-		sb.append(weeWXApp.html_footer);
+		sb.append(WeeWXApp.html_footer);
 
-		if(weeWXAppCommon.debug_html)
+		if(WeeWXAppCommon.debug_html)
 			CustomDebug.writeOutput(requireContext(), "stats", sb.toString(), isVisible(), requireActivity());
 
 		wv.post(() -> wv.loadDataWithBaseURL("file:///android_asset/",
