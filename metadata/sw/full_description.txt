@@ -1,0 +1,30 @@
+Hali yako ya hewa, kutoka kituo chako mwenyewe cha hali ya hewa.
+
+Programu nyingi za hali ya hewa huonyesha data kutoka kwa huduma za wahusika wengine au kutoka kituo rasmi cha uchunguzi ambacho kinaweza kuwa umbali wa kilomita nyingi. WeeWX Hali ya Hewa badala yake huonyesha vipimo kutoka kituo chako binafsi cha hali ya hewa – au kituo chochote unachoweza kufikia – kinachotumia WeeWX, programu huria na ya bure kwa vituo vya hali ya hewa.
+
+VIPENGELE
+• Hali ya sasa kutoka kituo chako, ikiwemo halijoto, unyevu, upepo, mvua na shinikizo la hewa
+• Vipimo vya ndani ya nyumba (hiari)
+• Takwimu za leo, jana, mwezi huu, mwezi uliopita, mwaka huu, mwaka uliopita na kipindi chote
+• Utabiri kutoka kwa watoa huduma wengi, wakiwemo BoM, NOAA (weather.gov), Met Office, DWD, AEMET, MET Norway, Met Éireann, MetService, Environment Canada na OpenWeatherMap
+• Picha za rada ya hali ya hewa na kamera ya wavuti zenye kukuza kwa vidole
+• Masasisho karibu ya papo hapo kupitia MQTT wakati programu imefunguliwa
+• Arifa halijoto, mvua ya kila siku au kasi ya mvua inapofikia viwango ulivyoweka
+• Wijeti ya skrini ya kwanza yenye rangi nyepesi, nyeusi au maalum
+• Matukio ya mwezi yajayo
+• Vipimo vya metriki au vya kiimperia, pamoja na mandhari nyepesi na nyeusi
+• Vipindi vya masasisho vinavyonyumbulika, na chaguo la kusasisha kupitia Wi-Fi pekee
+• Hufanya kazi na vituo vilivyo kwenye mtandao wako wa nyumbani au kwenye intaneti
+
+MAHITAJI
+Programu hii ni msaidizi wa WeeWX na inahitaji seva ya WeeWX ya kuunganisha nayo. Viendelezi vifuatavyo vya WeeWX lazima viwe vimesakinishwa kwenye seva hiyo:
+• InigoPlugin
+• AggregateValues
+• MQTTPublishV2 (hiari, kinahitajika kwa masasisho ya moja kwa moja)
+
+Viendelezi hivi huhamisha data yako ya hali ya hewa katika muundo ambao programu inaweza kusoma. Maelekezo ya kusakinisha yanapatikana kwenye wiki:
+https://github.com/evilbunny2008/WeeWXWeatherApp/wiki
+
+PROGRAMU HURIA
+WeeWX Hali ya Hewa ni programu huria yenye leseni ya GPLv3 na inatunzwa na jumuiya. Ripoti za hitilafu na michango zinakaribishwa kwenye GitHub:
+https://github.com/evilbunny2008/WeeWXWeatherApp

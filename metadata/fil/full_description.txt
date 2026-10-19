@@ -1,0 +1,30 @@
+Ang panahon mo, mula sa sarili mong weather station.
+
+Karamihan sa mga weather app ay nagpapakita ng data mula sa mga third-party na serbisyo o mula sa opisyal na obserbatoryo na maaaring ilang kilometro ang layo. Ang WeeWX Panahon naman ay nagpapakita ng mga reading mula sa sarili mong personal na weather station – o anumang station na may access ka – na gumagamit ng WeeWX, ang libre at open-source na software para sa mga weather station.
+
+MGA FEATURE
+• Kasalukuyang kondisyon mula sa iyong station, kabilang ang temperatura, halumigmig, hangin, ulan at presyon
+• Opsyonal na mga reading sa loob ng bahay
+• Mga istatistika para sa ngayong araw, kahapon, ngayong buwan, nakaraang buwan, ngayong taon, nakaraang taon at sa lahat ng panahon
+• Mga forecast mula sa maraming provider, kabilang ang BoM, NOAA (weather.gov), Met Office, DWD, AEMET, MET Norway, Met Éireann, MetService, Environment Canada at OpenWeatherMap
+• Mga larawan ng weather radar at webcam na may pinch-to-zoom
+• Halos real-time na update sa pamamagitan ng MQTT habang bukas ang app
+• Mga notification kapag naabot ng temperatura, araw-araw na ulan o lakas ng ulan ang mga limitasyong itinakda mo
+• Widget sa home screen na may maliwanag, madilim o custom na kulay
+• Mga paparating na kaganapan ng buwan
+• Metric o imperial na unit, at maliwanag at madilim na tema
+• Flexible na agwat ng pag-update, na may opsyong mag-update lamang sa Wi-Fi
+• Gumagana sa mga station sa iyong home network o sa internet
+
+MGA KINAKAILANGAN
+Ang app na ito ay kasama ng WeeWX at nangangailangan ng WeeWX server na makokonektahan. Dapat naka-install sa server na iyon ang mga sumusunod na WeeWX extension:
+• InigoPlugin
+• AggregateValues
+• MQTTPublishV2 (opsyonal, kailangan para sa mga live na update)
+
+Ini-e-export ng mga extension ang iyong weather data sa format na nababasa ng app. Nasa wiki ang mga tagubilin sa pag-setup:
+https://github.com/evilbunny2008/WeeWXWeatherApp/wiki
+
+OPEN SOURCE
+Ang WeeWX Panahon ay open-source na software na lisensyado sa ilalim ng GPLv3 at pinapanatili ng komunidad. Malugod na tinatanggap ang mga bug report at kontribusyon sa GitHub:
+https://github.com/evilbunny2008/WeeWXWeatherApp

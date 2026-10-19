@@ -1,0 +1,30 @@
+Isimo sezulu sakho, esivela esiteshini sakho sesimo sezulu.
+
+Iningi lama-app esimo sezulu libonisa idatha evela kumasevisi angaphandle noma esiteshini esisemthethweni esingaba kude ngamakhilomitha amaningi. I-WeeWX Isimo Sezulu yona ibonisa izilinganiso ezivela esiteshini sakho somuntu siqu sesimo sezulu – noma yisiphi isiteshi onokufinyelela kuso – esisebenzisa i-WeeWX, isofthiwe yamahhala nevulekile yeziteshi zesimo sezulu.
+
+IZICI
+• Izimo zamanje ezivela esiteshini sakho, kuhlanganise izinga lokushisa, umswakama, umoya, imvula nomfutho womoya
+• Izilinganiso zangaphakathi endlini (ozikhethela zona)
+• Izibalo zanamuhla, izolo, zale nyanga, zenyanga edlule, zalo nyaka, zonyaka odlule nazo zonke izikhathi
+• Izibikezelo ezivela kubahlinzeki abaningi, kuhlanganise i-BoM, NOAA (weather.gov), Met Office, DWD, AEMET, MET Norway, Met Éireann, MetService, Environment Canada ne-OpenWeatherMap
+• Izithombe ze-radar yesimo sezulu nekhamera yewebhu ezingasondezwa ngeminwe
+• Izibuyekezo ezicishe zibe ngesikhathi sangempela nge-MQTT ngesikhathi i-app ivuliwe
+• Izaziso lapho izinga lokushisa, imvula yansuku zonke noma isivinini semvula kufinyelela imikhawulo oyibekile
+• Iwijethi yesikrini sasekhaya enemibala ekhanyayo, emnyama noma eyakho
+• Imicimbi yenyanga ezayo
+• Amayunithi e-metric noma e-imperial, kanye netimu ekhanyayo nemnyama
+• Izikhathi zokubuyekeza eziguquguqukayo, nokukhetha ukubuyekeza nge-Wi-Fi kuphela
+• Isebenza neziteshi ezisenethiwekhini yakho yasekhaya noma ku-inthanethi
+
+IZIDINGO
+Le app iyisengezo se-WeeWX futhi idinga iseva ye-WeeWX ezoxhumana nayo. Izandiso ze-WeeWX ezilandelayo kumele zifakwe kuleyo seva:
+• InigoPlugin
+• AggregateValues
+• MQTTPublishV2 (ongazikhethela, iyadingeka ezibuyekezweni ezibukhoma)
+
+Lezi zandiso zithumela idatha yakho yesimo sezulu ngefomethi i-app engayifunda. Imiyalelo yokusetha itholakala ku-wiki:
+https://github.com/evilbunny2008/WeeWXWeatherApp/wiki
+
+UMTHOMBO OVULEKILE
+I-WeeWX Isimo Sezulu iyisofthiwe yomthombo ovulekile enelayisensi ye-GPLv3 futhi inakekelwa umphakathi. Imibiko yamaphutha neminikelo yamukelekile ku-GitHub:
+https://github.com/evilbunny2008/WeeWXWeatherApp

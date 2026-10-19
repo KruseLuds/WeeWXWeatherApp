@@ -1,0 +1,30 @@
+Zure eguraldia, zure estazio meteorologikotik.
+
+Eguraldi-aplikazio gehienek hirugarrenen zerbitzuetako datuak edo kilometro askotara egon daitekeen estazio ofizial baten datuak erakusten dituzte. WeeWX Eguraldia aplikazioak, aldiz, zure estazio meteorologiko pertsonalaren neurketak erakusten ditu –edo sarbidea duzun edozein estaziorenak–, baldin eta WeeWX erabiltzen badu, estazio meteorologikoetarako software doako eta kode irekikoa.
+
+EZAUGARRIAK
+• Zure estazioko uneko baldintzak: tenperatura, hezetasuna, haizea, prezipitazioa, presioa eta gehiago
+• Barruko neurketa aukerakoak
+• Gaurko, atzoko, hilabete honetako, aurreko hilabeteko, aurtengo, iazko eta denbora osoko estatistikak
+• Hornitzaile askoren iragarpenak, besteak beste AEMET, BoM, NOAA (weather.gov), Met Office, DWD, MET Norway, Met Éireann, MetService, Environment Canada eta OpenWeatherMap
+• Radar meteorologikoko eta web-kamerako irudiak, hatzekin zooma egiteko aukerarekin
+• Ia denbora errealeko eguneratzeak MQTT bidez, aplikazioa irekita dagoen bitartean
+• Jakinarazpenak tenperaturak, eguneko prezipitazioak edo euri-intentsitateak zuk ezarritako mugak gainditzen dituztenean
+• Hasierako pantailarako widgeta, kolore argi, ilun edo pertsonalizatuekin
+• Hurrengo ilargi-gertaerak
+• Unitate metrikoak edo inperialak, eta gai argia eta iluna
+• Eguneratze-tarte malguak, Wi-Fi bidez soilik eguneratzeko aukerarekin
+• Etxeko sareko edo Interneteko estazioekin dabil
+
+BETEKIZUNAK
+Aplikazio hau WeeWX-en osagarria da, eta WeeWX zerbitzari bat behar du konektatzeko. Zerbitzari horretan WeeWX-en hedapen hauek instalatuta egon behar dute:
+• InigoPlugin
+• AggregateValues
+• MQTTPublishV2 (aukerakoa, zuzeneko eguneratzeetarako beharrezkoa)
+
+Hedapenek zure datu meteorologikoak aplikazioak irakur dezakeen formatuan esportatzen dituzte. Instalazio-argibideak wikian daude:
+https://github.com/evilbunny2008/WeeWXWeatherApp/wiki
+
+KODE IREKIA
+WeeWX Eguraldia kode irekiko softwarea da, GPLv3 lizentziapean eta komunitateak mantendua. Akatsen berri ematea eta ekarpenak egitea ongi etorriak dira GitHub-en:
+https://github.com/evilbunny2008/WeeWXWeatherApp

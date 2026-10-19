@@ -1,0 +1,30 @@
+Havanız – öz hava stansiyanızdan.
+
+Əksər hava tətbiqləri üçüncü tərəf xidmətlərinin və ya kilometrlərlə uzaqda yerləşə bilən rəsmi müşahidə stansiyasının məlumatlarını göstərir. WeeWX Hava isə WeeWX – hava stansiyaları üçün pulsuz və açıq mənbəli proqram təminatı – ilə işləyən öz şəxsi hava stansiyanızın və ya girişiniz olan istənilən stansiyanın göstəricilərini təqdim edir.
+
+XÜSUSİYYƏTLƏR
+• Stansiyanızdan cari şərait: temperatur, rütubət, külək, yağıntı, təzyiq və s.
+• İstəyə bağlı qapalı məkan göstəriciləri
+• Bu gün, dünən, bu ay, keçən ay, bu il, keçən il və bütün dövr üzrə statistika
+• BoM, NOAA (weather.gov), Met Office, DWD, AEMET, MET Norway, Met Éireann, MetService, Environment Canada və OpenWeatherMap daxil olmaqla bir çox provayderdən proqnozlar
+• Barmaqla böyüdülə bilən hava radarı və veb-kamera təsvirləri
+• Tətbiq açıq olarkən MQTT vasitəsilə demək olar ki, real vaxtda yeniləmələr
+• Temperatur, gündəlik yağıntı və ya yağış intensivliyi təyin etdiyiniz həddə çatdıqda bildirişlər
+• Açıq, tünd və ya fərdi rəngli ana ekran vidjeti
+• Qarşıdakı Ay hadisələri
+• Metrik və ya imperial vahidlər, açıq və tünd mövzular
+• Çevik yeniləmə intervalları və yalnız Wi-Fi ilə yeniləmə seçimi
+• Ev şəbəkənizdəki və ya internetdəki stansiyalarla işləyir
+
+TƏLƏBLƏR
+Bu tətbiq WeeWX üçün köməkçi tətbiqdir və qoşulmaq üçün WeeWX serveri tələb edir. Həmin serverdə aşağıdakı WeeWX genişləndirmələri quraşdırılmalıdır:
+• InigoPlugin
+• AggregateValues
+• MQTTPublishV2 (istəyə bağlı, canlı yeniləmələr üçün lazımdır)
+
+Genişləndirmələr hava məlumatlarınızı tətbiqin oxuya biləcəyi formatda ixrac edir. Quraşdırma təlimatları vikidədir:
+https://github.com/evilbunny2008/WeeWXWeatherApp/wiki
+
+AÇIQ MƏNBƏ
+WeeWX Hava GPLv3 lisenziyası ilə yayılan və icma tərəfindən dəstəklənən açıq mənbəli proqram təminatıdır. Xəta bildirişləri və töhfələr GitHub-da qəbul olunur:
+https://github.com/evilbunny2008/WeeWXWeatherApp

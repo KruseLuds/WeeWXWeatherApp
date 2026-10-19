@@ -1,0 +1,30 @@
+Cuaca Anda, dari stasiun cuaca Anda sendiri.
+
+Sebagian besar aplikasi cuaca menampilkan data dari layanan pihak ketiga atau dari stasiun pengamatan resmi yang bisa berjarak puluhan kilometer. WeeWX Cuaca menampilkan hasil pengukuran dari stasiun cuaca pribadi Anda – atau stasiun mana pun yang dapat Anda akses – yang menjalankan WeeWX, perangkat lunak stasiun cuaca gratis dan sumber terbuka.
+
+FITUR
+• Kondisi terkini dari stasiun Anda, termasuk suhu, kelembapan, angin, curah hujan, dan tekanan udara
+• Pembacaan dalam ruangan (opsional)
+• Statistik untuk hari ini, kemarin, bulan ini, bulan lalu, tahun ini, tahun lalu, dan sepanjang waktu
+• Prakiraan dari banyak penyedia, termasuk BoM, NOAA (weather.gov), Met Office, DWD, AEMET, MET Norway, Met Éireann, MetService, Environment Canada, dan OpenWeatherMap
+• Gambar radar cuaca dan webcam dengan zoom cubit
+• Pembaruan hampir real-time melalui MQTT saat aplikasi terbuka
+• Notifikasi saat suhu, curah hujan harian, atau intensitas hujan mencapai batas yang Anda tetapkan
+• Widget layar utama dengan warna terang, gelap, atau kustom
+• Peristiwa bulan yang akan datang
+• Satuan metrik atau imperial, serta tema terang dan gelap
+• Interval pembaruan yang fleksibel, dengan opsi hanya memperbarui melalui Wi-Fi
+• Berfungsi dengan stasiun di jaringan rumah atau di internet
+
+PERSYARATAN
+Aplikasi ini adalah pendamping WeeWX dan memerlukan server WeeWX untuk terhubung. Ekstensi WeeWX berikut harus terpasang di server tersebut:
+• InigoPlugin
+• AggregateValues
+• MQTTPublishV2 (opsional, diperlukan untuk pembaruan langsung)
+
+Ekstensi ini mengekspor data cuaca Anda dalam format yang dapat dibaca aplikasi. Petunjuk pemasangan tersedia di wiki:
+https://github.com/evilbunny2008/WeeWXWeatherApp/wiki
+
+SUMBER TERBUKA
+WeeWX Cuaca adalah perangkat lunak sumber terbuka berlisensi GPLv3 yang dikelola oleh komunitas. Laporan bug dan kontribusi sangat diterima di GitHub:
+https://github.com/evilbunny2008/WeeWXWeatherApp

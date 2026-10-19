@@ -1,0 +1,30 @@
+El teu temps, des de la teva pròpia estació meteorològica.
+
+La majoria d'aplicacions del temps mostren dades de serveis de tercers o d'una estació oficial que pot estar a molts quilòmetres. WeeWX El Temps mostra les lectures de la teva pròpia estació meteorològica personal, o de qualsevol estació a la qual tinguis accés, que utilitzi WeeWX, el programari gratuït i de codi obert per a estacions meteorològiques.
+
+FUNCIONS
+• Condicions actuals de la teva estació: temperatura, humitat, vent, pluja, pressió i més
+• Lectures interiors opcionals
+• Estadístiques d'avui, ahir, aquest mes, el mes passat, aquest any, l'any passat i de tot l'historial
+• Previsions de nombrosos proveïdors, com ara AEMET, BoM, NOAA (weather.gov), Met Office, DWD, MET Norway, Met Éireann, MetService, Environment Canada i OpenWeatherMap
+• Imatges de radar meteorològic i de càmera web amb zoom de pinça
+• Actualitzacions gairebé en temps real mitjançant MQTT mentre l'aplicació està oberta
+• Notificacions quan la temperatura, la pluja diària o la intensitat de pluja arriben als límits que hagis establert
+• Giny per a la pantalla d'inici amb colors clars, foscos o personalitzats
+• Propers esdeveniments lunars
+• Unitats mètriques o imperials, i temes clar i fosc
+• Intervals d'actualització flexibles, amb l'opció d'actualitzar només amb Wi-Fi
+• Funciona amb estacions de la xarxa domèstica o d'internet
+
+REQUISITS
+Aquesta aplicació és un complement de WeeWX i necessita un servidor WeeWX on connectar-se. En aquest servidor cal tenir instal·lades les extensions de WeeWX següents:
+• InigoPlugin
+• AggregateValues
+• MQTTPublishV2 (opcional, necessària per a les actualitzacions en directe)
+
+Les extensions exporten les teves dades meteorològiques en un format que l'aplicació pot llegir. Les instruccions d'instal·lació són a la wiki:
+https://github.com/evilbunny2008/WeeWXWeatherApp/wiki
+
+CODI OBERT
+WeeWX El Temps és programari de codi obert, amb llicència GPLv3 i mantingut per la comunitat. Els informes d'errors i les contribucions són benvinguts a GitHub:
+https://github.com/evilbunny2008/WeeWXWeatherApp

@@ -1,0 +1,30 @@
+您的天氣，來自您自己的氣象站。
+
+大多數天氣應用程式顯示的是第三方服務的資料，或是來自可能遠在數十公里外的官方觀測站的資料。WeeWX 天氣則會顯示執行 WeeWX（一款免費開放原始碼的氣象站軟體）的個人氣象站——或您有權存取的任何氣象站——的讀數。
+
+功能
+• 氣象站的即時狀況，包括溫度、濕度、風、雨量和氣壓等
+• 可選的室內讀數
+• 今天、昨天、本月、上個月、今年、去年以及歷來全部資料的統計
+• 來自眾多供應商的天氣預報，包括 BoM、NOAA (weather.gov)、Met Office、DWD、AEMET、MET Norway、Met Éireann、MetService、Environment Canada 和 OpenWeatherMap
+• 支援雙指縮放的氣象雷達和網路攝影機影像
+• 應用程式開啟時透過 MQTT 取得近乎即時的更新
+• 當溫度、日雨量或降雨強度達到您設定的上限時發送通知
+• 主畫面小工具，可選淺色、深色或自訂顏色
+• 即將到來的月相事件
+• 公制或英制單位，以及淺色和深色主題
+• 彈性的更新間隔，可選擇僅透過 Wi-Fi 更新
+• 支援家用網路或網際網路上的氣象站
+
+使用需求
+本應用程式是 WeeWX 的配套應用程式，需要連線到 WeeWX 伺服器。該伺服器上必須安裝以下 WeeWX 擴充功能：
+• InigoPlugin
+• AggregateValues
+• MQTTPublishV2（選用，即時更新需要）
+
+這些擴充功能會將您的氣象資料匯出為應用程式可以讀取的格式。安裝說明請參閱 Wiki：
+https://github.com/evilbunny2008/WeeWXWeatherApp/wiki
+
+開放原始碼
+WeeWX 天氣是開放原始碼軟體，採用 GPLv3 授權，由社群維護。歡迎在 GitHub 上回報問題和貢獻：
+https://github.com/evilbunny2008/WeeWXWeatherApp

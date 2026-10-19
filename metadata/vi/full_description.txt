@@ -1,0 +1,30 @@
+Thời tiết của bạn, từ trạm thời tiết của chính bạn.
+
+Hầu hết các ứng dụng thời tiết hiển thị dữ liệu từ dịch vụ bên thứ ba hoặc từ một trạm quan trắc chính thức có thể cách xa nhiều kilômét. WeeWX Thời tiết hiển thị số liệu từ trạm thời tiết cá nhân của bạn – hoặc bất kỳ trạm nào bạn có quyền truy cập – đang chạy WeeWX, phần mềm trạm thời tiết miễn phí và mã nguồn mở.
+
+TÍNH NĂNG
+• Điều kiện hiện tại từ trạm của bạn, gồm nhiệt độ, độ ẩm, gió, lượng mưa, áp suất và nhiều hơn nữa
+• Số liệu trong nhà (tùy chọn)
+• Thống kê hôm nay, hôm qua, tháng này, tháng trước, năm nay, năm ngoái và toàn bộ thời gian
+• Dự báo từ nhiều nhà cung cấp, bao gồm BoM, NOAA (weather.gov), Met Office, DWD, AEMET, MET Norway, Met Éireann, MetService, Environment Canada và OpenWeatherMap
+• Hình ảnh radar thời tiết và webcam có thể phóng to bằng hai ngón tay
+• Cập nhật gần như theo thời gian thực qua MQTT khi ứng dụng đang mở
+• Thông báo khi nhiệt độ, lượng mưa trong ngày hoặc cường độ mưa đạt ngưỡng bạn đặt
+• Tiện ích màn hình chính với màu sáng, tối hoặc màu tùy chỉnh
+• Các sự kiện mặt trăng sắp tới
+• Đơn vị hệ mét hoặc hệ đo lường Anh, cùng giao diện sáng và tối
+• Khoảng thời gian cập nhật linh hoạt, có tùy chọn chỉ cập nhật qua Wi-Fi
+• Hoạt động với các trạm trong mạng gia đình hoặc trên internet
+
+YÊU CẦU
+Ứng dụng này là ứng dụng đồng hành của WeeWX và cần một máy chủ WeeWX để kết nối. Máy chủ đó phải cài đặt các tiện ích mở rộng WeeWX sau:
+• InigoPlugin
+• AggregateValues
+• MQTTPublishV2 (tùy chọn, cần cho cập nhật trực tiếp)
+
+Các tiện ích mở rộng này xuất dữ liệu thời tiết của bạn theo định dạng mà ứng dụng có thể đọc. Hướng dẫn cài đặt có trên wiki:
+https://github.com/evilbunny2008/WeeWXWeatherApp/wiki
+
+MÃ NGUỒN MỞ
+WeeWX Thời tiết là phần mềm mã nguồn mở, được cấp phép theo GPLv3 và do cộng đồng duy trì. Chúng tôi hoan nghênh báo cáo lỗi và đóng góp trên GitHub:
+https://github.com/evilbunny2008/WeeWXWeatherApp
