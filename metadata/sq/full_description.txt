@@ -1,0 +1,30 @@
+Moti juaj, nga stacioni juaj meteorologjik.
+
+Shumica e aplikacioneve të motit shfaqin të dhëna nga shërbime të palëve të treta ose nga një stacion zyrtar vëzhgimi që mund të jetë shumë kilometra larg. WeeWX Moti shfaq matjet nga stacioni juaj personal meteorologjik – ose nga çdo stacion ku keni qasje – që përdor WeeWX, softuerin falas dhe me burim të hapur për stacionet meteorologjike.
+
+VEÇORITË
+• Kushtet aktuale nga stacioni juaj, përfshirë temperaturën, lagështinë, erën, reshjet dhe presionin atmosferik
+• Matje opsionale të ambienteve të brendshme
+• Statistika për sot, dje, këtë muaj, muajin e kaluar, këtë vit, vitin e kaluar dhe për gjithë kohën
+• Parashikime nga shumë ofrues, përfshirë BoM, NOAA (weather.gov), Met Office, DWD, AEMET, MET Norway, Met Éireann, MetService, Environment Canada dhe OpenWeatherMap
+• Imazhe të radarit të motit dhe të kamerës së uebit me zmadhim me gishta
+• Përditësime pothuajse në kohë reale nëpërmjet MQTT ndërsa aplikacioni është i hapur
+• Njoftime kur temperatura, reshjet ditore ose intensiteti i shiut arrijnë kufijtë që keni caktuar
+• Miniaplikacion për ekranin bazë me ngjyra të çelura, të errëta ose të personalizuara
+• Ngjarjet e ardhshme të Hënës
+• Njësi metrike ose imperiale, si dhe tema e çelur dhe e errët
+• Intervale fleksibël përditësimi, me mundësinë për t'u përditësuar vetëm nëpërmjet Wi-Fi
+• Funksionon me stacione në rrjetin tuaj të shtëpisë ose në internet
+
+KËRKESAT
+Ky aplikacion është shoqërues i WeeWX dhe ka nevojë për një server WeeWX për t'u lidhur. Në atë server duhet të jenë instaluar shtesat e mëposhtme të WeeWX:
+• InigoPlugin
+• AggregateValues
+• MQTTPublishV2 (opsionale, e nevojshme për përditësimet drejtpërdrejt)
+
+Shtesat eksportojnë të dhënat tuaja të motit në një format që aplikacioni mund ta lexojë. Udhëzimet e konfigurimit gjenden në wiki:
+https://github.com/evilbunny2008/WeeWXWeatherApp/wiki
+
+BURIM I HAPUR
+WeeWX Moti është softuer me burim të hapur, i licencuar sipas GPLv3 dhe i mirëmbajtur nga komuniteti. Raportet e defekteve dhe kontributet janë të mirëpritura në GitHub:
+https://github.com/evilbunny2008/WeeWXWeatherApp
