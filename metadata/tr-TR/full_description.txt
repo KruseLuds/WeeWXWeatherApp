@@ -1,0 +1,30 @@
+Hava durumunuz, kendi hava istasyonunuzdan.
+
+Çoğu hava durumu uygulaması, üçüncü taraf hizmetlerden veya kilometrelerce uzaktaki resmi bir gözlem istasyonundan gelen verileri gösterir. WeeWX Hava Durumu ise WeeWX (hava istasyonları için ücretsiz ve açık kaynaklı yazılım) çalıştıran kendi kişisel hava istasyonunuzun – ya da erişiminiz olan herhangi bir istasyonun – ölçümlerini gösterir.
+
+ÖZELLİKLER
+• İstasyonunuzdan anlık koşullar: sıcaklık, nem, rüzgâr, yağış, basınç ve daha fazlası
+• İsteğe bağlı iç mekân ölçümleri
+• Bugün, dün, bu ay, geçen ay, bu yıl, geçen yıl ve tüm zamanlar için istatistikler
+• BoM, NOAA (weather.gov), Met Office, DWD, AEMET, MET Norway, Met Éireann, MetService, Environment Canada ve OpenWeatherMap dahil pek çok sağlayıcıdan tahminler
+• Parmakla yakınlaştırılabilen hava radarı ve web kamerası görüntüleri
+• Uygulama açıkken MQTT üzerinden neredeyse gerçek zamanlı güncellemeler
+• Sıcaklık, günlük yağış veya yağış şiddeti belirlediğiniz sınırlara ulaştığında bildirimler
+• Açık, koyu veya özel renklerle ana ekran widget'ı
+• Yaklaşan ay olayları
+• Metrik veya emperyal birimler, açık ve koyu tema
+• Esnek güncelleme aralıkları ve yalnızca Wi-Fi üzerinden güncelleme seçeneği
+• Ev ağınızdaki veya internetteki istasyonlarla çalışır
+
+GEREKSİNİMLER
+Bu uygulama WeeWX'in yardımcı uygulamasıdır ve bağlanmak için bir WeeWX sunucusuna ihtiyaç duyar. Bu sunucuda aşağıdaki WeeWX eklentileri kurulu olmalıdır:
+• InigoPlugin
+• AggregateValues
+• MQTTPublishV2 (isteğe bağlı, canlı güncellemeler için gereklidir)
+
+Eklentiler, hava durumu verilerinizi uygulamanın okuyabileceği bir biçimde dışa aktarır. Kurulum talimatları wiki'de yer alır:
+https://github.com/evilbunny2008/WeeWXWeatherApp/wiki
+
+AÇIK KAYNAK
+WeeWX Hava Durumu, GPLv3 lisansıyla sunulan ve topluluk tarafından sürdürülen açık kaynaklı bir yazılımdır. Hata bildirimlerinizi ve katkılarınızı GitHub'da bekliyoruz:
+https://github.com/evilbunny2008/WeeWXWeatherApp

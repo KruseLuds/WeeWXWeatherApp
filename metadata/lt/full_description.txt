@@ -1,0 +1,30 @@
+Jūsų orai – iš jūsų pačių meteorologijos stoties.
+
+Dauguma orų programėlių rodo trečiųjų šalių paslaugų arba oficialios matavimo stoties duomenis, o ta stotis gali būti už daugelio kilometrų. WeeWX Orai rodo jūsų pačių asmeninės meteorologijos stoties – arba bet kurios stoties, prie kurios turite prieigą – rodmenis, jei joje veikia WeeWX, nemokama atvirojo kodo programinė įranga meteorologijos stotims.
+
+FUNKCIJOS
+• Dabartinės sąlygos iš jūsų stoties, įskaitant temperatūrą, drėgmę, vėją, kritulius ir slėgį
+• Pasirenkami patalpų rodmenys
+• Šiandienos, vakarykštės dienos, šio ir praėjusio mėnesio, šių ir praėjusių metų bei viso laikotarpio statistika
+• Daugelio tiekėjų prognozės, įskaitant BoM, NOAA (weather.gov), Met Office, DWD, AEMET, MET Norway, Met Éireann, MetService, Environment Canada ir OpenWeatherMap
+• Orų radaro ir internetinės kameros vaizdai su didinimu pirštais
+• Beveik realaus laiko atnaujinimai per MQTT, kol programėlė atidaryta
+• Pranešimai, kai temperatūra, paros kritulių kiekis ar lietaus intensyvumas pasiekia jūsų nustatytas ribas
+• Pradžios ekrano valdiklis su šviesiomis, tamsiomis arba pasirinktinėmis spalvomis
+• Artėjantys Mėnulio reiškiniai
+• Metriniai arba imperiniai vienetai, šviesi ir tamsi temos
+• Lankstūs atnaujinimo intervalai su galimybe atnaujinti tik per „Wi-Fi“
+• Veikia su stotimis namų tinkle arba internete
+
+REIKALAVIMAI
+Ši programėlė yra WeeWX papildinys, todėl jai reikia WeeWX serverio, prie kurio ji jungsis. Tame serveryje turi būti įdiegti šie WeeWX plėtiniai:
+• InigoPlugin
+• AggregateValues
+• MQTTPublishV2 (neprivaloma, reikalinga tiesioginiams atnaujinimams)
+
+Plėtiniai eksportuoja jūsų orų duomenis tokiu formatu, kurį programėlė gali nuskaityti. Diegimo instrukcijos pateiktos vikyje:
+https://github.com/evilbunny2008/WeeWXWeatherApp/wiki
+
+ATVIRASIS KODAS
+WeeWX Orai yra atvirojo kodo programinė įranga, licencijuota pagal GPLv3 ir prižiūrima bendruomenės. Pranešimai apie klaidas ir indėlis laukiami „GitHub“:
+https://github.com/evilbunny2008/WeeWXWeatherApp

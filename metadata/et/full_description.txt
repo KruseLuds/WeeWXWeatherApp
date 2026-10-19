@@ -1,0 +1,30 @@
+Sinu ilm sinu enda ilmajaamast.
+
+Enamik ilmarakendusi näitab kolmandate osapoolte teenuste või ametliku vaatlusjaama andmeid, kusjuures jaam võib asuda kümnete kilomeetrite kaugusel. WeeWX Ilm näitab hoopis sinu enda isikliku ilmajaama – või mis tahes jaama, millele sul on juurdepääs – näite, kui selles töötab WeeWX, tasuta avatud lähtekoodiga ilmajaamatarkvara.
+
+FUNKTSIOONID
+• Sinu jaama praegused olud, sealhulgas temperatuur, niiskus, tuul, sademed ja õhurõhk
+• Valikulised siseruumi näidud
+• Statistika tänase, eilse, käesoleva ja eelmise kuu, käesoleva ja eelmise aasta ning kogu perioodi kohta
+• Prognoosid paljudelt pakkujatelt, sh BoM, NOAA (weather.gov), Met Office, DWD, AEMET, MET Norway, Met Éireann, MetService, Environment Canada ja OpenWeatherMap
+• Ilmaradari ja veebikaamera pildid sõrmedega suumimise võimalusega
+• Peaaegu reaalajas värskendused MQTT kaudu, kui rakendus on avatud
+• Teavitused, kui temperatuur, ööpäevane sademete hulk või vihma intensiivsus jõuab sinu määratud piirini
+• Avaekraani vidin heledate, tumedate või kohandatud värvidega
+• Eelseisvad kuusündmused
+• Meetrilised või briti ühikud ning hele ja tume teema
+• Paindlikud värskendusintervallid koos võimalusega värskendada ainult Wi-Fi kaudu
+• Töötab nii koduvõrgus kui ka internetis asuvate jaamadega
+
+NÕUDED
+See rakendus on WeeWX-i kaasrakendus ja vajab ühendumiseks WeeWX-serverit. Serverisse peavad olema paigaldatud järgmised WeeWX-i laiendused:
+• InigoPlugin
+• AggregateValues
+• MQTTPublishV2 (valikuline, vajalik reaalajas värskenduste jaoks)
+
+Laiendused ekspordivad sinu ilmaandmed vormingusse, mida rakendus suudab lugeda. Paigaldusjuhised leiad vikist:
+https://github.com/evilbunny2008/WeeWXWeatherApp/wiki
+
+AVATUD LÄHTEKOOD
+WeeWX Ilm on avatud lähtekoodiga tarkvara, mis on litsentsitud GPLv3 alusel ja mida haldab kogukond. Veateated ja panused on GitHubis oodatud:
+https://github.com/evilbunny2008/WeeWXWeatherApp
