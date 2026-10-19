@@ -1,1 +1,1 @@
-A companion app for WeeWX users
+Live weather, forecasts and alerts from your own WeeWX weather station
