@@ -1,0 +1,30 @@
+Vremea ta, de la propria ta stație meteo.
+
+Majoritatea aplicațiilor meteo afișează date de la servicii terțe sau de la o stație oficială care se poate afla la mulți kilometri distanță. WeeWX Vremea afișează în schimb citirile propriei tale stații meteo personale – sau ale oricărei stații la care ai acces – care rulează WeeWX, software-ul gratuit și open source pentru stații meteo.
+
+FUNCȚII
+• Condițiile curente de la stația ta, inclusiv temperatură, umiditate, vânt, precipitații și presiune
+• Citiri de interior opționale
+• Statistici pentru azi, ieri, luna aceasta, luna trecută, anul acesta, anul trecut și pentru întreaga perioadă
+• Prognoze de la numeroși furnizori, printre care BoM, NOAA (weather.gov), Met Office, DWD, AEMET, MET Norway, Met Éireann, MetService, Environment Canada și OpenWeatherMap
+• Imagini radar meteo și de la camere web, cu zoom prin ciupire
+• Actualizări aproape în timp real prin MQTT cât timp aplicația este deschisă
+• Notificări când temperatura, precipitațiile zilnice sau intensitatea ploii ating limitele setate de tine
+• Widget pentru ecranul de pornire cu culori deschise, închise sau personalizate
+• Evenimente lunare viitoare
+• Unități metrice sau imperiale, plus teme deschisă și întunecată
+• Intervale de actualizare flexibile, cu opțiunea de actualizare doar prin Wi-Fi
+• Funcționează cu stații din rețeaua de acasă sau de pe internet
+
+CERINȚE
+Această aplicație este un însoțitor pentru WeeWX și are nevoie de un server WeeWX la care să se conecteze. Pe acel server trebuie instalate următoarele extensii WeeWX:
+• InigoPlugin
+• AggregateValues
+• MQTTPublishV2 (opțională, necesară pentru actualizări live)
+
+Extensiile exportă datele meteo într-un format pe care aplicația îl poate citi. Instrucțiunile de instalare sunt disponibile pe wiki:
+https://github.com/evilbunny2008/WeeWXWeatherApp/wiki
+
+OPEN SOURCE
+WeeWX Vremea este software open source, licențiat sub GPLv3 și întreținut de comunitate. Rapoartele de erori și contribuțiile sunt binevenite pe GitHub:
+https://github.com/evilbunny2008/WeeWXWeatherApp

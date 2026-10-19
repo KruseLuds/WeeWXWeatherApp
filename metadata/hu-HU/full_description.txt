@@ -1,0 +1,30 @@
+Az időjárás a saját időjárás-állomásodról.
+
+A legtöbb időjárás-alkalmazás külső szolgáltatások adatait vagy egy akár sok kilométerre lévő hivatalos mérőállomás adatait mutatja. A WeeWX Időjárás ezzel szemben a saját személyes időjárás-állomásod – vagy bármely állomás, amelyhez hozzáférsz – méréseit jeleníti meg, amelyen a WeeWX, az ingyenes, nyílt forráskódú időjárás-állomás szoftver fut.
+
+FUNKCIÓK
+• Az állomásod aktuális adatai, többek között hőmérséklet, páratartalom, szél, csapadék és légnyomás
+• Opcionális beltéri mérések
+• Statisztikák a mai napra, tegnapra, az aktuális és az előző hónapra, az aktuális és az előző évre, valamint a teljes időszakra
+• Előrejelzések számos szolgáltatótól, többek között BoM, NOAA (weather.gov), Met Office, DWD, AEMET, MET Norway, Met Éireann, MetService, Environment Canada és OpenWeatherMap
+• Időjárási radar- és webkamera-képek csípő mozdulattal történő nagyítással
+• Közel valós idejű frissítések MQTT-n keresztül, amíg az alkalmazás nyitva van
+• Értesítések, amikor a hőmérséklet, a napi csapadék vagy az esőintenzitás eléri az általad beállított határértéket
+• Kezdőképernyő-modul világos, sötét vagy egyéni színekkel
+• Közelgő holdesemények
+• Metrikus vagy angolszász mértékegységek, valamint világos és sötét téma
+• Rugalmas frissítési időközök, csak Wi-Fi-n történő frissítés lehetőségével
+• Otthoni hálózaton vagy interneten elérhető állomásokkal is működik
+
+KÖVETELMÉNYEK
+Ez az alkalmazás a WeeWX kiegészítője, és szüksége van egy WeeWX-kiszolgálóra, amelyhez csatlakozhat. A kiszolgálón a következő WeeWX-bővítményeknek kell telepítve lenniük:
+• InigoPlugin
+• AggregateValues
+• MQTTPublishV2 (opcionális, az élő frissítésekhez szükséges)
+
+A bővítmények olyan formátumban exportálják az időjárási adataidat, amelyet az alkalmazás be tud olvasni. A telepítési útmutató a wikiben található:
+https://github.com/evilbunny2008/WeeWXWeatherApp/wiki
+
+NYÍLT FORRÁSKÓD
+A WeeWX Időjárás nyílt forráskódú szoftver, GPLv3 licenc alatt érhető el, és a közösség tartja karban. A hibajelentéseket és a hozzájárulásokat szívesen fogadjuk a GitHubon:
+https://github.com/evilbunny2008/WeeWXWeatherApp

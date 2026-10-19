@@ -1,0 +1,30 @@
+Vaše počasí z vaší vlastní meteostanice.
+
+Většina aplikací o počasí zobrazuje data od služeb třetích stran nebo z oficiální měřicí stanice, která může být mnoho kilometrů daleko. WeeWX Počasí zobrazuje údaje z vaší vlastní osobní meteostanice – nebo z jakékoli stanice, ke které máte přístup – na níž běží WeeWX, bezplatný open source software pro meteostanice.
+
+FUNKCE
+• Aktuální podmínky z vaší stanice včetně teploty, vlhkosti, větru, srážek a tlaku
+• Volitelné vnitřní údaje
+• Statistiky za dnešek, včerejšek, tento měsíc, minulý měsíc, tento rok, minulý rok a za celou dobu
+• Předpovědi od mnoha poskytovatelů, mimo jiné BoM, NOAA (weather.gov), Met Office, DWD, AEMET, MET Norway, Met Éireann, MetService, Environment Canada a OpenWeatherMap
+• Snímky z meteoradaru a webkamery s přiblížením gestem roztažení prstů
+• Aktualizace téměř v reálném čase přes MQTT, když je aplikace otevřená
+• Oznámení, když teplota, denní úhrn srážek nebo intenzita deště dosáhne vámi nastavených limitů
+• Widget na domovskou obrazovku se světlými, tmavými nebo vlastními barvami
+• Nadcházející měsíční události
+• Metrické nebo imperiální jednotky a světlý i tmavý motiv
+• Flexibilní intervaly aktualizace s možností aktualizovat pouze přes Wi-Fi
+• Funguje se stanicemi v domácí síti i na internetu
+
+POŽADAVKY
+Tato aplikace je doplňkem k WeeWX a potřebuje server WeeWX, ke kterému se připojí. Na serveru musí být nainstalována tato rozšíření WeeWX:
+• InigoPlugin
+• AggregateValues
+• MQTTPublishV2 (volitelné, nutné pro živé aktualizace)
+
+Rozšíření exportují vaše data o počasí ve formátu, který aplikace umí přečíst. Návod k instalaci najdete na wiki:
+https://github.com/evilbunny2008/WeeWXWeatherApp/wiki
+
+OPEN SOURCE
+WeeWX Počasí je open source software s licencí GPLv3, který spravuje komunita. Hlášení chyb a příspěvky jsou vítány na GitHubu:
+https://github.com/evilbunny2008/WeeWXWeatherApp

@@ -1,0 +1,30 @@
+Vaše vrijeme, s vaše vlastite meteorološke stanice.
+
+Većina aplikacija za vremensku prognozu prikazuje podatke vanjskih servisa ili službene mjerne postaje koja može biti udaljena mnogo kilometara. WeeWX Vrijeme prikazuje očitanja s vaše vlastite osobne meteorološke stanice – ili bilo koje stanice kojoj imate pristup – na kojoj radi WeeWX, besplatan softver otvorenog koda za meteorološke stanice.
+
+ZNAČAJKE
+• Trenutni uvjeti s vaše stanice, uključujući temperaturu, vlažnost, vjetar, oborine i tlak zraka
+• Neobavezna unutarnja očitanja
+• Statistika za danas, jučer, ovaj mjesec, prošli mjesec, ovu godinu, prošlu godinu i cijelo razdoblje
+• Prognoze brojnih pružatelja, među ostalima BoM, NOAA (weather.gov), Met Office, DWD, AEMET, MET Norway, Met Éireann, MetService, Environment Canada i OpenWeatherMap
+• Slike meteorološkog radara i web-kamere s povećavanjem pomoću prstiju
+• Ažuriranja gotovo u stvarnom vremenu putem MQTT-a dok je aplikacija otvorena
+• Obavijesti kada temperatura, dnevna količina oborine ili intenzitet kiše dosegnu granice koje ste postavili
+• Widget za početni zaslon sa svijetlim, tamnim ili prilagođenim bojama
+• Nadolazeći mjesečevi događaji
+• Metričke ili imperijalne jedinice te svijetla i tamna tema
+• Fleksibilni intervali ažuriranja, uz mogućnost ažuriranja samo putem Wi-Fi mreže
+• Radi sa stanicama u kućnoj mreži ili na internetu
+
+ZAHTJEVI
+Ova je aplikacija dodatak za WeeWX i treba poslužitelj WeeWX na koji se može spojiti. Na poslužitelju moraju biti instalirana sljedeća proširenja za WeeWX:
+• InigoPlugin
+• AggregateValues
+• MQTTPublishV2 (neobavezno, potrebno za ažuriranja uživo)
+
+Proširenja izvoze vaše meteorološke podatke u obliku koji aplikacija može pročitati. Upute za instalaciju dostupne su na wikiju:
+https://github.com/evilbunny2008/WeeWXWeatherApp/wiki
+
+OTVORENI KOD
+WeeWX Vrijeme je softver otvorenog koda, licenciran pod GPLv3 i održavan od strane zajednice. Prijave grešaka i doprinosi dobrodošli su na GitHubu:
+https://github.com/evilbunny2008/WeeWXWeatherApp

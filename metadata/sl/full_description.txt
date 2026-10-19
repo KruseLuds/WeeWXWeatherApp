@@ -1,0 +1,30 @@
+Vaše vreme z vaše lastne vremenske postaje.
+
+Večina vremenskih aplikacij prikazuje podatke storitev tretjih oseb ali uradne merilne postaje, ki je lahko oddaljena več kilometrov. WeeWX Vreme prikazuje meritve z vaše lastne osebne vremenske postaje – ali katere koli postaje, do katere imate dostop – na kateri teče WeeWX, brezplačna odprtokodna programska oprema za vremenske postaje.
+
+FUNKCIJE
+• Trenutne razmere z vaše postaje, vključno s temperaturo, vlago, vetrom, padavinami in zračnim tlakom
+• Izbirne notranje meritve
+• Statistika za danes, včeraj, ta mesec, prejšnji mesec, to leto, prejšnje leto in za celotno obdobje
+• Napovedi številnih ponudnikov, med drugim BoM, NOAA (weather.gov), Met Office, DWD, AEMET, MET Norway, Met Éireann, MetService, Environment Canada in OpenWeatherMap
+• Slike vremenskega radarja in spletne kamere s povečavo s prsti
+• Posodobitve skoraj v realnem času prek MQTT, ko je aplikacija odprta
+• Obvestila, ko temperatura, dnevna količina padavin ali intenzivnost dežja doseže nastavljene meje
+• Pripomoček za začetni zaslon s svetlimi, temnimi ali barvami po meri
+• Prihajajoči lunini dogodki
+• Metrične ali imperialne enote ter svetla in temna tema
+• Prilagodljivi intervali posodabljanja z možnostjo posodabljanja samo prek Wi-Fi
+• Deluje s postajami v domačem omrežju ali na internetu
+
+ZAHTEVE
+Ta aplikacija je dopolnilo za WeeWX in potrebuje strežnik WeeWX, s katerim se poveže. Na strežniku morajo biti nameščene naslednje razširitve WeeWX:
+• InigoPlugin
+• AggregateValues
+• MQTTPublishV2 (izbirno, potrebno za posodobitve v živo)
+
+Razširitve izvozijo vaše vremenske podatke v obliki, ki jo aplikacija lahko prebere. Navodila za namestitev so na voljo na wikiju:
+https://github.com/evilbunny2008/WeeWXWeatherApp/wiki
+
+ODPRTA KODA
+WeeWX Vreme je odprtokodna programska oprema z licenco GPLv3, ki jo vzdržuje skupnost. Poročila o napakah in prispevki so dobrodošli na GitHubu:
+https://github.com/evilbunny2008/WeeWXWeatherApp
