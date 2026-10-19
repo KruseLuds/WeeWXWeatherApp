@@ -1,0 +1,4 @@
+Unlike general weather apps, which get data from third party websites, this app gets data from personal weather stations running WeeWX.
+
+It's a requirement that you need to install the AggregateValues and InigoPlugin extensions in WeeWX, and optionally the MQTTPublishV2 extension.
+Those extensions are needed because they facilitate exporting data from WeeWX to this app, more details are available at https://github.com/evilbunny2008/WeeWXWeatherApp/wiki
