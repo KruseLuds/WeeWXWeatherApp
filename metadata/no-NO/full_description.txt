@@ -1,0 +1,30 @@
+Ditt vær, fra din egen værstasjon.
+
+De fleste vær-apper viser data fra tredjepartstjenester eller fra en offisiell målestasjon som kan ligge mange kilometer unna. WeeWX Vær-app viser i stedet målingene fra din egen personlige værstasjon, eller fra en hvilken som helst stasjon du har tilgang til, som kjører WeeWX – den gratis programvaren med åpen kildekode for værstasjoner.
+
+FUNKSJONER
+• Gjeldende forhold fra stasjonen din, blant annet temperatur, luftfuktighet, vind, nedbør og lufttrykk
+• Valgfrie innendørsmålinger
+• Statistikk for i dag, i går, denne måneden, forrige måned, i år, i fjor og for hele perioden
+• Prognoser fra mange leverandører, blant annet MET Norway, BoM, NOAA (weather.gov), Met Office, DWD, AEMET, Met Éireann, MetService, Environment Canada og OpenWeatherMap
+• Værradar- og webkamerabilder med klypezoom
+• Oppdateringer nesten i sanntid via MQTT mens appen er åpen
+• Varsler når temperatur, døgnnedbør eller nedbørsintensitet når grenser du har angitt
+• Modul for startskjermen med lyse, mørke eller egendefinerte farger
+• Kommende månehendelser
+• Metriske eller britiske enheter, samt lyst og mørkt tema
+• Fleksible oppdateringsintervaller, med mulighet for å oppdatere kun via Wi-Fi
+• Fungerer med stasjoner på hjemmenettverket eller på internett
+
+KRAV
+Appen er et tillegg til WeeWX og trenger en WeeWX-server å koble til. Følgende WeeWX-utvidelser må være installert på serveren:
+• InigoPlugin
+• AggregateValues
+• MQTTPublishV2 (valgfri, kreves for sanntidsoppdateringer)
+
+Utvidelsene eksporterer værdataene dine i et format appen kan lese. Installasjonsveiledning finnes på wikien:
+https://github.com/evilbunny2008/WeeWXWeatherApp/wiki
+
+ÅPEN KILDEKODE
+WeeWX Vær-app er programvare med åpen kildekode, lisensiert under GPLv3 og vedlikeholdt av fellesskapet. Feilrapporter og bidrag er velkomne på GitHub:
+https://github.com/evilbunny2008/WeeWXWeatherApp

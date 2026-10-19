@@ -1,0 +1,30 @@
+Jouw weer, van je eigen weerstation.
+
+De meeste weer-apps tonen gegevens van externe diensten of van een officieel meetstation dat vele kilometers verderop kan staan. De WeeWX Weer-app toont de metingen van je eigen persoonlijke weerstation, of van elk station waar je toegang toe hebt, waarop WeeWX draait: de gratis opensourcesoftware voor weerstations.
+
+FUNCTIES
+• Actuele gegevens van je station, waaronder temperatuur, luchtvochtigheid, wind, neerslag en luchtdruk
+• Optionele binnenmetingen
+• Statistieken voor vandaag, gisteren, deze maand, vorige maand, dit jaar, vorig jaar en aller tijden
+• Voorspellingen van tal van aanbieders, waaronder BoM, NOAA (weather.gov), Met Office, DWD, AEMET, MET Norway, Met Éireann, MetService, Environment Canada en OpenWeatherMap
+• Weerradar- en webcambeelden met knijpzoom
+• Bijna realtime updates via MQTT terwijl de app geopend is
+• Meldingen wanneer de temperatuur, de dagelijkse neerslag of de neerslagintensiteit door jou ingestelde grenzen bereikt
+• Widget voor het startscherm met lichte, donkere of eigen kleuren
+• Komende maanfasen en -gebeurtenissen
+• Metrische of imperiale eenheden, en een licht en donker thema
+• Flexibele update-intervallen, met de optie om alleen via wifi bij te werken
+• Werkt met stations in je thuisnetwerk of op internet
+
+VEREISTEN
+Deze app is een aanvulling op WeeWX en heeft een WeeWX-server nodig om verbinding mee te maken. Op die server moeten de volgende WeeWX-extensies geïnstalleerd zijn:
+• InigoPlugin
+• AggregateValues
+• MQTTPublishV2 (optioneel, nodig voor live updates)
+
+De extensies exporteren je weergegevens in een formaat dat de app kan lezen. Installatie-instructies staan op de wiki:
+https://github.com/evilbunny2008/WeeWXWeatherApp/wiki
+
+OPEN SOURCE
+De WeeWX Weer-app is opensourcesoftware, uitgebracht onder de GPLv3-licentie en onderhouden door de community. Bugmeldingen en bijdragen zijn welkom op GitHub:
+https://github.com/evilbunny2008/WeeWXWeatherApp

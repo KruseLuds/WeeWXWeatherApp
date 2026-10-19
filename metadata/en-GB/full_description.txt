@@ -1,0 +1,30 @@
+Your weather, from your own weather station.
+
+Most weather apps show data from third-party services or an official observation site that may be many miles away. WeeWX Weather App shows the readings from your own personal weather station, or any station you have access to, running WeeWX, the free and open-source weather station software.
+
+FEATURES
+• Current conditions from your station, including temperature, humidity, wind, rainfall and pressure
+• Optional indoor readings
+• Statistics for today, yesterday, this month, last month, this year, last year and all time
+• Forecasts from many providers, including BoM, NOAA (weather.gov), Met Office, DWD, AEMET, MET Norway, Met Éireann, MetService, Environment Canada and OpenWeatherMap
+• Weather radar and webcam images with pinch-to-zoom
+• Near real-time updates over MQTT while the app is open
+• Notifications when the temperature, daily rainfall or rain rate reaches limits you set
+• Home screen widget with light, dark or custom colours
+• Upcoming moon events
+• Metric or imperial units, plus light and dark themes
+• Flexible update intervals, with an option to update only over Wi-Fi
+• Works with stations on your home network or on the internet
+
+REQUIREMENTS
+This app is a companion to WeeWX and needs a WeeWX server to connect to. These WeeWX extensions must be installed on that server:
+• InigoPlugin
+• AggregateValues
+• MQTTPublishV2 (optional, needed for live updates)
+
+The extensions export your weather data in a format the app can read. Setup instructions are on the wiki:
+https://github.com/evilbunny2008/WeeWXWeatherApp/wiki
+
+OPEN SOURCE
+WeeWX Weather App is open-source software, licensed under the GPLv3 and maintained by the community. Bug reports and contributions are welcome on GitHub:
+https://github.com/evilbunny2008/WeeWXWeatherApp

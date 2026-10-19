@@ -1,0 +1,30 @@
+Il tuo meteo, dalla tua stazione meteo.
+
+La maggior parte delle app meteo mostra dati di servizi di terze parti o di una stazione ufficiale che può trovarsi a molti chilometri di distanza. WeeWX Meteo mostra invece le letture della tua stazione meteo personale, o di qualsiasi stazione a cui hai accesso, che utilizza WeeWX, il software gratuito e open source per stazioni meteo.
+
+FUNZIONALITÀ
+• Condizioni attuali dalla tua stazione: temperatura, umidità, vento, pioggia, pressione e altro
+• Letture interne facoltative
+• Statistiche di oggi, ieri, questo mese, il mese scorso, quest'anno, l'anno scorso e di sempre
+• Previsioni da numerosi fornitori, tra cui Tempo Italia, BoM, NOAA (weather.gov), Met Office, DWD, AEMET, MET Norway, Met Éireann, MetService, Environment Canada e OpenWeatherMap
+• Immagini radar meteo e webcam con zoom a pizzico
+• Aggiornamenti quasi in tempo reale tramite MQTT mentre l'app è aperta
+• Notifiche quando temperatura, pioggia giornaliera o intensità di pioggia raggiungono i limiti da te impostati
+• Widget per la schermata Home con colori chiari, scuri o personalizzati
+• Prossimi eventi lunari
+• Unità metriche o imperiali, temi chiaro e scuro
+• Intervalli di aggiornamento flessibili, con opzione per aggiornare solo tramite Wi-Fi
+• Funziona con stazioni sulla tua rete domestica o su Internet
+
+REQUISITI
+Questa app è un complemento di WeeWX e richiede un server WeeWX a cui connettersi. Sul server devono essere installate le seguenti estensioni WeeWX:
+• InigoPlugin
+• AggregateValues
+• MQTTPublishV2 (facoltativa, necessaria per gli aggiornamenti in tempo reale)
+
+Le estensioni esportano i tuoi dati meteo in un formato leggibile dall'app. Le istruzioni di installazione sono disponibili nel wiki:
+https://github.com/evilbunny2008/WeeWXWeatherApp/wiki
+
+OPEN SOURCE
+WeeWX Meteo è un software open source, rilasciato con licenza GPLv3 e mantenuto dalla community. Segnalazioni di bug e contributi sono benvenuti su GitHub:
+https://github.com/evilbunny2008/WeeWXWeatherApp

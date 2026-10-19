@@ -1,0 +1,30 @@
+Tu clima, desde tu propia estación meteorológica.
+
+La mayoría de las aplicaciones del clima muestran datos de servicios de terceros o de una estación oficial que puede estar a muchos kilómetros de distancia. WeeWX Clima muestra las lecturas de tu propia estación meteorológica personal, o de cualquier estación a la que tengas acceso, que utilice WeeWX, el software gratuito y de código abierto para estaciones meteorológicas.
+
+FUNCIONES
+• Condiciones actuales de tu estación: temperatura, humedad, viento, lluvia, presión y más
+• Lecturas interiores opcionales
+• Estadísticas de hoy, ayer, este mes, el mes pasado, este año, el año pasado y de todo el historial
+• Pronósticos de numerosos proveedores, como NOAA (weather.gov), BoM, Met Office, DWD, AEMET, MET Norway, Met Éireann, MetService, Environment Canada y OpenWeatherMap
+• Imágenes de radar meteorológico y de cámara web con zoom de pellizco
+• Actualizaciones casi en tiempo real mediante MQTT mientras la aplicación está abierta
+• Notificaciones cuando la temperatura, la lluvia diaria o la intensidad de lluvia alcanzan los límites que establezcas
+• Widget para la pantalla principal con colores claros, oscuros o personalizados
+• Próximos eventos lunares
+• Unidades métricas o imperiales, y temas claro y oscuro
+• Intervalos de actualización flexibles, con opción de actualizar solo con Wi-Fi
+• Funciona con estaciones en tu red local o en internet
+
+REQUISITOS
+Esta aplicación es un complemento de WeeWX y necesita un servidor WeeWX al cual conectarse. En ese servidor deben estar instaladas las siguientes extensiones de WeeWX:
+• InigoPlugin
+• AggregateValues
+• MQTTPublishV2 (opcional, necesaria para las actualizaciones en vivo)
+
+Las extensiones exportan tus datos meteorológicos en un formato que la aplicación puede leer. Las instrucciones de instalación están en la wiki:
+https://github.com/evilbunny2008/WeeWXWeatherApp/wiki
+
+CÓDIGO ABIERTO
+WeeWX Clima es software de código abierto, con licencia GPLv3 y mantenido por la comunidad. Los reportes de errores y las contribuciones son bienvenidos en GitHub:
+https://github.com/evilbunny2008/WeeWXWeatherApp

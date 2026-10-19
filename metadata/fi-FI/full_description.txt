@@ -1,0 +1,30 @@
+Sinun säätietosi, omalta sääasemaltasi.
+
+Useimmat sääsovellukset näyttävät kolmansien osapuolten palveluiden tietoja tai virallisen havaintoaseman lukemia, ja asema voi sijaita kymmenien kilometrien päässä. WeeWX Sääsovellus näyttää sen sijaan oman henkilökohtaisen sääasemasi lukemat – tai minkä tahansa aseman, johon sinulla on pääsy – kun asemalla on käytössä WeeWX, ilmainen avoimen lähdekoodin ohjelmisto sääasemille.
+
+OMINAISUUDET
+• Asemasi nykyiset olosuhteet, kuten lämpötila, kosteus, tuuli, sademäärä ja ilmanpaine
+• Valinnaiset sisälukemat
+• Tilastot tältä päivältä, eiliseltä, tältä kuukaudelta, viime kuukaudelta, tältä vuodelta, viime vuodelta ja koko ajalta
+• Ennusteet useilta palveluntarjoajilta, kuten BoM, NOAA (weather.gov), Met Office, DWD, AEMET, MET Norway, Met Éireann, MetService, Environment Canada ja OpenWeatherMap
+• Säätutka- ja verkkokamerakuvat nipistyszoomauksella
+• Lähes reaaliaikaiset päivitykset MQTT:n kautta, kun sovellus on auki
+• Ilmoitukset, kun lämpötila, vuorokauden sademäärä tai sateen intensiteetti saavuttaa asettamasi rajat
+• Aloitusnäytön widget vaalein, tummin tai mukautetuin värein
+• Tulevat kuun vaiheet ja tapahtumat
+• Metriset tai brittiläiset yksiköt sekä vaalea ja tumma teema
+• Joustavat päivitysvälit ja mahdollisuus päivittää vain Wi-Fi-yhteydellä
+• Toimii kotiverkon tai internetin kautta saatavilla olevien asemien kanssa
+
+VAATIMUKSET
+Tämä sovellus on WeeWX:n oheissovellus ja tarvitsee WeeWX-palvelimen, johon yhdistää. Palvelimelle on asennettava seuraavat WeeWX-laajennukset:
+• InigoPlugin
+• AggregateValues
+• MQTTPublishV2 (valinnainen, tarvitaan reaaliaikaisiin päivityksiin)
+
+Laajennukset vievät säätietosi muotoon, jota sovellus pystyy lukemaan. Asennusohjeet löytyvät wikistä:
+https://github.com/evilbunny2008/WeeWXWeatherApp/wiki
+
+AVOIN LÄHDEKOODI
+WeeWX Sääsovellus on avoimen lähdekoodin ohjelmisto, joka on lisensoitu GPLv3-lisenssillä ja jota ylläpitää yhteisö. Virheraportit ja kehitysapu ovat tervetulleita GitHubissa:
+https://github.com/evilbunny2008/WeeWXWeatherApp

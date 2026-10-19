@@ -1,0 +1,30 @@
+Ihr Wetter, von Ihrer eigenen Wetterstation.
+
+Die meisten Wetter-Apps zeigen Daten von Drittanbietern oder von einer offiziellen Messstation, die viele Kilometer entfernt sein kann. Die WeeWX Wetter-App zeigt dagegen die Messwerte Ihrer eigenen privaten Wetterstation – oder jeder anderen Station, auf die Sie Zugriff haben –, auf der WeeWX läuft, die kostenlose Open-Source-Software für Wetterstationen.
+
+FUNKTIONEN
+• Aktuelle Werte Ihrer Station, darunter Temperatur, Luftfeuchtigkeit, Wind, Niederschlag und Luftdruck
+• Optionale Innenraum-Messwerte
+• Statistiken für heute, gestern, diesen Monat, letzten Monat, dieses Jahr, letztes Jahr und seit Beginn der Aufzeichnungen
+• Vorhersagen von zahlreichen Anbietern, darunter BoM, NOAA (weather.gov), Met Office, DWD, AEMET, MET Norway, Met Éireann, MetService, Environment Canada und OpenWeatherMap
+• Wetterradar- und Webcam-Bilder mit Zoom per Fingergeste
+• Aktualisierungen nahezu in Echtzeit über MQTT, solange die App geöffnet ist
+• Benachrichtigungen, wenn Temperatur, Tagesniederschlag oder Regenrate die von Ihnen festgelegten Grenzwerte erreichen
+• Startbildschirm-Widget mit hellen, dunklen oder eigenen Farben
+• Bevorstehende Mondereignisse
+• Metrische oder imperiale Einheiten sowie helles und dunkles Design
+• Flexible Aktualisierungsintervalle, optional nur über WLAN
+• Funktioniert mit Stationen im Heimnetzwerk oder im Internet
+
+VORAUSSETZUNGEN
+Diese App ist eine Begleit-App für WeeWX und benötigt einen WeeWX-Server, mit dem sie sich verbinden kann. Auf diesem Server müssen folgende WeeWX-Erweiterungen installiert sein:
+• InigoPlugin
+• AggregateValues
+• MQTTPublishV2 (optional, für Live-Aktualisierungen erforderlich)
+
+Die Erweiterungen exportieren Ihre Wetterdaten in einem Format, das die App lesen kann. Eine Installationsanleitung finden Sie im Wiki:
+https://github.com/evilbunny2008/WeeWXWeatherApp/wiki
+
+OPEN SOURCE
+Die WeeWX Wetter-App ist Open-Source-Software, lizenziert unter der GPLv3 und von der Community gepflegt. Fehlerberichte und Beiträge sind auf GitHub willkommen:
+https://github.com/evilbunny2008/WeeWXWeatherApp
