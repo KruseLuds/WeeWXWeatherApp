@@ -1,0 +1,30 @@
+Vossa aura, da Vossa atgna staziun meteorologica.
+
+La gronda part da las apps da l’aura mussan datas da servetschs da terzs u d’ina staziun d’observaziun uffiziala che po esser bleras kilometers davent. WeeWX Aura mussa percunter las mesiraziuns da Vossa atgna staziun meteorologica persunala – u da mintga staziun a la quala Vus avais access – che funcziuna cun WeeWX, la software gratuita ed open source per staziuns meteorologicas.
+
+FUNCZIUNS
+• Cundiziuns actualas da Vossa staziun, inclus temperatura, umiditad, vent, precipitaziun e pressiun da l’aria
+• Mesiraziuns d’intern facultativas
+• Statistica per oz, ier, quest mais, il mais passà, quest onn, l’onn passà e da tut il temp
+• Prognosas da blers purschiders, tranter auter BoM, NOAA (weather.gov), Met Office, DWD, AEMET, MET Norway, Met Éireann, MetService, Environment Canada ed OpenWeatherMap
+• Maletgs dal radar meteorologic e da la webcam cun zoom cun dus dets
+• Actualisaziuns quasi en temp real via MQTT durant che l’app è averta
+• Avis cura che la temperatura, la precipitaziun dal di u l’intensitad da la plievgia cuntanschan ils limits che Vus avais fixà
+• Widget per il visur da partenza cun colurs clers, stgirs u persunalisads
+• Proxims eveniments da la glina
+• Unitads metricas u imperialas sco er temas cler e stgir
+• Intervals d’actualisaziun flexibels, cun l’opziun d’actualisar mo via Wi-Fi
+• Funcziuna cun staziuns en Voss rait da chasa u en l’internet
+
+PREMISSAS
+Questa app è in cumplement da WeeWX e dovra in server WeeWX per sa connectar. Sin quest server ston esser installadas las suandantas extensiuns da WeeWX:
+• InigoPlugin
+• AggregateValues
+• MQTTPublishV2 (facultativ, necessari per actualisaziuns en direct)
+
+Las extensiuns exportan Vossas datas da l’aura en in format che l’app po leger. Instrucziuns d’installaziun chattais Vus en il wiki:
+https://github.com/evilbunny2008/WeeWXWeatherApp/wiki
+
+OPEN SOURCE
+WeeWX Aura è software open source, licenziada sut la GPLv3 e mantegnida da la communitad. Rapports d’errurs e contribuziuns èn bainvegnids sin GitHub:
+https://github.com/evilbunny2008/WeeWXWeatherApp

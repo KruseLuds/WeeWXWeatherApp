@@ -1,0 +1,30 @@
+Jou weer, van jou eie weerstasie.
+
+Die meeste weertoeps wys data van derdepartydienste of van ’n amptelike waarnemingstasie wat baie kilometers ver kan wees. WeeWX Weer-toep wys eerder die lesings van jou eie persoonlike weerstasie – of enige stasie waartoe jy toegang het – wat WeeWX gebruik, die gratis oopbronsagteware vir weerstasies.
+
+KENMERKE
+• Huidige toestande van jou stasie, insluitend temperatuur, humiditeit, wind, reënval en lugdruk
+• Opsionele binnenshuise lesings
+• Statistiek vir vandag, gister, hierdie maand, verlede maand, hierdie jaar, verlede jaar en alle tye
+• Voorspellings van baie verskaffers, insluitend BoM, NOAA (weather.gov), Met Office, DWD, AEMET, MET Norway, Met Éireann, MetService, Environment Canada en OpenWeatherMap
+• Weerradar- en webkamerabeelde met knyp-om-te-zoem
+• Byna intydse opdaterings via MQTT terwyl die toep oop is
+• Kennisgewings wanneer die temperatuur, daaglikse reënval of reëntempo limiete bereik wat jy stel
+• Tuisskermlegstuk met ligte, donker of pasgemaakte kleure
+• Komende maangebeure
+• Metrieke of imperiale eenhede, asook ligte en donker temas
+• Buigsame opdateringsintervalle, met die opsie om net oor Wi-Fi by te werk
+• Werk met stasies op jou tuisnetwerk of op die internet
+
+VEREISTES
+Hierdie toep is ’n metgesel vir WeeWX en het ’n WeeWX-bediener nodig om aan te koppel. Die volgende WeeWX-uitbreidings moet op daardie bediener geïnstalleer wees:
+• InigoPlugin
+• AggregateValues
+• MQTTPublishV2 (opsioneel, nodig vir regstreekse opdaterings)
+
+Die uitbreidings voer jou weerdata uit in ’n formaat wat die toep kan lees. Opstelinstruksies is op die wiki:
+https://github.com/evilbunny2008/WeeWXWeatherApp/wiki
+
+OOPBRON
+WeeWX Weer-toep is oopbronsagteware, gelisensieer onder die GPLv3 en deur die gemeenskap onderhou. Foutverslae en bydraes is welkom op GitHub:
+https://github.com/evilbunny2008/WeeWXWeatherApp

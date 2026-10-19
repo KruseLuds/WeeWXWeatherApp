@@ -1,0 +1,30 @@
+Cuaca anda, daripada stesen cuaca anda sendiri.
+
+Kebanyakan apl cuaca memaparkan data daripada perkhidmatan pihak ketiga atau stesen cerapan rasmi yang mungkin terletak berpuluh-puluh kilometer jauhnya. WeeWX Cuaca sebaliknya memaparkan bacaan daripada stesen cuaca peribadi anda – atau mana-mana stesen yang boleh anda akses – yang menjalankan WeeWX, perisian stesen cuaca percuma dan sumber terbuka.
+
+CIRI-CIRI
+• Keadaan semasa daripada stesen anda, termasuk suhu, kelembapan, angin, hujan dan tekanan udara
+• Bacaan dalam rumah (pilihan)
+• Statistik untuk hari ini, semalam, bulan ini, bulan lepas, tahun ini, tahun lepas dan sepanjang masa
+• Ramalan daripada pelbagai pembekal, termasuk BoM, NOAA (weather.gov), Met Office, DWD, AEMET, MET Norway, Met Éireann, MetService, Environment Canada dan OpenWeatherMap
+• Imej radar cuaca dan kamera web dengan cubit untuk zum
+• Kemas kini hampir masa nyata melalui MQTT semasa apl dibuka
+• Pemberitahuan apabila suhu, hujan harian atau kadar hujan mencapai had yang anda tetapkan
+• Widget skrin utama dengan warna cerah, gelap atau tersuai
+• Peristiwa bulan akan datang
+• Unit metrik atau imperial, serta tema cerah dan gelap
+• Selang kemas kini yang fleksibel, dengan pilihan untuk mengemas kini melalui Wi-Fi sahaja
+• Berfungsi dengan stesen pada rangkaian rumah anda atau di internet
+
+KEPERLUAN
+Apl ini ialah pendamping kepada WeeWX dan memerlukan pelayan WeeWX untuk disambungkan. Sambungan WeeWX berikut mesti dipasang pada pelayan tersebut:
+• InigoPlugin
+• AggregateValues
+• MQTTPublishV2 (pilihan, diperlukan untuk kemas kini langsung)
+
+Sambungan ini mengeksport data cuaca anda dalam format yang boleh dibaca oleh apl. Arahan persediaan terdapat di wiki:
+https://github.com/evilbunny2008/WeeWXWeatherApp/wiki
+
+SUMBER TERBUKA
+WeeWX Cuaca ialah perisian sumber terbuka, berlesen GPLv3 dan diselenggara oleh komuniti. Laporan pepijat dan sumbangan dialu-alukan di GitHub:
+https://github.com/evilbunny2008/WeeWXWeatherApp

@@ -1,0 +1,30 @@
+Veðrið þitt, frá þinni eigin veðurstöð.
+
+Flest veðurforrit sýna gögn frá þjónustu þriðja aðila eða frá opinberri athugunarstöð sem getur verið í margra kílómetra fjarlægð. WeeWX Veður sýnir í staðinn mælingar frá þinni eigin veðurstöð – eða hvaða stöð sem þú hefur aðgang að – sem keyrir WeeWX, ókeypis opinn hugbúnað fyrir veðurstöðvar.
+
+EIGINLEIKAR
+• Núverandi aðstæður frá stöðinni þinni, þar á meðal hiti, raki, vindur, úrkoma og loftþrýstingur
+• Valfrjálsar mælingar innandyra
+• Tölfræði fyrir daginn í dag, gærdaginn, þennan mánuð, síðasta mánuð, þetta ár, síðasta ár og frá upphafi
+• Spár frá fjölmörgum veitum, þar á meðal BoM, NOAA (weather.gov), Met Office, DWD, AEMET, MET Norway, Met Éireann, MetService, Environment Canada og OpenWeatherMap
+• Veðurratsjár- og vefmyndavélarmyndir með klípuaðdrætti
+• Uppfærslur nánast í rauntíma um MQTT á meðan forritið er opið
+• Tilkynningar þegar hiti, sólarhringsúrkoma eða úrkomuákefð nær mörkum sem þú stillir
+• Græja á heimaskjá með ljósum, dökkum eða sérsniðnum litum
+• Væntanlegir tunglviðburðir
+• Metrakerfi eða bresk mælieiningakerfi, ásamt ljósu og dökku þema
+• Sveigjanleg uppfærslubil, með möguleika á að uppfæra aðeins um Wi-Fi
+• Virkar með stöðvum á heimanetinu þínu eða á netinu
+
+KRÖFUR
+Þetta forrit er fylgiforrit WeeWX og þarf WeeWX-þjón til að tengjast. Eftirfarandi WeeWX-viðbætur verða að vera uppsettar á þeim þjóni:
+• InigoPlugin
+• AggregateValues
+• MQTTPublishV2 (valfrjálst, nauðsynlegt fyrir rauntímauppfærslur)
+
+Viðbæturnar flytja veðurgögnin þín út á sniði sem forritið getur lesið. Uppsetningarleiðbeiningar eru á wiki-síðunni:
+https://github.com/evilbunny2008/WeeWXWeatherApp/wiki
+
+OPINN HUGBÚNAÐUR
+WeeWX Veður er opinn hugbúnaður, gefinn út með GPLv3-leyfi og viðhaldið af samfélaginu. Villutilkynningar og framlög eru vel þegin á GitHub:
+https://github.com/evilbunny2008/WeeWXWeatherApp
