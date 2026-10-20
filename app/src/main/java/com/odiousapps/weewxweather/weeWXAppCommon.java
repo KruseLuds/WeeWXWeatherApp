@@ -5199,18 +5199,49 @@ class weeWXAppCommon
 		return new NPWSLL(now, period, wait, start, lastStart, report_time);
 	}
 
+	// The first 16 entries cover equal 22.5-degree compass sectors.
+	// The final dictionary entry represents an unavailable direction.
+	static String compassFromDegrees(Number direction)
+	{
+		List<String> labels = KeyValue.ordinateNames;
+		if(labels.size() != 17 || direction == null)
+			return null;
+
+		double degrees = direction.doubleValue();
+		if(!Double.isFinite(degrees) || degrees < 0 || degrees > 360)
+			return labels.get(16);
+
+		int sector = ((int)Math.floor(((degrees % 360) + 11.25) / 22.5)) % 16;
+		return labels.get(sector);
+	}
+
+	static String compassUnavailable()
+	{
+		List<String> labels = KeyValue.ordinateNames;
+		return labels.size() == 17 ? labels.get(16) : "N/A";
+	}
+
 	static String deg2Str(String direction_element, String speed_element)
 	{
 		float speed = (float)getJson(speed_element, 0f);
 
 		if(speed <= 0)
-			return "N/A";
+			return compassUnavailable();
 
 		return deg2Str(direction_element);
 	}
 
 	static String deg2Str(String direction_element)
 	{
-		return (String)getJson(direction_element, "N/A");
+		String legacy = (String)getJson(direction_element, "N/A");
+		String numericKey = direction_element.endsWith("_str")
+			? direction_element.substring(0, direction_element.length() - 4)
+			: direction_element;
+
+		if(!hasElement(numericKey))
+			return legacy;
+
+		String fromDictionary = compassFromDegrees((double)getJson(numericKey, Double.NaN));
+		return fromDictionary != null ? fromDictionary : legacy;
 	}
 }

@@ -3112,18 +3112,56 @@ public class MainActivity extends FragmentActivity
 		queueJSON(key, l / 1_000D);
 	}
 
-	private void processStatsWindDir(String key, Integer i)
+	private void processStatsWindDir(String key, Integer i, Float degrees)
 	{
 		if(i == null || Objects.equals(KeyValue.values.get(key), i))
 			return;
 
 		KeyValue.values.put(key, i);
 		putOutput(mqttOutput2, key, weeWXAppCommon.cssToSVG("wi-wind-deg", i));
-		queueJSON(key, i);
+		queueJSON(key, degrees != null ? degrees : i);
+
+		// A numeric update can refresh the label even when no *_str arrives.
+		String labelKey = key + "_str";
+		processCompass(mqttOutput2, labelKey, labelKey, labelKey, null);
+	}
+
+	private Double pendingOrCachedNumber(String key)
+	{
+		if(pendingJSON != null && pendingJSON.has(key))
+			return pendingJSON.optDouble(key, Double.NaN);
+		if(weeWXAppCommon.hasElement(key))
+			return (double)weeWXAppCommon.getJson(key, Double.NaN);
+		return null;
 	}
 
 	private void processCompass(JSONObject output, String key, String elementId, String jsonKey, String s)
 	{
+		if(jsonKey.endsWith("_str") && KeyValue.ordinateNames.size() == 17)
+		{
+			String directionKey = jsonKey.substring(0, jsonKey.length() - 4);
+			Double degrees = pendingOrCachedNumber(directionKey);
+			if(degrees != null)
+			{
+				String mapped = weeWXAppCommon.compassFromDegrees(degrees);
+				if(mapped != null)
+				{
+					String speedKey = null;
+					if(directionKey.equals("current_windGustDir"))
+						speedKey = "current_windGust";
+					else if(directionKey.endsWith("wind_vecdir"))
+						speedKey = directionKey.substring(0, directionKey.length() - 11) + "wind_avg";
+					else if(directionKey.endsWith("wind_gustdir"))
+						speedKey = directionKey.substring(0, directionKey.length() - 12) + "wind_max";
+
+					Double speed = speedKey == null ? null : pendingOrCachedNumber(speedKey);
+					if(speed != null && Double.isFinite(speed) && speed <= 0)
+						mapped = weeWXAppCommon.compassUnavailable();
+					s = mapped;
+				}
+			}
+		}
+
 		if(s == null || s.isBlank() || Objects.equals(KeyValue.values.get(key), s))
 			return;
 
@@ -3162,6 +3200,9 @@ public class MainActivity extends FragmentActivity
 			case "wind_max", "wind_avg" ->
 			{
 				processStatsValue(key, f, "%.1f");
+				String directionKey = timeperiod + (varname.equals("wind_avg") ? "wind_vecdir" : "wind_gustdir");
+				String labelKey = directionKey + "_str";
+				processCompass(mqttOutput2, labelKey, labelKey, labelKey, null);
 				return;
 			}
 			case "wind_maxtime" ->
@@ -3171,7 +3212,7 @@ public class MainActivity extends FragmentActivity
 			}
 			case "wind_vecdir", "wind_gustdir" ->
 			{
-				processStatsWindDir(key, i);
+				processStatsWindDir(key, i, f);
 				return;
 			}
 			case "wind_vecdir_str", "wind_gustdir_str" ->
@@ -3210,6 +3251,8 @@ public class MainActivity extends FragmentActivity
 				KeyValue.values.put(key, f);
 				putOutput(mqttOutput, key, String.format(Locale.ENGLISH, "%.1f", f));
 				queueJSON("current_" + key, f);
+				if(key.equals("windGust"))
+					processCompass(mqttOutput, "windGustDir_str", "gustDirStr", "current_windGustDir_str", null);
 			}
 			case "inHumidity", "outHumidity", "radiation" ->
 			{
@@ -3227,7 +3270,8 @@ public class MainActivity extends FragmentActivity
 
 				KeyValue.values.put(key, i);
 				putOutput(mqttOutput, "gustDirComp", weeWXAppCommon.cssToSVG("wi-wind-deg", i));
-				queueJSON("current_windGustDir", i);
+				queueJSON("current_windGustDir", f != null ? f : i);
+				processCompass(mqttOutput, "windGustDir_str", "gustDirStr", "current_windGustDir_str", null);
 			}
 			case "windGustDir_str" -> processCompass(mqttOutput, key, "gustDirStr", "current_windGustDir_str", s);
 		}
