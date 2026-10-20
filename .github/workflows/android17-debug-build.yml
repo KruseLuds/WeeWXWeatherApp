@@ -5,6 +5,7 @@ on:
   push:
     branches:
       - custom/kruse-weewx
+      - feat/compass-array-client
 
 permissions:
   contents: read
